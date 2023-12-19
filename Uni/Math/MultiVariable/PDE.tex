@@ -1,0 +1,81 @@
+\section{PDE}
+Partial Differential Equations are equations with multiple variables and derivatives.
+They are used to model many physical phenomena, such as heat, sound, and light.
+The totality of solutions to a PDE is called its general solution, and there can be a lot.
+
+\subsection{Classification of PDEs}
+General representation of a PDE:
+\[
+  A\frac{\partial^2u}{\partial x^2}+B\frac{\partial^2u}{\partial x\partial y}+C\frac{\partial^2u}{\partial y^2}+D\frac{\partial u}{\partial x}+E\frac{\partial u}{\partial y}+Fu=G
+\]
+\[
+  Au_{xx}+Bu_{xy}+Cu_{yy}+Du_x+Eu_y+Fu=G
+\]
+Conditions:
+%todo: Is this correct?
+
+$$\begin{array}{l}
+\textbf{Linear: }A,B,C,D,E,F \text{ are constants}\\
+\textbf{Quasi-linear: }A,B,C \text{ are constants}\\
+\textbf{Fully non-linear: }A,B,C,D,E,F \text{ are functions of u and its partial derivatives}
+\end{array}$$
+
+
+
+\subsection{Initial and Boundary Conditions}
+\subsection{Wave Equation (1D)}
+One dimensional wave equation is given by:
+\begin{equation}
+  \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}\quad\quad\text{where }c^2=\left[\frac{T(x,t)}{\mu_x}\right]
+  \label{eq:wave1d}
+\end{equation}
+Steps to solve:
+\begin{enumerate}
+  \item Method of Separation of Variables $\quad u(x,t)=X(x)T(t)$
+  \item Satify the Boundary Conditions test
+  \item Fourier Series Validation
+
+\end{enumerate}
+\subsubsection{D’Alembert’s Solution of the Wave Equation}
+His solution is given by \cref{eq:wave1d} but extended to two variables:
+\begin{equation}
+  v=(x-ct) \quad\quad\quad\quad w=(x+ct)
+  \label{eq:dalambert}
+\end{equation}
+I.e. $u(v,w)$. Partial derivatives from chain rule:
+\[
+  u_x=u_v \cdot v_x+u_w\cdot w_x=u_v+u_w
+\]
+For double derivatives:
+\[
+  u_{xx}=(u_v+u_w)_x=(u_v+u_w)_v v_x+(u_v+u_w)_w w_x=u_{vv}+2u_{vw}+u_{ww}
+\]
+With respect to $t$:
+\[
+  u_{tt}=c^2u_{xx}=c^2(u_{vv}+2u_{vw}+u_{ww})
+\]
+From \cref{eq:wave1d} and \cref{eq:dalambert}:
+\[
+  u_{vw}=\frac{\partial^2u}{\partial w \partial v}=0
+\]
+This can be solved by integrating with respect to $v$ and $w$:
+\[
+  \frac{\partial u}{\partial v}=h(v) \text{ and } u=\int h(v)\ dv + \psi(w)
+\]
+Here, $h(v)$ and $\psi(w)$ are arbitrary functions of $v$ and $w$, respectively.
+The solution in term for $x$:
+\[
+  u=\phi(v)+\psi(w)
+\]
+This is d'Alembert's solution, which is the general solution to the wave equation.
+\[
+  u(x,t)=\phi(x+ct)+\psi(x-ct)
+\]
+This solution satisfies the wave equation and the initial conditions:
+
+
+
+
+\subsection{Heat Equation (1D)}
+
+\subsection{Example exercises}
