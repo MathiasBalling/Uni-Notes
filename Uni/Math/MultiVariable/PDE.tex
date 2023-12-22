@@ -20,7 +20,19 @@ $$\begin{array}{l}
 \textbf{Fully non-linear: }A,B,C,D,E,F \text{ are functions of u and its partial derivatives}
 \end{array}$$
 
+\subsection{Characteristics of PDEs}
+$$\begin{array}{llll}
+  B^2-4AC>0&2\text{ real roots}&2\text{ characteristics}&\textbf{Hyperbolic PDE}\\
+  B^2-4AC=0&1\text{ real roots}&1\text{ characteristics}&\textbf{Parabolic PDE}\\
+  B^2-4AC<0&0\text{ real roots}&0\text{ characteristics}&\textbf{Elliptic PDE}\\
+\end{array}$$
+Tyoes of varius PDEs:
 
+\textbf{Wave Equation:} Hyperbolic PDE
+
+\textbf{Heat Equation:} Parabolic PDE
+
+\textbf{Laplace Equation:} Elliptic PDE
 
 \subsection{Initial and Boundary Conditions}
 \subsection{Wave Equation (1D)}
@@ -77,5 +89,23 @@ This solution satisfies the wave equation and the initial conditions:
 
 
 \subsection{Heat Equation (1D)}
+\begin{equation}
+  \frac{\partial u}{\partial t}=c\frac{\partial^2 u}{\partial x^2}
+  \label{eq:Heat1D}
+\end{equation}
 
+Conditions:
+\begin{itemize}
+  \item PDE is linear and homogeneous.
+  \item Boundary conditions are linear and homogeneous.The two for $u(x,t)$ is $u(0,t)=0$ and $u(L,t)=0$ for all $t>0$.
+  \item One initial condition at time ($t=0$): $u(x,0)=f(x)$.
+\end{itemize}
+Solve the 
+
+Solution:
+$$u(x,t)=\sum_{n=1}^{\infty}B_n\sin\left(\frac{n\pi x}{L}\right)e^{-\lambda_n^2t}$$
+where
+$$\lambda_n = \frac{cn\pi}{L}$$
+and
+$$B_n = \frac{2}{L}\int_0^Lf(x)\sin\left(\frac{n\pi x}{L}\right)dx\quad\quad \text{for }n=1,2,3\dots$$
 \subsection{Example exercises}

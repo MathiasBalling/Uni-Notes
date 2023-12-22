@@ -1,1 +1,56 @@
 \section{Double-Integrals}
+\subsection{Riemann Sum}
+$$\sum_{i=1}^n f(x_i^*, y_i^*) \Delta A_i$$
+
+\[
+  I=\iint_D f(x,y) dA\quad \quad \text{where } D \text{ is a region in } \mathbb{R}^2 \text{ and } dA \text{ is }dxdy
+\]
+
+\subsection{Double Integrals over General domains}
+If $f(x,y)$ is defined and bounded on domain $D$, then $\hat{f}(x,y)$ is zero outside D.\\
+$$\iint_{D}f(x,y)\,d A=\iint_{R}{\hat{f}}(x,y)\,d A$$
+
+\subsection{Iteration of Double Integrals}
+
+
+\subsection{Double Integrals in Polar Coordinates}
+$$dA=dxdy = r\ dr d\theta$$
+$$\begin{array}{lll}
+  x=r\cos(\theta)&&r^2=x^2+y^2\\
+  y=r\sin(\theta)&&\tan(\theta)=\frac{y}{x}
+\end{array}$$
+
+\subsection{Change of Variables in Double Integrals}
+If $x$ and $y$ are given as a function of $u$ and $v$:
+$$\begin{array}{c}
+x=x(u,v)\\
+y=y(u,v)
+\end{array}$$
+These can be transformed or mapped from points $(u,v)$ in the $uv$-plane to points $(x,y)$ in the $xy$-plane.\\
+The inverse transformation is given by:
+$$\begin{array}{c}
+  u=u(x,y)\\
+  v=v(x,y)
+\end{array}$$
+Scaled area element:
+$$dA = dxdy=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|dudv$$
+where the Jacobian is:
+$$\left|\frac{\partial(x,y)}{\partial(u,v)}\right|=\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}$$
+Let $x(u, v)$ and $y(u,v)$ be a one-to-one transformation from a domain S in the $uv$-plane onto a domain D
+$xy$-plane.\\
+Suppose, that function $x$ and $y$, and first partial derivatives with respect to $u$ and $v$ are continuous in S.
+If $f(x,y)$ is integrable on D, then $g(u,v)=f(x(u,v),y(u,v))$ is integrable on S and:
+$$\iint_D f(x,y)dA=\iint_S g(u,v)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|dudv$$
+
+\subsection{Examples}
+\subsubsection{Example 1: Change of Variables}
+Evaluate the double integral:
+$$\iint (x-3y)dA$$
+where $R$ is triangular region with vertices $(0,0)$, $(2,1)$, and $(1,2)$ using the transformation:
+$$\begin{array}{c}
+  x=2u+v\\
+  y=u+2v
+\end{array}$$
+
+\subsubsection{Example 2: Riemann Sum}
+\subsubsection{Example 3: By iteration}
