@@ -1,9 +1,70 @@
 \section{Fields-Curve}
+\subsection{Curve \& Parameterization}
+Representation of a curve in 3 space by using its position vector is given as:
+$$r=r(t)=x(t)\mathbf{i}+y(t)\mathbf{j}+z(t)\mathbf{k}\qquad{\mathrm{~where~}}a\leq t\leq b$$
+
+\subsection{Vector Fields}
+$$\mathbf{F}(x,y,z)=\underbrace{ f_{x}(x,y,z) }_{ \text{Scaler function} }\mathbf{i}
++\underbrace{ f_{y}(x,y,z) }_{ \text{Scaler function} }\mathbf{j}
++\underbrace{ f_{z}(x,y,z) }_{ \text{Scaler function} }\mathbf{k}$$
+
+\begin{eqnarray*}
+    \frac{\partial f}{\partial x}=f_1=f_x\qquad
+  &\frac{\partial f}{\partial y}=f_2=f_y\qquad
+  &\frac{\partial f}{\partial z}=f_3=f_z
+\end{eqnarray*}
+Position vector:
+$$r=x\mathbf{i}+y\mathbf{j}+z\mathbf{k}$$
+Unit vector with magnitude 1:
+$$r=\mathbf{i}+\mathbf{j}+\mathbf{k}$$
+\subsubsection{Scalar field}
+$$f(x,y,z)=f_1(x,y,z)=f_2(x,y,z)=f_3(x,y,z)$$
+The gradient of a scalar field is a vector field:
+$$\nabla f=\text{grad } f(x,y,z)=f_x(x,y,z)\mathbf{i}+f_y(x,y,z)\mathbf{j}+f_z(x,y,z)\mathbf{k}$$
+
+\subsubsection{Field lines}
+
+\subsubsection{Convervation field}
+If $\mathbf{F}(x,y,z)=\nabla\phi(x,y,z)$ in a domain $D$, then $\mathbf{F}$ is a conservative vector field in $D$ and function $\phi$ is the potential function.
+$$\mathbf{F}(x,y,z)=\nabla\phi(x,y,z)=\phi_x(x,y,z)\mathbf{i}+\phi_y(x,y,z)\mathbf{j}+\phi_z(x,y,z)\mathbf{k}$$
+If the vetor field is conservative, then all the following equations are true:
+\begin{eqnarray*}
+  \frac{\partial f_x}{\partial y}&=&\frac{\partial f_y}{\partial x} \\
+  \frac{\partial f_x}{\partial z}&=&\frac{\partial f_z}{\partial x} \\
+  \frac{\partial f_y}{\partial z}&=&\frac{\partial f_z}{\partial y} \\
+\end{eqnarray*}
+\subsubsection{Vector field in Polar Coordinates}
+$$\mathbf{F}=f(r,\theta)=f_{r}(r,\theta)\mathbf{\hat{r}}+f_{\theta}(r,\theta)\mathbf{\hat{\theta}}$$
+where:
+$$\mathbf{\hat{r}}=\cos(\theta)i+\sin(\theta)j$$
+$$\mathbf{\hat{\theta}}=-\sin(\theta)i+\cos(\theta)j$$
+\subsection{Line Integral}
+$$f(x,y)ds=\text{Area (tiny point)}$$
+$$\text{Length of }\mathcal{C}=\int _{\mathcal{C}}f(x,y,z) \, ds=\int_{a}^{b}f(r(t)) \left|\frac{ dr }{ dt } \right| \, dt  $$
+\subsubsection{Line integral of a vector field}
+$$W=\int _{\mathcal{C}}F.\hat{T} \, ds =\int F \,dr =\int _{\mathcal{C}}f_{1}(x,y,z)dx+f_{2}(x,y,z)dy+f_{3}(x,y,z)dz $$
 \subsection{Examples}
 \subsubsection{Example 1: Conservative vector field and potential}
 Determine whether the given vector field is conservative, and find a potential
 function if it is:
-$$\mathbf{F}(x,y,z)=( 2x y-z^{2})\mathbf{i}+( 2y z+ x^{2})\mathbf{j}-(2z x- y^{2})\mathbf{k}$$
+$$\mathbf{F}(x,y,z)=( 2x y-z^{2})\mathbf{i}+( 2y z+ x^{2})\mathbf{j}-(2z x- y^{2})\mathbf{k}$$ 
 \subsubsection{Example 2: Line integral}
 Evaluate $\oint x^2y^2 \ dx + x^3y\ dy$ counterclockwise around the square with vertices
 $(0,0)$, $(1,0)$, $(1, 1)$, and $(0, 1)$
+\subsubsection{Example 3: Line integral}
+Evalute the line integral for $f(x,y)=x^2y^2$ along a straight line from origin to the point $(2,1)$
+
+Ans: $(5\sqrt{5})/3$
+\subsubsection{Example 4: Line integral vector field}
+Evaluate the line integral for $\mathbf{F}(x,y)=y^2\mathbf{i}+2xy\mathbf{j}$ from $(0,0)$ to $(1,1)$\\
+Along the line $y=x$\\
+Allong the line $y=x^2$
+
+\subsubsection{Example 5: Gradient}
+
+\subsubsection{Example 6: Parametrize a curve}
+Use $t=y$ to parametrize the part of the line of intersection of the two planes:\\
+Plane 1: $y=2x-4$\\
+Plane 2: $z=3x+1$ from $(2,0,7)$ to $(3,2,10)$
+
+Ans: $r(t)=\left(\frac{1}{2}(t+4)\right)\mathbf{i}+(t)\mathbf{j}+\left(\frac{3}{2}t+7\right)\mathbf{k}$

@@ -1,4 +1,9 @@
 \section{Laplace}
+Is a generalisation of the Fourier transform and defined as:
+$$H(s)=\mathcal{L}\{h(t)\}=\int_{0^-}^{\infty}h(t)e^{ -st }  \, dt \quad\quad s \in\mathbb{C}$$
+$s$ is a complex number $s=\sigma+j\omega$ and is identical with Fourier transform, if $s$ is set to $j\omega$.\\
+Inverse Laplace tranformation:
+$$f(t)=\frac{1}{2\pi j}\int_{\sigma_{c}-j\infty}^{\sigma_{c}+j\infty} F(s)e^{ st } \, ds $$
 \subsection{Examples}
 \subsubsection{Example 1: Laplace Transform}
 Using the Laplace transform, find the solution for the following equation:

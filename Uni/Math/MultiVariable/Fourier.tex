@@ -1,1 +1,17 @@
 \section{Fourier}
+\subsection{Fourier Series}
+A periodic function with period $2L$ and let $f(x)$ and $f'(x)$ be piecewise continuous on the interval $-L < x < L$
+$$S_{N}(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left( a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\sin\left( \frac{n\pi x}{L} \right) \right)=\sum^{\infty}_{n=-\infty}c_{n}e^{ jn\pi x/L }$$
+The coefficients are given by:
+$$a_n  =\frac{1}{L} \int_{-L}^L f(x) \cos \left(\frac{n \pi x}{L}\right) d x\qquad   n \geq 0$$
+$$b_n  =\frac{1}{L} \int_{-L}^L f(x) \sin \left(\frac{n \pi x}{L}\right) d x\qquad   n>0$$
+$$c_{n}=\frac{1}{2}(a_{n}-jb_{n})\qquad \qquad \qquad\qquad n>0$$
+
+\subsection{Fourier Transform}
+If $h(t)$ is a periodic function then the Fourier transform is given by:
+$$H(\omega)=\int_{-\infty}^{\infty}h(t)e^{ -j\omega t }  \, dt $$
+Inverse Fourier tranformation of $H(\omega)$:
+$$h(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty} H(\omega)e^{ j\omega t } \, d\omega $$
+
+\subsection{Examples}
+\subsubsection{Example 1}

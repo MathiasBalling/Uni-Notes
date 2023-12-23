@@ -11,8 +11,11 @@ If $f(x,y)$ is defined and bounded on domain $D$, then $\hat{f}(x,y)$ is zero ou
 $$\iint_{D}f(x,y)\,d A=\iint_{R}{\hat{f}}(x,y)\,d A$$
 
 \subsection{Iteration of Double Integrals}
+If $f(x,y)$ is continuous on the bounded y-simple domain $D$ given by $a\leq x\leq b$ and $c(x)\leq y\leq d(x)$, then:
+$$\iint f(x,y)\,d A=\int_a^b dx \int_{c(x)}^{d(x)}f(x,y)dy$$
 
-
+If $f(x,y)$ is continuous on the bounded x-simple domain $D$ given by $c\leq x\leq d$ and $a(x)\leq y\leq b(x)$, then:
+$$\iint f(x,y)\,d A=\int_c^d dx \int_{a(x)}^{b(x)}f(x,y)dy$$
 \subsection{Double Integrals in Polar Coordinates}
 $$dA=dxdy = r\ dr d\theta$$
 $$\begin{array}{lll}
@@ -60,3 +63,4 @@ $$\iint(\sin x+\cos y)d A\qquad R: \bigg\{ x,y \left| \begin{array}{c}
  0\leq x\leq \pi/2 \\
  0\leq y\leq \pi/2 \\
 \end{array} \right.$$
+\subsubsection{Example 5: Defining limits of integration}
