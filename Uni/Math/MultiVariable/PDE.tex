@@ -15,9 +15,9 @@ Conditions:
 %todo: Is this correct?
 
 $$\begin{array}{l}
-\textbf{Linear: }A,B,C,D,E,F \text{ are constants}\\
-\textbf{Quasi-linear: }A,B,C \text{ are constants}\\
-\textbf{Fully non-linear: }A,B,C,D,E,F \text{ are functions of u and its partial derivatives}
+\textbf{Linear: }A,B,C,D,E,F \text{ are only function of x,y variables, not u.}\\
+\textbf{Quasi-linear: }A,B,C,D,E,F \text{ may be function of } (x,y,u,u_x,u_y)\\
+\textbf{Fully non-linear: }A,B,C,D,E,F \text{ may be function of } (x,y,u,u_x,u_y,u_{xx},u_{yy},u_{xy})
 \end{array}$$
 
 \subsection{Characteristics of PDEs}
@@ -34,13 +34,35 @@ Tyoes of varius PDEs:
 
 \textbf{Laplace Equation:} Elliptic PDE
 
+
+$$\begin{array}{llll}
+  B^2-4AC>0&2\text{ real roots}&2\text{ characteristics}&\textbf{Hyperbolic PDE}\\
+  B^2-4AC=0&1\text{ real roots}&1\text{ characteristics}&\textbf{Parabolic PDE}\\
+  B^2-4AC<0&0\text{ real roots}&0\text{ characteristics}&\textbf{Elliptic PDE}\\
+\end{array}$$
+
+\subsection{Important Second-Order PDEs}
+
+$$\begin{array}{ll}
+  \displaystyle \frac{\partial^{2}u}{\partial t^{2}}=c^{2}\,\frac{\partial^{2}u}{\partial x^{2}}&\text{One-dimensional wave equation}\\ \\
+  \displaystyle{\frac{\partial u}{\partial t}}=c^{2}{\frac{\partial^{2}u}{\partial x^{2}}}&\text{One-dimensional heat equation}\\ \\
+ \displaystyle {\frac{\partial^{2}u}{\partial x^{2}}}+{\frac{\partial^{2}u}{\partial y^{2}}}=0&\text{Two-dimensional Laplace equation}\\ \\
+ \displaystyle {\frac{\partial^{2}u}{\partial x^{2}}}+{\frac{\partial^{2}u}{\partial y^{2}}}=f(x,y)&\text{Two-dimensional Poisson equation}\\ \\
+ \displaystyle \frac{\partial^{2}u}{\partial t^{2}}=c^{2}\biggl(\frac{\partial^{2}u}{\partial x^{2}}+\frac{\partial^{2}u}{\partial y^{2}}\biggr)&\text{Two-dimensional wave equation}\\ \\
+ \displaystyle {\frac{\partial^{2}u}{\partial x^{2}}}+{\frac{\partial^{2}u}{\partial y^{2}}}+{\frac{\partial^{2}u}{\partial z^{2}}}=0&\text{Three-dimensional Laplace equation}
+\end{array}$$
 \subsection{Initial and Boundary Conditions}
+
 \subsection{Wave Equation (1D)}
 One dimensional wave equation is given by:
 \begin{equation}
   \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}\quad\quad\text{where }c^2=\left[\frac{T(x,t)}{\mu_x}\right]
   \label{eq:wave1d}
 \end{equation}
+With two boundary conditions $x=0$ and $x=L$:
+$$u(0,t)=0\qquad\quad u(L,t)=0\qquad\qquad \text{For all }t\geq 0$$
+And two initial conditions, initial displacement and initial velocity at time $t=0$:
+$$u(x,0)=f(x)\qquad\quad \frac{\partial u}{\partial t}(x,0)=g(x)\qquad\qquad \text{For all }0\leq x\leq L$$
 Steps to solve:
 \begin{enumerate}
   \item Method of Separation of Variables $\quad u(x,t)=X(x)T(t)$
@@ -90,7 +112,7 @@ This solution satisfies the wave equation and the initial conditions:
 
 \subsection{Heat Equation (1D)}
 \begin{equation}
-  \frac{\partial u}{\partial t}=c\frac{\partial^2 u}{\partial x^2}
+  \frac{\partial u}{\partial t}=c^2\frac{\partial^2 u}{\partial x^2}
   \label{eq:Heat1D}
 \end{equation}
 
@@ -109,4 +131,5 @@ $$\lambda_n = \frac{cn\pi}{L}$$
 and
 $$B_n = \frac{2}{L}\int_0^Lf(x)\sin\left(\frac{n\pi x}{L}\right)dx\quad\quad \text{for }n=1,2,3\dots$$
 \subsection{Examples}
+\subsubsection{}
 
