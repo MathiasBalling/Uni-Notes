@@ -38,3 +38,30 @@ $$0\leq\theta \leq 2\pi$$
 \subsubsection{Example 1: Tripple Integral}
 Find $\iiint(x^{2}+y^{2}+z^{2})d V$, where the region is bounded by
 $z=c\sqrt{(x^{2}+y^{2})}$ and $x^{2}+y^{2}+z^{2}=a^{2}$
+\subsubsection{Example 2: Sphereical Coordinates}
+Find the volume of:
+$$\iiint\sqrt{x^2+y^2+z^2}dxdydz$$
+where the region is bounded by $x^2+y^2+z^2\leq1$ in spherical domain.
+
+\noindent\rule{\textwidth}{1pt}
+
+Transform the region:
+$$\rho^2=x^2+y^2+z^2\leq 1\qquad \text{Therefore: }0\leq\rho\leq 1$$
+For $\theta$ and $\phi$ we have:
+$$0\leq\theta\leq 2\pi\qquad 0\leq\phi\leq\pi$$
+and for $dV$:
+$$dV=dxdydz=\rho^2\sin\phi d\rho d\phi d\theta$$
+Transform the function:
+$$\sqrt{x^2+y^2+z^2}=\sqrt{\rho^2}=\rho$$
+
+Solve the integral:
+\begin{eqnarray*}
+  \int_0^{2\pi}\int_0^\pi\int_0^1\rho\cdot\rho^2\sin(\phi) d\rho d\phi d\theta&=&\int_0^{2\pi}\int_0^\pi\left[\frac{1}{4} p^4 \sin (\phi)\right]^1_0d\phi d\theta\\
+                                                                              &=& \int_0^{2\pi}\int_0^\pi\frac{\sin (\phi)}{4}d\phi d\theta\\
+                                                                              &=& \int_0^{2\pi}\left[-\frac{\cos (\phi)}{4}\right]_0^\pi d\theta\\
+                                                                              &=& \frac{1}{2}\int_0^{2\pi}d\theta\\
+                                                                              &=& \frac{1}{2}\cdot 2\pi\\
+                                                                              &=& \boxed{\pi}\\
+\end{eqnarray*}
+
+\subsubsection{Example 3: Transformations}

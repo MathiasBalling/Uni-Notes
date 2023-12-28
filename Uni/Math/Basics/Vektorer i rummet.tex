@@ -1,0 +1,35 @@
+\section{Vektorer i rummet}
+Vektorprodukt (Krydsprodukt):
+$$\vec{a}\times \vec{b} =
+\begin{pmatrix}
+\begin{vmatrix}a_{2}&b_{2}\\ a_{3}&b_{3}\end{vmatrix} \\
+\\
+\begin{vmatrix}a_{3}&b_{3}\\ a_{1}&b_{1}\end{vmatrix} \\
+\\
+\begin{vmatrix}a_{1}&b_{1}\\a_{2} &b_{2}\end{vmatrix} 
+\end{pmatrix} =\begin{pmatrix}
+a_2b_3-a_3b_2\\
+a_3b_1-a_1b_3\\
+a_1b_2-a_2b_1
+\end{pmatrix} 
+$$
+Længden af vektorproduktet:
+$$\left| \vec{a}\times \vec{b} \right|=\left| \vec{a}\right|\left| \vec{b} \right|\sin v$$
+Længden af vektorproduktet er også lig arealet af det parallellogram der udspændes af $\vec{a}$ og $\vec{b}$
+$$A=\left|\vec{a}\times \vec{b}\right|$$
+Parameterfremstilling for linjen l gennem punktet:$P_0(x_0,y_0,z_0)$ med retningsvektor $\vec{r}=\begin{pmatrix}r_1 \\r_2\\r_3\end{pmatrix}$
+$$\begin{pmatrix}x \\y\\z\end{pmatrix}=\begin{pmatrix}x_0 \\y_0\\z_0\end{pmatrix}+t\begin{pmatrix}r_1 \\r_2\\r_3\end{pmatrix}$$
+Afstand fra punktet P til linjen l der går gennem punktet $P_0$ med retningsvektor $\vec{r}$
+$$dist(P,l)=\frac{\left|\vec{r}\times \overrightarrow{P_0P}  \right|}{\left|\vec{r}\right|}$$
+Ligningen for planen $\alpha$ gennem punktet $P_0 (x_0,y_0,z_0)$ med normalvektor $\vec{n}=\begin{pmatrix}a\\b\\c\end{pmatrix}$
+$$\vec{n}\cdot\begin{pmatrix}x-x_0\\y-y_0 \\z-z_0\end{pmatrix}=0$$
+$$a\cdot(x-x_0)+b\cdot(y-y_0)+c\cdot(z-z_0)=0$$
+Afstand fra punktet $P(x_1,y_1,z_1)$ til planen $\alpha$ gennem punktet $P_0 (x_0,y_0,z_0)$ med normalvektor $\vec{n}=\begin{pmatrix}a\\b\\c\end{pmatrix}$
+$$dist(P,\alpha)=\frac{\left| \vec{n}\cdot\begin{pmatrix}x_1-x_0\\y_1-y_0\\z_1-z_0\end{pmatrix} \right|}{\left|  \vec{n}\right|}$$
+Afstand fra punktet $P(x_1,y_1,z_1)$ til planen $\alpha$ med ligningen: $ax+by+cz+d=0$
+$$dist(P,\alpha)=\frac{\left|ax_1+by_1+cz_1+d  \right|}{\sqrt{a^2+b^2+c^2}}$$
+Ligningen for en kugle med centrum $C(x_0,y_0,z_0)$ og radius r:
+$$(x-x_0)^2+(y-y_0)^2+(z-z_0)^2=r^2$$
+
+
+https://www.webmatematik.dk/lektioner/matematik-a/vektorer-i-3d
