@@ -1,4 +1,38 @@
 \section{Tripple-Integrals}
+\subsection{Riemann Sum}
+\subsection{Tripple Integrals over General domains}
+\subsection{Change of Variables}
+$$dV=dx\ dy\ dz= \left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right|du\ dv\ dw$$
+$$\iiint f(x,y,z)\,d x\,\,d y\,\,d z=\iiint g(u,v,w)\left|{\frac{\partial(x,y,z)}{\partial(u,v,w)}}\right|\,d u\,\,d v\,\,d w$$
+\subsection{Cylyndrical Coordinates}
+$$\begin{array}{ll}
+  x=r\cos(\theta)&r^2=x^2+y^2\\
+  y=r\sin(\theta)&\tan\theta=(\frac{y}{x})\\
+  z=z\\
+\end{array}$$
+From the Jacobian using change of variables:
+$$\left|\frac{\partial(x,y,z)}{\partial(r,\theta,z)}\right|=r$$
+$$dV=dx\ dy\ dz= r\ dr\ d\theta\ dz$$
+\subsubsection{Limits for Cylyndrical Coordinates}
+$r$ is the radius from origin to the point
+$$r\geq 0$$
+$\theta$ is the angle in the positive direction of the x-axis
+$$0\leq\theta \leq 2\pi$$
+
+\subsection{Spherical Coordinates}
+$$\begin{array}{ll}
+  x=\rho \sin(\phi) \cos(\theta)&\rho^2=x^2+y^2+z^2\\       
+  y=\rho \sin(\phi) \sin(\theta)&\cos(\phi)=\frac{z}{\rho}\\
+  z=\rho \cos(\phi)&             \tan \theta=\frac{y}{x}\\  
+\end{array}$$
+$$dx dydz=dV=\rho^{2}\sin(\phi)d\rho d\phi d\theta$$
+\subsubsection{Limits for Spherical Coordinates}
+$\rho$ is the distance from the origin O to the point P
+$$\rho \geq 0$$
+$\phi$ is the angle by the radial line OP to the positive direction of the z-axis
+$$0\leq \phi \leq \pi$$
+$\theta$ is the angle in the positive direction of the x-axis to the point P in the xy-plane
+$$0\leq\theta \leq 2\pi$$
 
 \subsection{Examples}
 \subsubsection{Example 1: Tripple Integral}
