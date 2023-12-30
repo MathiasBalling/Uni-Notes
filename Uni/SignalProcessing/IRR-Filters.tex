@@ -11,7 +11,16 @@ Design of IRR-filters is done in the following steps:
 \subsection{Matched z-transform}
 By using the matched z-transform, the poles and zeros of the IRR-filter are directly transferred to the z-plane. The transfer function of the IRR-filter is given by:
 $$z=e^{sT}$$
-\subsubsection{1. Order IRR-filters}
+
+Following procedure is used for the matched z-transform:
+\begin{enumerate}
+  \item Determine the frequency-normalized and factorized transfer function $H(s)$ of the analog prototype filter.
+  \item Determine the analog frequency-normalized poles and zero points.
+  \item Determine the denormalized poles and zero points.
+  \item Determine the coefficients of the digital transfer function.
+  \item Implement the transfer function as a cascade structure.
+\end{enumerate}
+\subsubsection{1. Order Matched z-transformation}
 The transfer function for a first order system is given by:
 $$H(s)={\frac{s+A_{0}}{s+B_{0}}}={\frac{s-\sigma_{1}}{s-\sigma_{2}}}$$
 where $-A_{0}=\sigma_1$ is a real zero and $-B_{0}=\sigma_2$ is a real pole of the IRR-filter.
@@ -26,20 +35,38 @@ $$H(z)=\frac{1}{1-e^{\sigma_1 T}z^{-1}}$$
 where $\sigma_1$ is the pole of $H(s)$ and $T$ is the sampling period.\\
 The transfer function $H(z)$ does not have a DC-gain of 1. To get a DC-gain of 1, the transfer function is multiplied by a gain factor $a_0$:
 $$H(z)=\frac{a_0}{1+b_1z^{-1}}$$
-where $b_0=-e^{\sigma_1 T}$ and $a_0=1+b_1$.\\
+where
+$$b_0=-e^{\sigma_1 T} \qquad a_0=1+b_1$$
 The corresponding digital realization structure:
 \begin{center}
-  \includegraphics[width=0.5\textwidth]{Images/Matched-z-1th.png}
+  \includegraphics[width=0.4\textwidth]{Images/Matched-z-1th.png}
 \end{center}
-\subsubsection{2. Order IRR-filters}
+\subsubsection{2. Order Matched z-transformation}
 The transfer function for a second order system with complex conjugate pole and zero pair is given by:
 $$H(s)={\frac{s^{2}+A_{1}s+A_{0}}{s^{2}+B_{1}s+B_{0}}}$$
 which has zeros in $s_1=\sigma_1+j\omega_1,s_1^*=\sigma_1-j\omega_1$ and poles in $s_2=\sigma_2+j\omega_2,s_2^*=\sigma_2-j\omega_2$
 
 Using the matched z-transform:
 $$H(z)={\frac{(z-e^{\sigma_{1}T}e^{j\omega_{1}T})(z-e^{\sigma_{2}T}e^{-j\omega_{1}T})}{(z-e^{\sigma_{2}T}e^{j\omega_{2}T})(z-e^{\sigma_{2}T}e^{-j\omega_{2}T})}}$$
+Using Euler's identity:
+$$H(z)=\frac{z^{2}-(2e^{\sigma_{1}T}\cos(\omega_{1}T))z+e^{2\sigma_{1}T}}{z^{2}-(2e^{\sigma_{2}T}\cos(\omega_{2}T))z+e^{2\sigma_{2}T}}=\frac{1-(2e^{\sigma_{1}T}\cos(\omega_{1}T))z^{-1}+e^{2\sigma_{1}T}z^{-2}}{1-(2e^{\sigma_{2}T}\cos(\omega_{2}T))z^{-1}+e^{2\sigma_{2}T}z^{-2}}$$
+A second order low-pass filter is given by:
+$$H(z)=\frac{a_0}{1+b_1z^{-1}+b_2z^{-2}}$$
+where
+$$a_0=1+b_1+b_2 \qquad b_1=-2e^{\sigma_1 T}\cos(\omega_1 T) \qquad b_2=e^{2\sigma_2 T}$$
+The corresponding digital realization structure:
+\begin{center}
+  \includegraphics[width=0.4\textwidth]{Images/Matched-z-2nd.png}
+\end{center}
 \subsection{Impulse invariance method}
-
+The following procedure is used to design digital IIR filters using the impulse invariantz transform.
+\begin{enumerate}
+  \item Determine the frequency-normalized transfer function $H(s)$ of the analog prototype filter.
+  \item Partial fractionally resolve $H(s)$ into 1st and 2nd order transfer functions (maximum number of 2nd order transfer functions).
+  \item Denormalize the coefficients $k_i$ and the poles $\sigma_i+j\omega_i$ by multiplication with the cutoff frequency or center frequency.
+  \item Determine the coefficients of the digital transfer function.
+  \item Implement the transfer function as a parallel structure.
+\end{enumerate}
 \subsection{Examples}
 \subsubsection{Example 1: Matched 1. order z-transform}
 Consider the following analog first order lowpass filter with cutoff frequency $\omega_a=2\pi f_a$ where $f_a=\SI{300}{\hertz}$:
@@ -54,3 +81,58 @@ $$b_1=-e^{\sigma_1 T}=-e^{-1885\cdot\frac{1}{16000}}=-0.8889$$
 $$a_0=1+b_1=0.1111$$
 The digital lowpass filter is given by:
 $$H(z)=\frac{a_1}{1+b_0z^{-1}}=\frac{0.1111}{1-0.8888z^{-1}}$$
+
+\subsubsection{Example 2: Matched 3. order matched z-transform}
+Consider the following Butterworth 3rd order low-pass filter (frequency-normalized filter) 
+and design an equivalent digital low-pass filter with cut-off frequency at $\SI{1}{\kilo\hertz}$ and sample frequency at $\SI{8}{\kilo\hertz}$. 
+$${\tilde{H}}(s)=\frac{1}{s+1}\frac{1}{s^{2}+s+1}$$
+Using the matched z-transform
+
+\noindent\rule{\textwidth}{1pt}
+
+\textbf{1. Determine the frequency-normalized and factorized transfer function $H(s)$ of the analog prototype filter.}\\
+Is in this case it's already given.
+
+\textbf{2. Determine the analog frequency-normalized poles and zero points.}\\
+There is no zeros in the transfer function, so only the poles are determined:
+$$s_1=-1 \qquad s_2=s_2^*=-\frac{1}{2}+j\frac{\sqrt{3}}{2}$$
+
+\textbf{3. Determine the denormalized poles and zero points.}\\
+Only the poles are denormalized, since there are no zeros:
+$$\omega_a=2\pi f_a=2\pi\cdot 1000=6283.2$$
+$$\sigma_1=-1\cdot\omega_a=-6283.2$$
+$$\sigma_2\pm j\omega_2=s_2\cdot\omega_a=-3141.6\pm j5434.4$$
+
+\textbf{4. Determine the coefficients of the digital transfer function.}
+$$H(s)=H_1(s)H_2(s)=\frac{1}{s+1}\frac{1}{s^{2}+s+1}$$
+$$H(z)=H_1(z)H_2(z)$$
+Using the matched z-transform:
+$$H_1(z)=\frac{1}{1-e^{\sigma_1 T}z^{-1}}=\frac{a_{0_1}}{1+b_{1_1}z^{-1}}$$
+$$b_{1_1}=-e^{\sigma_1 T}=-e^{-6283.2\cdot\frac{1}{8000}}=-0.4559\qquad a_{0_1}=1+b_{1_1}=0.5441$$
+$$H_1(z)=\frac{0.5441}{1-0.4559z^{-1}}$$
+and
+$$H_2(z)={\frac{1}{(z-e^{\sigma_{2}T}e^{j\omega_{2}T})(z-e^{\sigma_{2}T}e^{-j\omega_{2}T})}}=\frac{a_{0_2}}{1+b_{1_2}z^{-1}+b_{2_2}z^{-2}}$$
+$$b_{1_2}=-2e^{\sigma_2 T}\cos(\omega_2 T)=-2e^{-3141.6\cdot\frac{1}{8000}}\cos(5434.4\cdot\tfrac{1}{8000})=-1.0507$$
+$$b_{2_2}=e^{2\sigma_2 T}=e^{2\cdot -3141.6\cdot\frac{1}{8000}}=0.4559$$
+$$a_{0_2}=1+b_{1_2}+b_{2_2}=1-1.0507+0.4559=0.4052$$
+$$H_2(z)=\frac{0.4559}{1-1.0507z^{-1}+0.4559z^{-2}}$$
+
+Combining the two transfer functions:
+$$H(z)=H_1(z)H_2(z)=\frac{0.5441}{1-0.4559z^{-1}}\frac{0.4052}{1-1.0507z^{-1}+0.4559z^{-2}}$$
+
+\subsubsection{Example 2: Matched 3. order impulse invariance z-transform}
+Consider the following Butterworth 3rd order low-pass filter (frequency-normalized filter) 
+and design an equivalent digital low-pass filter with cut-off frequency at $\SI{1}{\kilo\hertz}$ and sample frequency at $\SI{8}{\kilo\hertz}$. 
+$${\tilde{H}}(s)=\frac{1}{s+1}\frac{1}{s^{2}+s+1}$$
+Using the impulse invariance method
+
+\noindent\rule{\textwidth}{1pt}
+
+\textbf{1. Determine the frequency-normalized and factorized transfer function $H(s)$ of the analog prototype filter.}\\
+Is in this case it's already given.
+
+\textbf{2. Partial fractionally resolve $H(s)$ into 1st and 2nd order transfer functions (maximum number of 2nd order transfer functions).}\\
+The poles are given by:
+$$s_1=-1 \qquad s_2=s_2^*=-\frac{1}{2}+j\frac{\sqrt{3}}{2}$$
+The transfer function is given by:
+$$H(s)=\frac{k_1}{s-(s_1)}+\frac{k_2}{s-(s_2)}+\frac{k_2^*}{s-(s_2^*)}=\frac{k_1}{s-(-1)}+\frac{k_2}{s-(-\frac{1}{2}+j\frac{\sqrt{3}}{2})}+\frac{k_2^*}{s-(-\frac{1}{2}-j\frac{\sqrt{3}}{2})}$$
