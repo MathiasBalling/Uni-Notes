@@ -67,6 +67,33 @@ The following procedure is used to design digital IIR filters using the impulse 
   \item Determine the coefficients of the digital transfer function.
   \item Implement the transfer function as a parallel structure.
 \end{enumerate}
+\subsection{Bilinear z transformation}
+The following is the procedure for the design of digital filters using bilinearz transformation.
+\begin{enumerate}
+  \item The prewarping constant is determined as
+    $$C=\cot\left(\frac{\omega_iT}{2}\right)$$
+    where $i=a$ for low pass or high pass filter design and $i=c$ for band pass or band stop filter design.
+  \item The order number of the filter is determined based on the prewarped stopband frequency.
+  \item The frequency-normalized and factorized analog transfer functionH(s)is set up.
+  \item The coefficients of the digital transfer function are calculated.
+  \item The filter is implemented as a cascaded realization structure.
+\end{enumerate}
+\subsubsection{Warping and Pre-warping}
+\subsubsection{1. Order Bilinear z transformation}
+First order system:
+$$H(s)=\frac{A_{1}s+A_{0}}{B_{1}s+B_{0}}$$
+Using bilinear z transformation:
+$$H(z)=\frac{a_0+a_1z^{-1}}{1+b_1z^{-1}}$$
+where
+$$a_{0}=\frac{A_{0}+A_{1}C}{B_{0}+B_{1}C}\qquad a_{1}=\frac{A_{0}-A_{1}C}{B_{0}+B_{1}C}\qquad b_{1}=\frac{B_{0}-B_{1}C}{B_{0}+B_{1}C}$$
+\subsubsection{2. Order Bilinear z transformation}
+A second order system:
+$$H(s)={\frac{A_{2}s^{2}+A_{1}s+A_{0}}{B_{2}s^{2}+B_{1}s+B_{0}}}$$
+Using bilinear z transformation:
+$$H(z)={\frac{a_{0}+a_{1}z^{-1}+a_{2}z^{-2}}{1+b_{1}z^{-1}+b_{2}z^{-2}}}$$
+where
+$$a_{0}=\frac{A_{0}+A_{1}C+A_{2}C^{2}}{B_{0}+B_{0}C+B_{2}C^{2}}\qquad a_{1}=\frac{2(A_{0}-A_{2}C^{2})}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad a_{2}=\frac{A_{0}-A_{1}C+A_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}$$
+$$b_{1}=\frac{2(B_{0}-B_{2}C^{2})}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad b_{2}=\frac{B_{0}-B_{1}C+B_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}$$
 \subsection{Examples}
 \subsubsection{Example 1: Matched 1. order z-transform}
 Consider the following analog first order lowpass filter with cutoff frequency $\omega_a=2\pi f_a$ where $f_a=\SI{300}{\hertz}$:
@@ -136,3 +163,4 @@ The poles are given by:
 $$s_1=-1 \qquad s_2=s_2^*=-\frac{1}{2}+j\frac{\sqrt{3}}{2}$$
 The transfer function is given by:
 $$H(s)=\frac{k_1}{s-(s_1)}+\frac{k_2}{s-(s_2)}+\frac{k_2^*}{s-(s_2^*)}=\frac{k_1}{s-(-1)}+\frac{k_2}{s-(-\frac{1}{2}+j\frac{\sqrt{3}}{2})}+\frac{k_2^*}{s-(-\frac{1}{2}-j\frac{\sqrt{3}}{2})}$$
+\subsubsection{Example 3: Bilinear z-transform}

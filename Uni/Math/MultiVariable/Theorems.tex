@@ -1,14 +1,31 @@
 \section{Theorems}
+\subsection{Differential Operators}
+\subsubsection{Gradient}
+The gradient of a scalar field is a vector field that points in the direction of the steepest increase of the scalar field.
+$$\text{grad }f(x,y,z)=\nabla f(x,y,z)=\frac{ \partial f }{ \partial x } \mathbf{i}+\frac{ \partial f }{ \partial y } \mathbf{j}+\frac{ \partial f }{ \partial z } \mathbf{k}$$
+$$\mathbf{F}(x,y,z)=f_x(x,y,z)\mathbf{i}+f_y(x,y,z)\mathbf{j}+f_z(x,y,z)\mathbf{k}$$
+
+\subsubsection{Divergence}
+The divergence of a velocity field represents the net flow of fluid out of a small volume in a scalar field.
+$$\text{div }\mathbf{F}(x,y,z)=\nabla \cdot \mathbf{F}(x,y,z)=\frac{ \partial f_{x} }{ \partial x } +\frac{ \partial f_{y} }{ \partial y } +\frac{ \partial f_{z} }{ \partial z } $$
+
+\subsubsection{Curl}
+The curl or field circulation of the electric field gives the rate of change of the magnetic field.
+$$\text{curl }\mathbf{F}(x,y,z)
+=\nabla \times \mathbf{F}(x,y,z)
+=\left|\begin{array}{ccc}\mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\ f_{x} & f_{y} & f_{z} \end{array}\right|$$
+$$=\left(\frac{ \partial f_{z} }{ \partial y } -\frac{ \partial f_{y} }{ \partial z } \right)\mathbf{i}+\left(\frac{ \partial f_{x} }{ \partial z } -\frac{ \partial f_{z} }{ \partial x } \right)\mathbf{j}+\left(\frac{ \partial f_{y} }{ \partial x } -\frac{ \partial f_{x} }{ \partial y } \right)\mathbf{k}$$
+
 \subsection{Green's Theorem}
+Let $R$ be a regular, closed region in the xy-plane whose boundary, $C$, consists of one or more piecewise smooth, simple closed curves that are positively oriented with respect to $R$.
 $$\oint_{ C } f_1(x, y) d x+f_2(x, y) d y=\iint_{ R }\left(\frac{\partial f_2}{\partial x}-\frac{\partial f_1}{\partial y}\right) d A$$
 
 \subsection{Stokes' Theorem}
+Let $S$ be a piecewise smooth, oriented surface in 3-space, having unit normal field $\widehat{N}$ and boundary $C$ consisting of one or more piecewise smooth, closed curves with orientation inherited from $S$.
 $$\oint_{C}F\cdot dr=\iint_{S}\text{curl }F\cdot\widehat{N}dS$$
 
 \subsection{Divergence Theorem}
-$$\nabla \cdot F(x,y,z)=\text{div }F=\frac{ \partial f_{1} }{ \partial x } +\frac{ \partial f_{2} }{ \partial y } +\frac{ \partial f_{3} }{ \partial z } $$
-
-$$F(x,y,z)=f_{1}(x,y,z)i+f_{2}(x,y,z)j+f_{3}(x,y,z)k$$
+Let $S$, be a closed piecewise smooth surface, which is the boundary of $V$ with normal $\widehat{N}$ pointing outwards.
 $$\oiint_{s}(F \cdot \widehat{N}) d S=\iiint_V \operatorname{div} F d V$$
 
 More variants:

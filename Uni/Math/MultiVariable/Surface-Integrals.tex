@@ -1,1 +1,45 @@
 \section{Surface-Integrals}
+\subsection{Parametric Surface}
+For curve parametrization:
+$$r=r(t)=x(t)\mathbf{i}+y(t)\mathbf{j}+z(t)\mathbf{k}\qquad{\mathrm{~where~}}a\leq t\leq b$$
+For surface parametrization:
+$$r=r(u,v)=x(u,v)\mathbf{i}+y(u,v)\mathbf{j}+z(u,v)\mathbf{k}\qquad{\text{where }}a\leq u\leq b,\quad c\leq v\leq d$$
+\subsection{Surface Area}
+For a surface the area is given by:
+$$\iint_{S}f(x,y,z)d S$$
+$$dS=\left|\frac{ \partial r }{ \partial u } \times \frac{ \partial r }{ \partial v } \right|d u d v
+=\sqrt{ \left(\frac{ \partial (y,z) }{ \partial (u,v) } \right)^{2}+\left(\frac{ \partial (z,x) }{ \partial (u,v) } \right)^{2}+\left(\frac{ \partial (x,y)}{ \partial (u,v) } \right)^{2}}d u d v$$
+
+For a parametrized surface $S$ given by $r=r(u,v)$, where $(u,v)$ is in the domain $D$ in the $uv$-plane, the surface area is given by:
+$$\iint_{S}f \ d S=\iint_{D}f(r(u,v))\left|\frac{ \partial r }{ \partial u } \times \frac{ \partial r }{ \partial v } \right|d u d v$$
+$$=\iint_{b}f(x(u,v),y(u,v),z(u,v)){\sqrt{\left({\frac{\partial(y,z)}{\partial(u,v)}}\right)^{2}+\left({\frac{\partial(z,x)}{\partial(u,v)}}\right)^{2}+\left({\frac{\partial(x,y)}{\partial(u,v)}}\right)^{2}}}\,d u\,d v$$
+
+For a surface $S$ given by $z=g(x,y)$, where $(x,y)$ is in the domain $D$ in the $xy$-plane, the surface area is given by:
+$$\iint_{S}f(x,y,z)d S=\iint_{D}f(x,y,z(x,y))\sqrt{1+\left(\frac{ \partial g(x,y) }{ \partial x } \right)^{2}+\left(\frac{ \partial g(x,y) }{ \partial y } \right)^{2}}d x d y$$ 
+The projection of normal vector onto the xy-plane is given by:
+$$\cos(\gamma)=\frac{1}{\sqrt{1+\left(\frac{ \partial g(x,y) }{ \partial x } \right)^{2}+\left(\frac{ \partial g(x,y) }{ \partial y } \right)^{2}}}
+\qquad \text{hence }dS=\frac{1}{\cos(\gamma)}dxdy
+$$
+\subsection{Oriented Surface}
+\begin{itemize}
+  \item A smooth surface $S$ in 3-space is said to be orientable if there exists a unit vector field $\widehat{N}(P)$.
+  \item $\widehat{N}(P)$ defined on $S$ that varies continuously as $P$ ranges over $S$ and that is everywhere normal to $S$.
+  \item Any such vector field $\widehat{N}(P)$ determines an orientation of S. 
+  \item The oriented surface must have two sides.
+  \item $\widehat{N}(P)$ can have only one value at each point $P$ with two sides.
+\end{itemize}
+\subsection{Flux}
+$$\mathbf{F}=f_1(x,y,z)\mathbf{i}+f_2(x,y,z)\mathbf{j}+f_3(x,y,z)\mathbf{k}$$
+Given any continuous vector field $\mathbf{F}$, flux of $\mathbf{F}$ across the orientable surface $S$ is integral of the normal component of $\mathbf{F}$ over $S$
+$$\iint_S\mathbf{F}\cdot dS=\iint_{S}(\mathbf{F}\cdot\mathbf{\widehat{N}})dS$$
+
+If the surface is closed, then the flux is given by:
+$$\oiint_S\mathbf{F}\cdot dS=\oiint_{S}(\mathbf{F}\cdot\mathbf{\widehat{N}})dS$$
+
+If $S$ is a parametrized surface given by $r=r(u,v)$, where $(u,v)$ is in the domain $D$ in the $uv$-plane, then the flux is given by:
+$$\iint_{S}\mathbf{F}\cdot d S=\iint_{B}\mathbf{F}\cdot\left({\frac{\partial r}{\partial u}}\times{\frac{\partial r}{\partial v}}\right)\,d u\,d v$$
+$$=\iint_D\left(f_1\frac{\partial (y,z)}{\partial (u,v)}+f_2\frac{\partial (z,x)}{\partial (u,v)}+f_3\frac{\partial (x,y)}{\partial (u,v)}\right)du\ dv$$
+
+For a surface $S$ given by $z=g(x,y)$, where $(x,y)$ is in the domain $D$ in the $xy$-plane, the flux is given by:
+$$\iint_{S}\mathbf{F}\cdot d S=\iint_D\left(-f_{1}\frac{\partial z}{\partial x}\mathbf{i}-f_{2}\frac{\partial z}{\partial y}\mathbf{j}+f_{3}\mathbf{k}\,\right)d x\,d y$$
+\subsection{Examples}
