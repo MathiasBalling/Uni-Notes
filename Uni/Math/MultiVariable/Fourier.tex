@@ -13,17 +13,59 @@ $$H(\omega)=\int_{-\infty}^{\infty}h(t)e^{ -j\omega t }  \, dt $$
 Inverse Fourier tranformation of $H(\omega)$:
 $$h(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty} H(\omega)e^{ j\omega t } \, d\omega $$
 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\cellcolor[HTML]{C0C0C0} \textbf{Signal}& \cellcolor[HTML]{C0C0C0}\textbf{Fourier Transform}  \\ \hline
+$\delta(t)$& 1\\ \hline
+$u(t)$& $\frac{1}{j\omega}+\pi\delta(\omega)$ \\ \hline
+$\delta(t-t_0)$& $e^{-j\omega t_0}$  \\ \hline
+$\sin(\omega_0t)$&$-j\pi(\delta(\omega-\omega_{0})-\delta(\omega+\omega_{0}))$ \\ \hline
+$\cos(\omega_0t)$&$\pi(\delta(\omega-\omega_{0})+\delta(\omega+\omega_{0}))$ \\ \hline
+1&$2\pi\delta(\omega)$ \\ \hline
+\end{tabular}
+\end{table}
+
 \subsection{Examples}
 \subsubsection{Example 1: Fourier Series}
 Find the Fourier coefficients and Fourier Series for the square wave shown below:
-$$f(t)=\begin{cases}
-  1 &  \text{for }t-a>0\\
-  0 & \text{for }t-a<0
+$$f(x)=\begin{cases}
+  0 &  \text{for }-1\leq x\leq0\\
+  1 & \text{for }0\leq x\leq 1
 \end{cases}$$
 and
 $$f(x+2)=f(x)$$
 
 
+\noindent\rule{\textwidth}{1pt}
+The fourier series is given by:
+$$f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}\left( a_{n}\cos\left( \frac{n\pi x}{L} \right)+b_{n}\sin\left( \frac{n\pi x}{L} \right) \right)$$
+Find the $L$ value:
+$$2L=2\qquad \Rightarrow \qquad L=1$$
+
+Find $a_0$:
+$$a_n  =\frac{1}{L} \int_{-L}^L f(x) \cos \left(\frac{n \pi x}{L}\right) d x\qquad   n \geq 0$$
+$$a_0  =\frac{1}{1} \int_{-1}^1 f(x) \cos \left(\frac{0 \pi x}{1}\right) d x$$
+$$a_0  =\int_{-1}^1 f(x) d x=\int_{-1}^0 0 d x+\int_{0}^1 1 d x=1$$
+
+Find $a_n$:
+$$a_n  =\frac{1}{L} \int_{-L}^L f(x) \cos \left(\frac{n \pi x}{L}\right) d x\qquad   n \geq 0$$
+$$=\frac{1}{1} \int_{-1}^1 f(x) \cos \left(\frac{n \pi x}{1}\right) d x$$
+$$=\int_{-1}^1 f(x) \cos \left(n \pi x\right) d x$$
+$$=\int_{-1}^0 0 \cos \left(n \pi x\right) d x+\int_{0}^1 1 \cos \left(n \pi x\right) d x$$
+$$=0+\left[\frac{\sin(n\pi x)}{n\pi}\right]^1_0=\frac{\sin (\pi  n)}{\pi  n}$$
+For all $n$:
+$$\frac{\sin (\pi  n)}{\pi  n}=0$$
+
+Find $b_n$:
+$$b_n  =\frac{1}{L} \int_{-L}^L f(x) \sin \left(\frac{n \pi x}{L}\right) d x\qquad   n>0$$
+$$b_n  =\int_{-1}^1 f(x) \sin \left(\frac{n \pi x}{1}\right) d x$$
+$$=\int_{-1}^0 0 \sin \left(n \pi x\right) d x+\int_{0}^1 1 \sin \left(n \pi x\right) d x$$
+$$=0+\left[\frac{-\cos(n\pi x)}{n\pi}\right]^1_0=\frac{-\cos(n\pi 1)}{n\pi}-\frac{-\cos(n\pi 0)}{n\pi}$$
+If $n$ is even the function will cancel out, therefore $n=1,3,5$ (odd):
+$$=\frac{1}{n\pi}+\frac{1}{n\pi}=\frac{2}{n\pi}$$
 Ans:
 $$f(x)=\frac{1}{2}+\sum_{n=1,3,5,\dots}\frac{2}{n\pi}\sin(n\pi x)$$
 \subsubsection{Example 2: Fourier Transform}
@@ -35,10 +77,18 @@ $$u(t-a)=\begin{cases}
 is used to define the rectangular pulse function:
 $$x(t)=u(t-a)-u(t-b)\qquad \text{where }a<b$$
 
-Ans:
+\noindent\rule{\textwidth}{1pt}
+$$X(\omega)=\int_{-\infty}^{\infty}x(t)e^{ -j\omega t }  \, dt $$
+$$X(\omega)=\int_{-\infty}^{a}0e^{ -j\omega t }  \, dt +\int_{a}^{b}1e^{ -j\omega t }  \, dt +\int_{b}^{\infty}0e^{ -j\omega t }  \, dt $$
+$$X(\omega)=0+\left[\frac{-e^{-j\omega t}}{j\omega} \right]_a^b+0$$
+
+Insert the limits:
 $$X(\omega)=\frac{e^{-j\omega a}-e^{-j\omega b}}{j\omega}$$
 \subsubsection{Example 3: Inverse Fourier Transform}
-Consider the signal: $x(t)=\sin(@omega_{0}t)$ where $\omega_{0}$ is a constant. Find the Fourier Transform of this signal to find $X(\omega)$.
+Consider the signal: $X(\omega)=\delta(\omega-\omega_0)$ where $\omega_{0}$ is a constant. Find the inverse Fourier Transform of this signal to find $x(t)$.
 
+
+\subsubsection{Example 4: Fourier Transform}
+Consider the signal: $x(\omega)=\delta(\omega-\omega_0)$ where $\omega_{0}$ is a constant. Find the inverse Fourier Transform of this signal to find $x(t)$.
 Ans:
 $$X(\omega)=-j\pi(\delta(\omega-\omega_0)-\delta(\omega+\omega_0))$$
