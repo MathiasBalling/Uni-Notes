@@ -1,9 +1,20 @@
-\section{Laplace}
+\section{Laplace transform}
 Is a generalisation of the Fourier transform and defined as:
 $$H(s)=\mathcal{L}\{h(t)\}=\int_{0^-}^{\infty}h(t)e^{ -st }  \, dt \quad\quad s \in\mathbb{C}$$
 $s$ is a complex number $s=\sigma+j\omega$ and is identical with Fourier transform, if $s$ is set to $j\omega$.\\
 Inverse Laplace tranformation:
-$$f(t)=\frac{1}{2\pi j}\int_{\sigma_{c}-j\infty}^{\sigma_{c}+j\infty} F(s)e^{ st } \, ds $$
+$$h(t)=\mathcal{L}^{-1}\{H(t)\}=\frac{1}{2\pi j}\int_{\sigma_{c}-j\infty}^{\sigma_{c}+j\infty} H(s)e^{ st } \, ds $$
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\cellcolor[HTML]{C0C0C0} \textbf{Signal}& \cellcolor[HTML]{C0C0C0}\textbf{Laplace Transform}  \\ \hline
+1&$\frac{1}{s}$ \\ \hline
+$e^{at}$& $\frac{1}{s-a}$ \\ \hline
+$\sin(at)$&$\frac{a}{s^2+a^2}$ \\ \hline
+$\cos(at)$&$\frac{s}{s^2+a^2}$ \\ \hline
+\end{tabular}
+\end{table}
 \subsection{Examples}
 \subsubsection{Example 1: Laplace Transform}
 Using the Laplace transform, find the solution for the following equation:
@@ -12,7 +23,13 @@ with initial conditions $y (0) = 1$ and $Dy (0) = -1$
 \subsubsection{Example 2: Trabsfer Function}
 Consider a mass-spring-damper system with the following differential equation:
 $$m\overset{..}{x}=-kx-b\overset{.}{x}+f$$
+
 Find the transfer function for the system with input $f$ and output $x$.
 
-Ans:
-$$G(s)=\frac{X(s)}{F(s)}=\frac{1}{ms^{2}+bs+k}$$
+\noindent\rule{\textwidth}{1pt}
+
+$$ms^2X(s)=-kX(s)-bsX(s)+F(s)$$
+$$ms^2X(s)+kX(s)+bsX(s)=F(s)$$
+$$(ms^2+k+bs)X(s)=F(s)$$
+The transfer function is:
+$$\frac{X(s)}{F(s)}=\displaystyle\frac{1}{ms^2+k+bs}$$

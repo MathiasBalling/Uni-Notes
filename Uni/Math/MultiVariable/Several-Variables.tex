@@ -15,11 +15,39 @@ Find the Jacobian $Df(1,0)$ for the transformation from $\mathbb{R}^2$ to $\math
 $$\mathbf{f}(x,y)=(x e^{y}+\cos(\pi y)\,,x^{2},x-e^{y})$$
 
 \subsubsection{Example 3: Chain Rule}
-If $z=\sin(x^2y)$ where $x=st^2$ and $y=s^2+\frac{1}{t}$, $y=e^{-t}$, find $\frac{\partial z}{\partial s}$ and $\frac{\partial z}{\partial t}$ using chain rule.
+If $z=\sin(x^2y)$ where $x=st^2$ and $y=s^2+\frac{1}{t}$, find $\frac{\partial z}{\partial s}$ and $\frac{\partial z}{\partial t}$ using chain rule.
+
+\noindent\rule{\textwidth}{1pt}
+
+For: 
+$${\frac{\partial z}{\partial s}}={\frac{\partial z}{\partial x}}{\frac{\partial x}{\partial s}}+{\frac{\partial z}{\partial y}}{\frac{\partial y}{\partial s}}$$
+$${\frac{\partial z}{\partial x}}=2xy\cos(x^2y)$$
+$${\frac{\partial x}{\partial s}}=t^2$$
+$${\frac{\partial z}{\partial y}}=x^2\cos(x^2y)$$
+$${\frac{\partial y}{\partial s}}=2s$$
+
+Find:
+$${\frac{\partial z}{\partial s}}=(2xy\cos(x^2y))t^2+(x^2\cos(x^2y))2s$$
+
+Replace $x$ and $y$ with $x=st^2$ and $y=s^2+\frac{1}{t}$:
+$$\frac{\partial z}{\partial s}=(4s^3t^4+2st^3)\cos(s^4t^4+s^2t^3)$$
+
+Same principal for:
+$${\frac{\partial z}{\partial t}}={\frac{\partial z}{\partial y}}{\frac{\partial y}{\partial t}}+{\frac{\partial z}{\partial y}}{\frac{\partial y}{\partial t}}$$
+
 
 \subsubsection{Example 4: Substitution}
-If $z=\sin(x^2y)$ where $x=st^2$ and $y=s^2+\frac{1}{t}$, $y=e^{-t}$, find $\frac{\partial z}{\partial s}$ and $\frac{\partial z}{\partial t}$ using substitution.
+If $z=\sin(x^2y)$ where $x=st^2$ and $y=s^2+\frac{1}{t}$ find $\frac{\partial z}{\partial s}$ and $\frac{\partial z}{\partial t}$ using substitution.
+
+\noindent\rule{\textwidth}{1pt}
+
+$$z=\sin\left((st^2)^2s^2+\frac{1}{t}\right)=\sin\left(s^2t^4(s^2+\frac{1}{t})\right)=s^4t^4+s^2t^3$$
+$$\frac{\partial z}{\partial s}=\sin(s^4t^4+s^2t^3)=(4s^3t^4+2st^3)\cos(s^4t^4+s^2t^3)$$
+$$\frac{\partial z}{\partial t}=\sin(s^4t^4+s^2t^3)=(s^4 4t^3+s^2 3t^2)\cos(s^4t^4+s^2t^3)$$
 
 \subsubsection{Example 5: Partial Differentiation}
 Calculate $f_{223}(x,y,z)$, $f_{232}(x,y,z)$, and $f_{322}(x,y,z)$ of the following function:
 $$f(x,y,z)=e^{x-2y+3z}$$
+
+Normal Differentiation. For $f_{223}(x,y,z)$, start with $y$, then $y$ again, and then $z$:
+$$\frac{\partial }{\partial z}\frac{\partial }{\partial y}\frac{\partial f(x,y,z)}{\partial y}$$

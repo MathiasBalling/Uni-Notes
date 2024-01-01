@@ -71,7 +71,7 @@ the Jacobian can be calculated:
   \frac{\partial x}{\partial v}=1&
   \dfrac{\partial y}{\partial u}=1
 \end{eqnarray*}
-$$2*2-1*1=3$$
+$$2\cdot2-1\cdot1=3$$
 
 Find the boundaries for the double integral\\
 $y_1: (0,0) \to (2,1)$ is $y=\frac{1}{2}x$\\
@@ -117,7 +117,7 @@ $$\iint_{D}x\cos y\,d A$$
 where $D$ is the finite region in the first quadrant bounded by the coordinate axes and the curve
 $y=1-x^2$.
 
-\noindent\rule{\textwidth}{1pt}
+\rule{\textwidth}{1pt}
 
 Given the region the minimum for $x$ and $y$ must be $0$ and for $x$ the maximum is 1:
 
@@ -127,7 +127,21 @@ Given the region the minimum for $x$ and $y$ must be $0$ and for $x$ the maximum
                                             &=&\boxed{\sin ^2\left(\frac{1}{2}\right)}
 \end{eqnarray*}
 
-\subsubsection{Example 4: Polar coordinates}
+\subsubsection{Example 4: By iteration}
+Evaluate the double integral by iteration
+$$\iint_Rxy^2\ dA$$
+where $R$ is the finite region in the first quadrant bounded by the curves $y=x^2$ and $x=y^2$
+
+\rule{\textwidth}{1pt}
+$$x=\sqrt{y}\qquad x=y^2$$
+Since it is bounded in the first quadrant here intercepts in $(0,0)$ and $(1,1)$: $0\leq y\leq 1$\\
+In this region $x=\sqrt{y}\geq x=y^2$\\
+Solve the integral:
+$$\int_0^1\int_{y^2}^{\sqrt{y}}xy^2 dxdy$$
+$$=\int_0^1 \left[\frac{x^2y^2}{2}\right]_{y^2}^{\sqrt{y}}dy=\frac{1}{2}\int_0^1 (\sqrt{y}^2y^2)-((y^2)^2y^2)dy$$
+$$=\frac{1}{2}\int_0^1 y^3-y^6dy=\left[\frac{y^4}{4}-\frac{y^7}{7}\right]_0^1$$
+$$=\frac{1}{2}\left(\frac{1}{4}- \frac{1}{7}\right)=\frac{1}{2}\cdot \frac{7-4}{28}=\frac{3}{56}$$
+\subsubsection{Example 5: Polar coordinates}
 
 \noindent\rule{\textwidth}{1pt}
 
