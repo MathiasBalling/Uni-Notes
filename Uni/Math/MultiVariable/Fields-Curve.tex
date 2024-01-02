@@ -52,20 +52,75 @@ $$W=\int _{\mathcal{C}}F.\hat{T} \, ds =\int F \,dr =\int _{\mathcal{C}}f_{1}(x,
 Determine whether the given vector field is conservative, and find a potential
 function if it is:
 $$\mathbf{F}(x,y,z)=( 2x y-z^{2})\mathbf{i}+( 2y z+ x^{2})\mathbf{j}-(2z x- y^{2})\mathbf{k}$$ 
+\rule{\textwidth}{1pt}
+
+The field is convervative if:
+\begin{eqnarray*}
+  \frac{\partial f_1}{\partial y}&=&\frac{\partial f_2}{\partial x} \\
+  \frac{\partial f_1}{\partial z}&=&\frac{\partial f_3}{\partial x} \\
+  \frac{\partial f_2}{\partial z}&=&\frac{\partial f_3}{\partial y} \\
+\end{eqnarray*}
+$$\frac{\partial (2xy-z^2)}{\partial y}=2x=\frac{\partial (2yz+x^2)}{\partial x} $$
+$$ \frac{\partial (2xy-z^2)}{\partial z}=-2z=\frac{\partial (-2zx+y^2)}{\partial x} $$
+$$\frac{\partial (2yz+x^2)}{\partial z}=2y=\frac{\partial (-2zx+y^2)}{\partial y} $$
+All equations are satisfied! The field is convervative.
+
+Find the potential function $\phi(x,y,z)$:
+$$f_1=\frac{\partial \phi}{\partial x}\quad\Rightarrow\quad \phi=\int f_1dx=x^2y-z^2x+c(y,z)$$
+$$\frac{\partial \phi}{\partial y}=x^2+\frac{\partial c(y,z)}{\partial y}$$
+$$f_2=\frac{\partial \phi}{\partial y}=x^2+\frac{\partial c(y,z)}{\partial y}=2yz+x^2\quad\Rightarrow\quad\frac{\partial c(y,z)}{\partial y}=2yz$$ This means $c$ is a function of $y$ and $z$ and can be found by taking the anit-derivative
+$$c(y,z)=y^2z+c(z)$$
+Insert $c(y,z)$:
+$$\phi=x^2y-z^2x+y^2z+c(z)$$
+$$f_3=\frac{\partial \phi}{\partial z}=-2zx+y^2+\frac{\partial c(z)}{\partial z}=-2zx+y^2\quad\Rightarrow\quad \frac{\partial c(z)}{\partial z}=0$$
+A scalar potential function of $F$:
+$$\phi(x,y,z)=x^2y-z^2x+y^2z$$
+
 \subsubsection{Example 2: Line integral}
 Evaluate $\oint x^2y^2 \ dx + x^3y\ dy$ counterclockwise around the square with vertices
 $(0,0)$, $(1,0)$, $(1, 1)$, and $(0, 1)$
+
+\rule{\textwidth}{1pt}
+
 \subsubsection{Example 3: Line integral}
 Evalute the line integral for $f(x,y)=x^2y^2$ along a straight line from origin to the point $(2,1)$
 
-Ans: $(5\sqrt{5})/3$
+\rule{\textwidth}{1pt}
+
+The parmeterization of arc length over t:
+$$x=f(t)=t\qquad \frac{df(t)}{dt}=1$$
+$$y=g(t)=2t\qquad \frac{dg(t)}{dt}=2$$
+Setup integral with bounds: $0\leq t\leq 1$
+$$\int_0^1 t^2(2t)^2\sqrt{f'(t)^2+g'(t)^2}dt=\int_0^1 5t^2\sqrt{5}dt$$
+$$=\left[\frac{5t^3\sqrt{5}}{3}\right]^1_0=\frac{5\sqrt{5}}{3}$$
+
 \subsubsection{Example 4: Line integral vector field}
-Evaluate the line integral for $\mathbf{F}(x,y)=y^2\mathbf{i}+2xy\mathbf{j}$ from $(0,0)$ to $(1,1)$\\
-Along the line $y=x$\\
-Allong the line $y=x^2$
+Evaluate the line integral of the tangential compnent of the given vector field along the given curve:
+$$F(x,y)=xy\mathbf{i}-x^2\mathbf{j}$$
+\rule{\textwidth}{1pt}
 
-\subsubsection{Example 5: Gradient}
+For a vector field:
+$$W=\int F \,dr$$
+Along the line $y=x^2$:
+Parametrize $x$ and $y$:
+$$x(t)=t\qquad y(t)=t^2\qquad r(t)=t\mathbf{i}+t^2\mathbf{j}$$
+$$\frac{dr}{dt}=\mathbf{i}+2t\mathbf{j}\quad\Rightarrow\quad dr=(\mathbf{i}+2t\mathbf{j})dt$$
+Setup integral with bounds: $0\leq t\leq 1$
+$$\int_{0}^{1}(t^3\mathbf{i}-t^2\mathbf{j})(\mathbf{i}+2t\mathbf{j})  dt=\int_0^1t^3-2t^3dt=\int_0^1-t^3dt$$
+$$=\left[-\frac{t^4}{4}\right]_0^1=-\frac{1}{4}$$
 
+\subsubsection{Example 5: Line integral over specified curve}
+Evaluate the given line integral over the specified curve $\mathcal{C}$
+$$\textstyle\int_{\mathcal{C}}(x+y)ds\qquad \mathbf{r}=a t\mathbf{i}+b t\mathbf{j}+c t\mathbf{k}\qquad\ 0\leq t\leq m$$
+
+\rule{\textwidth}{1pt}
+
+$$\int_{\mathcal{C}}f(x,y,z)ds=\int_a^bf(r(t))\left|\frac{dr}{dt}\right|dt=\sqrt{a^2+b^2+c^2}dt$$
+$$ds=\left|\frac{dr}{dt}\right|dt=|a\mathbf{i}+b\mathbf{j}+c\mathbf{k}|dt$$
+$$f(r(t))=at+bt$$
+Solve the integral:
+$$\int_0^m(at+bt)\sqrt{a^2+b^2+c^2}dt=\sqrt{a^2+b^2+c^2}\int_0^m(a+b)tdt$$
+$$=\sqrt{a^2+b^2+c^2}\left[\frac{(a+b)t^2}{2}\right]_0^m=\frac{\sqrt{a^2+b^2+c^2}(a+b)m^2}{2}$$
 \subsubsection{Example 6: Parametrize a curve}
 Use $t=y$ to parametrize the part of the line of intersection of the two planes:\\
 Plane 1: $y=2x-4$\\

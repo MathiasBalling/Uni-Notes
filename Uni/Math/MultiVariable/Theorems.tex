@@ -13,8 +13,10 @@ $$\text{div }\mathbf{F}(x,y,z)=\nabla \cdot \mathbf{F}(x,y,z)=\frac{ \partial f_
 The curl or field circulation of the electric field gives the rate of change of the magnetic field.
 $$\text{curl }\mathbf{F}(x,y,z)
 =\nabla \times \mathbf{F}(x,y,z)
-=\left|\begin{array}{ccc}\mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\ f_{x} & f_{y} & f_{z} \end{array}\right|$$
-$$=\left(\frac{ \partial f_{z} }{ \partial y } -\frac{ \partial f_{y} }{ \partial z } \right)\mathbf{i}+\left(\frac{ \partial f_{x} }{ \partial z } -\frac{ \partial f_{z} }{ \partial x } \right)\mathbf{j}+\left(\frac{ \partial f_{y} }{ \partial x } -\frac{ \partial f_{x} }{ \partial y } \right)\mathbf{k}$$
+=\left|\begin{array}{ccc}\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\
+f_{x} & f_{y} & f_{z} \end{array}\right|$$
+$$=\left(\frac{ \partial f_{1} }{ \partial y } -\frac{ \partial f_{2} }{ \partial z } \right)\mathbf{i}+\left(\frac{ \partial f_{3} }{ \partial z } -\frac{ \partial f_{1} }{ \partial x } \right)\mathbf{j}+\left(\frac{ \partial f_{2} }{ \partial x } -\frac{ \partial f_{1} }{ \partial y } \right)\mathbf{k}$$
 
 \subsection{Green's Theorem}
 Let $R$ be a regular, closed region in the xy-plane whose boundary, $C$, consists of one or more piecewise smooth, simple closed curves that are positively oriented (counterclock vise) with respect to $R$.
@@ -40,7 +42,8 @@ $$\mathbf{F}=\cos x\,\mathbf{i}-\sin y\,\mathbf{j}+z\,\mathbf{k}.$$
 \rule{\textwidth}{1pt}
 
 \textbf{Divergence:}
-$$\text{div}F=\sin(x)+\cos(y)+1$$
+$$\text{div }\mathbf{F}(x,y,z)=\nabla \cdot \mathbf{F}(x,y,z)=\frac{ \partial f_{1} }{ \partial x } +\frac{ \partial f_{2} }{ \partial y } +\frac{ \partial f_{3} }{ \partial z } $$
+$$\text{div}F=-\sin(x)-\cos(y)+1$$
 
 \textbf{Curl:}
 $$\text{curl}F=\left|\begin{array}{ccc}\mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\ f_{x} & f_{y} & f_{z} \end{array}\right|$$
@@ -73,6 +76,11 @@ $$=\frac{81}{4}\left[\frac{\sin(2\theta)}{2}\right]_0^\pi=0-0=0$$
 
 
 \subsubsection{Example 3: Stokes' Theorem}
+Evaluate $\oint F\cdot dr$, where $F=-y^3i+x^3j-z^3k$ and $C$ is the curve of intersection of the cylinder
+$x^2+y^2\leq 1$ and the plane $2x+2y+z=3$ oriented to have a counterclockwise projection onto the xy-plane.
+
+\rule{\textwidth}{1pt}
+
 \subsubsection{Example 4: Divergence Theorem}
 Use the Divergence Theorem to calculate the flux of the given vector field out
 of the sphere $s$ with equation $x^2 + y^2 + z^2 = a^2$, where $a > 0$ and
