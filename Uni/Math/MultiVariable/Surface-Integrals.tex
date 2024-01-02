@@ -41,5 +41,60 @@ $$\iint_{S}\mathbf{F}\cdot d S=\iint_{B}\mathbf{F}\cdot\left({\frac{\partial r}{
 $$=\iint_D\left(f_1\frac{\partial (y,z)}{\partial (u,v)}+f_2\frac{\partial (z,x)}{\partial (u,v)}+f_3\frac{\partial (x,y)}{\partial (u,v)}\right)du\ dv$$
 
 For a surface $S$ given by $z=g(x,y)$, where $(x,y)$ is in the domain $D$ in the $xy$-plane, the flux is given by:
-$$\iint_{S}\mathbf{F}\cdot d S=\iint_D\left(-f_{1}\frac{\partial z}{\partial x}\mathbf{i}-f_{2}\frac{\partial z}{\partial y}\mathbf{j}+f_{3}\mathbf{k}\,\right)d x\,d y$$
+$$\iint_{S}\mathbf{F}\cdot d S=\iint_D\left(-f_{1}\frac{\partial z}{\partial x}-f_{2}\frac{\partial z}{\partial y}+f_{3}\,\right)d x\,d y$$
 \subsection{Examples}
+\subsubsection{Example 1: Surface area}
+Find $\iint_{\mathcal{S}}x\ dS$ over the part of the parabolic cylinder $z=x^2/2$ that lies inside the first octant 
+part of the cylinder $x^2+y^2=1$.
+
+\rule{\textwidth}{0.5pt}
+
+Since $z=g(x,y)$ is a function of $x$ and $y$:
+$$\iint_{S}f(x,y,z)d S=\iint_{D}f(x,y,z(x,y))\sqrt{1+\left(\frac{ \partial g(x,y) }{ \partial x } \right)^{2}+\left(\frac{ \partial g(x,y) }{ \partial y } \right)^{2}}d x d y$$ 
+Find the length:
+$$\frac{\partial}{\partial x}(x^2/2)=x$$
+$$\frac{\partial}{\partial y}(x^2/2)=0$$
+$$\sqrt{1+\left(\frac{ \partial g(x,y) }{ \partial x } \right)^{2}+\left(\frac{ \partial g(x,y) }{ \partial y } \right)^{2}}=\sqrt{1+(2x)^2}$$
+Using $r^2=x^2+y^2$ we know that $x$ and $y$ must between 1 and 0:
+$$y=\sqrt{1-x^2}$$
+Setup integral:
+$$\int_0^1\int_0^{\sqrt{1-x^2}}x\sqrt{1+x^2}dydx$$
+$$=\int_0^1x\sqrt{1+x^2}\sqrt{1-x^2}dx=\int_0^1x\sqrt{1-x^4}dx$$
+Using table lookup:
+$$\left[\frac{1}{4} x^2 \sqrt{1-x^4}-\frac{1}{4} \tan ^{-1}\left(\frac{\sqrt{1-x^4}}{x^2}\right)\right]_0^1=\frac{\pi}{8}$$
+
+\subsubsection{Example 2: Flux}
+Find the flux of $F=x\mathbf{i}+x\mathbf{j}+\mathbf{k}$ upward through the part of the surface $z=x^2-y^2$
+inside the cylinder $x^2+y^2=a^2$
+
+\rule{\textwidth}{0.5pt}
+
+For a surface $S$ given by $z=g(x,y)$, where $(x,y)$ is in the domain $D$ in the $xy$-plane, the flux is given by:
+$$\iint_{S}\mathbf{F}\cdot d S=\iint_D\left(-f_{1}\frac{\partial z}{\partial x}-f_{2}\frac{\partial z}{\partial y}+f_{3}\,\right)d x\,d y$$
+$$\frac{\partial z}{\partial x}=2x\qquad\frac{\partial z}{\partial y}=-2y$$
+Setup integral:
+$$\iint (-x(2x)-x(-2y)+1)dxdy=\iint (-2x^2+2yx+1)dxdy$$
+Using $r^2=x^2+y^2$ we know the radius is $a$:
+$$0\leq r\leq a\qquad 0\leq \theta\leq 2\pi$$
+$$dxdy=rdrd\theta$$
+$$x=r\cos(\theta)$$
+$$y=r\sin(\theta)$$
+$$\int_0^{2\pi}\int_0^{a} (-2(r\cos(\theta))^2+2(r\sin(\theta))(r\cos(\theta))+1)rdrd\theta$$
+$$=\int_0^{2\pi}-\frac{1}{2} a^4 \cos ^2(\theta)+\frac{1}{2} a^4 \sin (\theta) \cos (\theta)+\frac{a^2}{2}d\theta$$
+$$=-\frac{1}{2} \pi  a^2 \left(a^2-2\right)$$
+ans:$\frac{\pi}{2}a^{2}(2-a^{2})$
+
+\subsubsection{Example 3: Flux (Parametrized Surface)}
+Find the flux of $F=2x\mathbf{i}+y\mathbf{j}+z\mathbf{k}$ upward through the surface $r=u^2v\mathbf{i}+uv^2\mathbf{j}+v^3\mathbf{k}$ where $(0\leq u\leq1,0\leq v\leq1)$ 
+
+\rule{\textwidth}{0.5pt}
+
+ans:$\frac{1}{6}$
+
+% \subsubsection{Example 4: Flux}
+%
+% \rule{\textwidth}{0.5pt}
+%
+% \subsubsection{Example 5: Flux}
+%
+% \rule{\textwidth}{0.5pt}
