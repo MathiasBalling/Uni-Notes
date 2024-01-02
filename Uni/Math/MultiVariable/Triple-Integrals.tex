@@ -4,6 +4,15 @@
 \subsection{Change of Variables}
 $$dV=dx\ dy\ dz= \left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right|du\ dv\ dw$$
 $$\iiint f(x,y,z)\,d x\,\,d y\,\,d z=\iiint g(u,v,w)\left|{\frac{\partial(x,y,z)}{\partial(u,v,w)}}\right|\,d u\,\,d v\,\,d w$$
+$$\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|=
+\begin{vmatrix}
+  \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}&\frac{\partial x}{\partial w}\\
+  \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}&\frac{\partial y}{\partial w}\\
+  \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}&\frac{\partial z}{\partial w}
+\end{vmatrix}$$
+$$=\frac{\partial x}{\partial u}\left( \frac{\partial y}{\partial v}\frac{\partial z}{\partial w}-\frac{\partial y}{\partial w}\frac{\partial z}{\partial v}\right)
+-\frac{\partial x}{\partial v}\left(\frac{\partial y}{\partial u}\frac{\partial z}{\partial w}-\frac{\partial y}{\partial w}\frac{\partial z}{\partial u}\right)
++\frac{\partial x}{\partial w}\left(\frac{\partial y}{\partial u}\frac{\partial z}{\partial v}-\frac{\partial y}{\partial v}\frac{\partial z}{\partial u}\right)$$
 \subsection{Cylyndrical Coordinates}
 $$\begin{array}{ll}
   x=r\cos(\theta)&r^2=x^2+y^2\\
@@ -38,6 +47,16 @@ $$0\leq\theta \leq 2\pi$$
 \subsubsection{Example 1: Tripple Integral}
 Find $\iiint(x^{2}+y^{2}+z^{2})d V$, where the region is bounded by
 $z=c\sqrt{(x^{2}+y^{2})}$ and $x^{2}+y^{2}+z^{2}=a^{2}$
+
+\rule{\textwidth}{1pt}
+
+Using Cylyndrical Coordinates:
+$$z=c\sqrt{r^2}=cr\qquad r^2+z^2=a^2\quad\Rightarrow\quad z=\sqrt{a^2-r^2}$$
+Therefore the region is bounded by:
+$$0\leq r\leq a\qquad 0\leq\theta\leq 2\pi\qquad cr\leq z\leq\sqrt{a^2-r^2}$$
+Convert the function:
+$$x^2+y^2+z^2\quad\Rightarrow\quad r^2+z^2$$
+$$\int_0^{2\pi}\int_0^a\int_{cr}^{\sqrt{a^2-r^2}}(x^2+r^2)dzdrd\theta$$
 \subsubsection{Example 2: Sphereical Coordinates}
 Find the volume of:
 $$\iiint\sqrt{x^2+y^2+z^2}dxdydz$$
@@ -64,7 +83,20 @@ Solve the integral:
                                                                               &=& \boxed{\pi}\\
 \end{eqnarray*}
 
-\subsubsection{Example 3: Transformations}
+\subsubsection{Example 3: Jacobian Transformation}
+Find the Jacobian using change of variables from uv-space to xy-space when:
+$$x=2u+w\qquad y=2u-2v\qquad z=u+v^2-2w^2$$
+
+\rule{\textwidth}{1pt}
+
+The Jacobian is:
+$$\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|=
+\begin{vmatrix}
+  \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}&\frac{\partial x}{\partial w}\\
+  \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}&\frac{\partial y}{\partial w}\\
+  \frac{\partial z}{\partial u}&\frac{\partial z}{\partial v}&\frac{\partial z}{\partial w}
+\end{vmatrix}$$
+
 $$\begin{vmatrix}
   2&0&1\\
   2u&-2v&0\\
@@ -73,4 +105,32 @@ $$\begin{vmatrix}
 $$=16vw+4uv-2v$$
 
 \subsubsection{Example 4: Triple Integral}
+Find the volume of solid bounded by:
+$$x^2+y^2+z^2=9\qquad x^2+y^2=8z$$
+
+\rule{\textwidth}{1pt}
+
+Using cylyndrical coordinates:
+$$r^2+z^2=9\qquad r^2=8z$$
+This gives two bounds for $z$:
+$$z=\sqrt{9-r^2}\qquad z=\frac{r^2}{8}$$
+Bounds for $r$ is the intersection:
+$$\sqrt{9-r^2}= z=\frac{r^2}{8}\quad\Rightarrow\quad r=2\sqrt{2}$$
+From the $r$ bounds we see:
+$$z=\underbrace{\sqrt{9-r^2}}_\text{Upper bound}\qquad z=\underbrace{\frac{r^2}{8}}_\text{Lower bound}$$
+And for $\theta$:
+$$0\leq\theta\leq 2\pi$$
+Setup the integral:
 $$\int_{0}^{2\pi}\int_{0}^{2\sqrt{2}}\int_{r^2/8}^{\sqrt{9-r^2}}r\ dz\ dr\ d\theta$$
+$$=\int_{0}^{2\pi}\int_{0}^{2\sqrt{2}}\left[rz \right]_{r^2/8}^{\sqrt{9-r^2}} dr d\theta$$
+$$=\int_{0}^{2\pi}\int_{0}^{2\sqrt{2}}r\sqrt{9-r^2}- r^3/8 dr d\theta$$
+$$=\int_{0}^{2\pi}\left(\int_{0}^{2\sqrt{2}}r\sqrt{9-r^2}dr-\int_{0}^{2\sqrt{2}}r^3/8 dr \right)d\theta$$
+Using u substitution:
+$$\int_{0}^{2\sqrt{2}}r\sqrt{u}dr\qquad u=9-r^2\quad\Rightarrow\quad \frac{du}{dr}=-2r\quad\Rightarrow\quad dr=\frac{du}{-2r}$$
+New limits:
+$$r=0:\quad u=9-0^2=9\qquad\qquad r=2\sqrt{2}:\quad u=9-(2\sqrt{2})^2=1$$
+$$\int_{9}^{1}r\sqrt{u}\frac{du}{-2r}=\frac{-1}{2}\int_{9}^{1}\sqrt{u}du=\frac{-1}{2}\left[\frac{2 u^{3/2}}{3}\right]_{9}^{1}=\frac{26}{3}$$
+Solve the other integral:
+$$=\int_{0}^{2\sqrt{2}}r^3/8 dr=\left[r^4/32 \right]_{0}^{2\sqrt{2}}=2$$
+Insert results:
+$$=\int_{0}^{2\pi}\frac{26}{3}-2d\theta=\boxed{\frac{40}{3}\pi}$$

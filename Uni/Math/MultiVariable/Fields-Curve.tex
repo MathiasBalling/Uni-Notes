@@ -4,9 +4,9 @@ Representation of a curve in 3 space by using its position vector is given as:
 $$r=r(t)=x(t)\mathbf{i}+y(t)\mathbf{j}+z(t)\mathbf{k}\qquad{\mathrm{~where~}}a\leq t\leq b$$
 
 \subsection{Vector Fields}
-$$\mathbf{F}(x,y,z)=\underbrace{ f_{x}(x,y,z) }_{ \text{Scaler function} }\mathbf{i}
-+\underbrace{ f_{y}(x,y,z) }_{ \text{Scaler function} }\mathbf{j}
-+\underbrace{ f_{z}(x,y,z) }_{ \text{Scaler function} }\mathbf{k}$$
+$$\mathbf{F}(x,y,z)=\underbrace{ f_{1}(x,y,z) }_{ \text{Scaler function} }\mathbf{i}
++\underbrace{ f_{2}(x,y,z) }_{ \text{Scaler function} }\mathbf{j}
++\underbrace{ f_{3}(x,y,z) }_{ \text{Scaler function} }\mathbf{k}$$
 
 \begin{eqnarray*}
     \frac{\partial f}{\partial x}=f_1=f_x\qquad
@@ -18,21 +18,25 @@ $$r=x\mathbf{i}+y\mathbf{j}+z\mathbf{k}$$
 Unit vector with magnitude 1:
 $$r=\mathbf{i}+\mathbf{j}+\mathbf{k}$$
 \subsubsection{Scalar field}
-$$f(x,y,z)=f_1(x,y,z)=f_2(x,y,z)=f_3(x,y,z)$$
+$$F(x,y,z)=f_1(x,y,z)+f_2(x,y,z)+f_3(x,y,z)$$
 The gradient of a scalar field is a vector field:
 $$\nabla f=\text{grad } f(x,y,z)=f_x(x,y,z)\mathbf{i}+f_y(x,y,z)\mathbf{j}+f_z(x,y,z)\mathbf{k}$$
 
 \subsubsection{Field lines}
-
+$${\frac{d x}{f_{1}(x,y,z)}}={\frac{d y}{f_{2}(x,y,z)}}={\frac{d z}{f_{3}(x,y,z)}}$$
 \subsubsection{Convervation field}
-If $\mathbf{F}(x,y,z)=\nabla\phi(x,y,z)$ in a domain $D$, then $\mathbf{F}$ is a conservative vector field in $D$ and function $\phi$ is the potential function.
+If $\mathbf{F}(x,y,z)=\nabla\phi(x,y,z)$ in a 3d domain $D$, then $\mathbf{F}$ is a conservative vector field in $D$ and function $\phi$ is the potential function.
 $$\mathbf{F}(x,y,z)=\nabla\phi(x,y,z)=\phi_x(x,y,z)\mathbf{i}+\phi_y(x,y,z)\mathbf{j}+\phi_z(x,y,z)\mathbf{k}$$
 If the vetor field is conservative, then all the following equations are true:
 \begin{eqnarray*}
-  \frac{\partial f_x}{\partial y}&=&\frac{\partial f_y}{\partial x} \\
-  \frac{\partial f_x}{\partial z}&=&\frac{\partial f_z}{\partial x} \\
-  \frac{\partial f_y}{\partial z}&=&\frac{\partial f_z}{\partial y} \\
+  \frac{\partial f_1}{\partial y}&=&\frac{\partial f_2}{\partial x} \\
+  \frac{\partial f_1}{\partial z}&=&\frac{\partial f_3}{\partial x} \\
+  \frac{\partial f_2}{\partial z}&=&\frac{\partial f_3}{\partial y} \\
 \end{eqnarray*}
+
+
+If $\mathbf{F}(x,y)=\nabla\phi(x,y)$ in a 2d domain $D$, then $\mathbf{F}$ is a conservative vector field in $D$ and function $\phi$ is the potential function.
+$${\frac{\partial f_{1}}{\partial y}}={\frac{\partial^{2}\phi}{\partial y\partial x}}={\frac{\partial^{2}\phi}{\partial x\partial y}}={\frac{\partial f_{2}}{\partial x}}$$
 \subsubsection{Vector field in Polar Coordinates}
 $$\mathbf{F}=f(r,\theta)=f_{r}(r,\theta)\mathbf{\hat{r}}+f_{\theta}(r,\theta)\mathbf{\hat{\theta}}$$
 where:

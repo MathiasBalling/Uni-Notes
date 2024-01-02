@@ -7,7 +7,7 @@ $$\mathbf{F}(x,y,z)=f_x(x,y,z)\mathbf{i}+f_y(x,y,z)\mathbf{j}+f_z(x,y,z)\mathbf{
 
 \subsubsection{Divergence}
 The divergence of a velocity field represents the net flow of fluid out of a small volume in a scalar field.
-$$\text{div }\mathbf{F}(x,y,z)=\nabla \cdot \mathbf{F}(x,y,z)=\frac{ \partial f_{x} }{ \partial x } +\frac{ \partial f_{y} }{ \partial y } +\frac{ \partial f_{z} }{ \partial z } $$
+$$\text{div }\mathbf{F}(x,y,z)=\nabla \cdot \mathbf{F}(x,y,z)=\frac{ \partial f_{1} }{ \partial x } +\frac{ \partial f_{2} }{ \partial y } +\frac{ \partial f_{3} }{ \partial z } $$
 
 \subsubsection{Curl}
 The curl or field circulation of the electric field gives the rate of change of the magnetic field.
@@ -17,7 +17,7 @@ $$\text{curl }\mathbf{F}(x,y,z)
 $$=\left(\frac{ \partial f_{z} }{ \partial y } -\frac{ \partial f_{y} }{ \partial z } \right)\mathbf{i}+\left(\frac{ \partial f_{x} }{ \partial z } -\frac{ \partial f_{z} }{ \partial x } \right)\mathbf{j}+\left(\frac{ \partial f_{y} }{ \partial x } -\frac{ \partial f_{x} }{ \partial y } \right)\mathbf{k}$$
 
 \subsection{Green's Theorem}
-Let $R$ be a regular, closed region in the xy-plane whose boundary, $C$, consists of one or more piecewise smooth, simple closed curves that are positively oriented with respect to $R$.
+Let $R$ be a regular, closed region in the xy-plane whose boundary, $C$, consists of one or more piecewise smooth, simple closed curves that are positively oriented (counterclock vise) with respect to $R$.
 $$\oint_{ C } f_1(x, y) d x+f_2(x, y) d y=\iint_{ R }\left(\frac{\partial f_2}{\partial x}-\frac{\partial f_1}{\partial y}\right) d A$$
 
 \subsection{Stokes' Theorem}
@@ -36,12 +36,41 @@ $$\iiint_{D}\text{grad }\phi \,dV=\oiint_{s}\phi \,dS$$
 \subsubsection{Example 1: Div and Curl}
 Calculate the divergence and curl of the following vector field:
 $$\mathbf{F}=\cos x\,\mathbf{i}-\sin y\,\mathbf{j}+z\,\mathbf{k}.$$
-\textbf{Divergence:}
-\textbf{Curl:}
 
+\rule{\textwidth}{1pt}
+
+\textbf{Divergence:}
+$$\text{div}F=\sin(x)+\cos(y)+1$$
+
+\textbf{Curl:}
+$$\text{curl}F=\left|\begin{array}{ccc}\mathbf{i} & \mathbf{j} & \mathbf{k} \\ \frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\ f_{x} & f_{y} & f_{z} \end{array}\right|$$
+$$=\left(\frac{ \partial f_{z} }{ \partial y } -\frac{ \partial f_{y} }{ \partial z } \right)\mathbf{i}+\left(\frac{ \partial f_{x} }{ \partial z } -\frac{ \partial f_{z} }{ \partial x } \right)\mathbf{j}+\left(\frac{ \partial f_{y} }{ \partial x } -\frac{ \partial f_{x} }{ \partial y } \right)\mathbf{k}$$
+$$=(0-0)i+(0-0)j+(0+0)k$$
 \subsubsection{Example 2: Green's Theorem}
-Using Green's Theorem evaluate $\oint_{e}(x^{2}y)\,d x+(x y^{2})d y,$ clockwise boundary of the region:
+Using Green's Theorem evaluate $\oint_{e}(x^{2}y)\,d x+(x y^{2})d y,$ clockwise bounded of the region:
 $$0\leq y\leq{\sqrt{9-x^{2}}}$$
+
+\rule{\textwidth}{1pt}
+
+$$\oint_{ C } f_1(x, y) d x+f_2(x, y) d y=\iint_{ R }\left(\frac{\partial f_2}{\partial x}-\frac{\partial f_1}{\partial y}\right) d A$$
+$$f_1(x,y)=x^2y\qquad f_2=xy^2$$
+$$\frac{\partial f_1}{\partial y}=x^2 \qquad \frac{\partial f_2}{\partial x}=y^2$$
+$$\iint_{ R }\left(y^2-x^2\right) d A$$
+But since it is clockwise:
+$$-\iint_{ R }\left(y^2-x^2\right) d A=\iint_{ R }\left(x^2-y^2\right) d A$$
+
+Using polar coordinates:
+$$y^2=9-x^2\quad\Rightarrow\quad r=3$$
+Since $y\geq 0$:
+$$0\leq\theta\leq\pi$$
+Convert the function to polar:
+$$x^2=(r\cos(\theta))^2\qquad y^2=(r\sin(\theta))^2$$
+$$\int_0^\pi\int_0^3(r^2\cos^2(\theta)-r^2\sin^2(\theta))rdrd\theta =\int_0^\pi\int_0^3r^3(\cos^2(\theta)-\sin^2(\theta))drd\theta$$
+$$=\int_0^\pi\left[\frac{1}{4}r^4(\cos^2(\theta)-\sin^2(\theta))\right]_0^3d\theta$$
+$$=\frac{81}{4}\int_0^\pi(\cos^2(\theta)-\sin^2(\theta))d\theta=\frac{81}{4}\int_0^\pi\frac{1+\cos(2\theta)}{2}-\frac{1-\cos(2\theta)}{2} d\theta$$
+$$\frac{81}{4}\int_0^\pi\frac{1+\cos(2\theta)}{2}-\frac{1-\cos(2\theta)}{2} d\theta=\frac{81}{4}\int_0^\pi \cos(2\theta) d\theta$$
+$$=\frac{81}{4}\left[\frac{\sin(2\theta)}{2}\right]_0^\pi=0-0=0$$
+
 
 \subsubsection{Example 3: Stokes' Theorem}
 \subsubsection{Example 4: Divergence Theorem}
