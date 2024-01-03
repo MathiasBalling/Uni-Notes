@@ -89,7 +89,22 @@ Find the flux of $F=2x\mathbf{i}+y\mathbf{j}+z\mathbf{k}$ upward through the sur
 
 \rule{\textwidth}{0.5pt}
 
-ans:$\frac{1}{6}$
+If $S$ is a parametrized surface given by $r=r(u,v)$, where $(u,v)$ is in the domain $D$ in the $uv$-plane, then the flux is given by:
+$$\iint_{S}\mathbf{F}\cdot d S=\iint_{B}\mathbf{F}\cdot\left({\frac{\partial r}{\partial u}}\times{\frac{\partial r}{\partial v}}\right)\,d u\,d v$$
+$$=\iint_D\left(f_1\frac{\partial (y,z)}{\partial (u,v)}+f_2\frac{\partial (z,x)}{\partial (u,v)}+f_3\frac{\partial (x,y)}{\partial (u,v)}\right)du\ dv$$
+$$F(r(u,v))=2(u^2v)\mathbf{i}+uv^2\mathbf{j}+v^3\mathbf{k}$$
+$$\frac{\partial r}{\partial u}=2uv\mathbf{i}+v^2\mathbf{j}\qquad\qquad\frac{\partial r}{\partial v}=u^2\mathbf{i}+2uv\mathbf{j}+3v^2\mathbf{k}$$
+$${\frac{\partial r}{\partial u}}\times{\frac{\partial r}{\partial v}}=\begin{vmatrix}
+  \mathbf{i}&\mathbf{j}&\mathbf{k}\\ 
+  2uv&v^2&0\\
+  u^2&2uv&3v^2
+\end{vmatrix}=(v^2\cdot 3v^2-0\cdot 2uv)\mathbf{i}-(2uv\cdot 3v^2-u^2\cdot 0)\mathbf{j}+(2uv\cdot 2uv-v^2\cdot u^2)\mathbf{k}$$
+$$=3v^4\mathbf{i}-6uv^3\mathbf{j}+3u^2v^2\mathbf{k}$$
+Setup integral:
+$$\int_{0}^1\int_0^1(2(u^2v)\mathbf{i}+uv^2\mathbf{j}+v^3\mathbf{k})\cdot\left(3v^4\mathbf{i}-6uv^3\mathbf{j}+3u^2v^2\mathbf{k}\right)\,d u\,d v$$
+$$\int_{0}^1\int_0^1(6u^2v^5-6u^2v^5+3u^2v^5)\,d u\,d v=\int_{0}^1\int_0^13u^2v^5\,d u\,d v$$
+$$=\int_{0}^1\left[u^3v^5\right]_0^1\,d v=\int_{0}^1v^5\,d v$$
+$$=\left[\displaystyle\frac{v^6}{6}\right]_0^1=\boxed{\frac{1}{6}}$$
 
 % \subsubsection{Example 4: Flux}
 %
