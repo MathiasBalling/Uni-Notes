@@ -34,13 +34,6 @@ Tyoes of varius PDEs:
 
 \textbf{Laplace Equation:} Elliptic PDE
 
-
-$$\begin{array}{llll}
-  B^2-4AC>0&2\text{ real roots}&2\text{ characteristics}&\textbf{Hyperbolic PDE}\\
-  B^2-4AC=0&1\text{ real roots}&1\text{ characteristics}&\textbf{Parabolic PDE}\\
-  B^2-4AC<0&0\text{ real roots}&0\text{ characteristics}&\textbf{Elliptic PDE}\\
-\end{array}$$
-
 \subsection{Important Second-Order PDEs}
 
 $$\begin{array}{ll}
@@ -131,5 +124,46 @@ $$\lambda_n = \frac{cn\pi}{L}$$
 and
 $$B_n = \frac{2}{L}\int_0^Lf(x)\sin\left(\frac{n\pi x}{L}\right)dx\quad\quad \text{for }n=1,2,3\dots$$
 \subsection{Examples}
-\subsubsection{}
+\subsubsection{Example 1: Type, Normal Form, and solve}
+Find the type, transform to normal form, and solve.
+$$u_{xy}-u_{yy}=0$$
 
+\rule{\textwidth}{0.5pt}
+
+Find $A,B,C$:
+$$Au_{xx}+2Bu_{xy}+Cu{yy}=f(x,y,u,u_x,u_y)$$
+$$A=0\qquad 2B=1\Rightarrow B=\frac{1}{2}\qquad C=-1$$
+
+Find the type:
+$$B^2-4AC=\left(\frac{1}{2}\right)^2-4\cdot 0\cdot -1=\frac{1}{4}$$
+Since $B^2-4AC>0$ the PDE is hyperbolic.
+
+Transform to normal form:
+$$Ay''-2By'+C=0\quad\Rightarrow\quad-y'-1=0\quad\Rightarrow\quad y'=-1$$
+$$y=\int \frac{dy}{dx}=\int -1dx=-x+c_1$$
+$$c_1=x+y$$
+
+Transform the variables:\\
+Only one constant, therefore $v=x$
+$$v=x\qquad v_x=1\qquad v_y=0$$
+$$w=x+y\qquad w_x=1\qquad w_y=1$$
+$$u_x=u_v v_x+u_w w_x=u_v \cdot 1+u_w \cdot 1=u_v+u_w$$
+$$u_{xy}=(u_v+u_w)_v v_y+(u_v+u_w)_w w_y=u_{xy}=(u_v+u_w)_v \cdot 0+(u_v+u_w)_w \cdot 1=\boxed{u_{vw}+u_{ww}}$$
+$$u_y=u_v u_y + u_w w_y=u_v \cdot 0 + u_w \cdot 1=u_w$$
+$$u_{yy}=(u_w)_v v_y+(u_w)_w w_y=(u_w)_v \cdot 0+(u_w)_w \cdot 1=\boxed{u_{ww}}$$
+The normal form is:
+$$u_{vw}+u_{ww}-u_{ww}=0\quad\Rightarrow\quad \boxed{u_{vw}=0}$$
+
+Solve:
+$$u_{vw}=0\quad\Rightarrow\quad u_v=h(v)$$
+$$u=g(w)+\int h(v)$$
+$$u(v,w)=g(w)+f(v)$$
+Insert $x,y$:
+$$u(x,y)=g(x+y)+f(x)$$
+Where $f$ and $g$ er orbitrary functions.
+
+\subsubsection{Example 2: Type, Normal Form, and solve}
+Find the type, transform to normal form, and solve.
+$$u_{xy}-u_{yy}=0$$
+
+\rule{\textwidth}{0.5pt}

@@ -10,6 +10,7 @@ $$h(t)=\mathcal{L}^{-1}\{H(t)\}=\frac{1}{2\pi j}\int_{\sigma_{c}-j\infty}^{\sigm
 \hline
 \cellcolor[HTML]{C0C0C0} \textbf{Signal}& \cellcolor[HTML]{C0C0C0}\textbf{Laplace Transform}  \\ \hline
 1&$\frac{1}{s}$ \\ \hline
+$t^n$&$\frac{n!}{s^{n+1}}$ \\ \hline
 $e^{at}$& $\frac{1}{s-a}$ \\ \hline
 $\sin(at)$&$\frac{a}{s^2+a^2}$ \\ \hline
 $\cos(at)$&$\frac{s}{s^2+a^2}$ \\ \hline
@@ -33,3 +34,31 @@ $$ms^2X(s)+kX(s)+bsX(s)=F(s)$$
 $$(ms^2+k+bs)X(s)=F(s)$$
 The transfer function is:
 $$\frac{X(s)}{F(s)}=\displaystyle\frac{1}{ms^2+k+bs}$$
+
+\subsubsection{Example 3: Differential equation}
+Consider:
+$$y''(t)+y'(t)=0.5t$$
+where $y(0)=0$ and $y'(0)=0$
+Use Laplace transform to solve the equation and find $y(t)$
+
+\rule{\textwidth}{0.5pt}
+
+From Laplace transform table:
+$$\mathcal{L}\{t\}=\frac{1}{s^2}$$
+Laplace transform of given differential equation:
+$$s^2Y(s)-sy(0)-y'(0)+Y(s)=0.5\frac{1}{s^2}$$
+$$(s^2+1)Y(s)=\frac{0.5}{s^2}$$
+$$Y(s)=\frac{0.5}{s^2(s^2+1)}=\frac{A}{s}+\frac{B}{s^2}+\frac{Cs+D}{s^2+1}$$
+$$0.5=As(s^2+1)+B(s^2+1)+(Cs+D)s^2$$
+$$0.5=As^3+As+Bs^2+B+Cs^3+Ds^2$$
+$$0.5=s^3(A+C)+s^2(B+D)+sA+B$$
+$$B=0.5$$
+$$A=0$$
+$$B+D=0\qqr D=-0.5$$
+$$A+C=0\qqr C=0$$
+Therefore the partial fractions are:
+$$Y(s)=\frac{0}{s}+\frac{0.5}{s^2}+\frac{0s-0.5}{s^2+1}=\frac{0.5}{s^2}+\frac{-0.5}{s^2+1}$$
+From Laplace transform table:
+$$\mathcal{L}\{\sin(at)\}=\frac{a}{s^2+a^2}$$
+The inverse laplace transform of $Y(s)$:
+$$y(s)=0.5t-0.5\sin(1\cdot t)$$

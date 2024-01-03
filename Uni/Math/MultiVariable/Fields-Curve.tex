@@ -82,6 +82,33 @@ $(0,0)$, $(1,0)$, $(1, 1)$, and $(0, 1)$
 
 \rule{\textwidth}{0.5pt}
 
+Find the parameterization for each of the lines:\\
+$c_1$: (0,0) to (1,0)
+$$x(t)=t\qquad y(t)=0\qquad 0\leq t\leq 1$$
+$$\frac{dx}{dt}=1\qqr dx=dt$$
+$$\frac{dy}{dt}=0\qqr dy=0$$
+$$\int_0^1(t^20^2 dt + t^3\cdot0 \cdot0)=\boxed{0}$$
+
+$c_2$: (1,0) to (1,1)
+$$x(t)=1\qquad y(t)=t\qquad 0\leq t\leq 1$$
+$$\frac{dx}{dt}=0\qqr dx=0$$
+$$\frac{dy}{dt}=1\qqr dy=dt$$
+$$\int_0^1(1^2t^2 \cdot 0 + 1^3\cdot t dt)=\left[\frac{t^2}{2}\right]_0^1=\boxed{\frac{1}{2}}$$
+
+$c_3$: (1,1) to (0,1)
+$$x(t)=1-t\qquad y(t)=1\qquad 0\leq t\leq 1$$
+$$\frac{dx}{dt}=-1\qqr dx=-dt$$
+$$\frac{dy}{dt}=0\qqr dy=0$$
+$$\int_0^1((1-t)^21^2 (-dt) + (1-t)^3\cdot 1 \cdot 0)=-\int_0^1(1-t)^3dt=\left[\frac{(1-t)^3}{3}\right]_0^1=\boxed{-\frac{1}{3}}$$
+
+$c_4$: (0,1) to (0,0)
+$$x(t)=0\qquad y(t)=1-t\qquad 0\leq t\leq 1$$
+$$\frac{dx}{dt}=0\qqr dx=0$$
+$$\frac{dy}{dt}=-1\qqr dy=-dt$$
+$$\int_0^1(0^2(1-t)^2 0 + 0^3\cdot (1-t) (-dt))=\boxed{0}$$
+
+Therefore
+$$\oint x^2y^2 \ dx + x^3y\ dy=0+\frac{1}{2}-\frac{1}{3}+0=\frac{1}{6}$$
 \subsubsection{Example 3: Line integral}
 Evalute the line integral for $f(x,y)=x^2y^2$ along a straight line from origin to the point $(2,1)$
 
@@ -126,4 +153,11 @@ Use $t=y$ to parametrize the part of the line of intersection of the two planes:
 Plane 1: $y=2x-4$\\
 Plane 2: $z=3x+1$ from $(2,0,7)$ to $(3,2,10)$
 
-Ans: $r(t)=\left(\frac{1}{2}(t+4)\right)\mathbf{i}+(t)\mathbf{j}+\left(\frac{3}{2}t+7\right)\mathbf{k}$
+\rule{\textwidth}{0.5pt}
+
+Find parameterization for $x$ with $y=t$:
+$$t=2x-4 \qqr x(t)=\frac{t+4}{2}$$
+Find parameterization for $z$ using $x(t)$:
+$$z(t)=3\left(\frac{t+4}{2}\right)+1\qqr \left(\frac{3t+12}{2}\right)+1\qqr \frac{3t}{2}+7$$
+The parameterization is given by:
+$r(t)=\left(\frac{1}{2}(t+4)\right)\mathbf{i}+(t)\mathbf{j}+\left(\frac{3}{2}t+7\right)\mathbf{k}$
