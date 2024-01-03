@@ -15,7 +15,7 @@ $$\text{curl }\mathbf{F}(x,y,z)
 =\nabla \times \mathbf{F}(x,y,z)
 =\left|\begin{array}{ccc}\mathbf{i} & \mathbf{j} & \mathbf{k} \\
 \frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\
-f_{x} & f_{y} & f_{z} \end{array}\right|$$
+f_{1} & f_{2} & f_{3} \end{array}\right|$$
 $$=\left(\frac{ \partial f_{1} }{ \partial y } -\frac{ \partial f_{2} }{ \partial z } \right)\mathbf{i}+\left(\frac{ \partial f_{3} }{ \partial z } -\frac{ \partial f_{1} }{ \partial x } \right)\mathbf{j}+\left(\frac{ \partial f_{2} }{ \partial x } -\frac{ \partial f_{1} }{ \partial y } \right)\mathbf{k}$$
 
 \subsection{Green's Theorem}
@@ -81,7 +81,42 @@ $x^2+y^2\leq 1$ and the plane $2x+2y+z=3$ oriented to have a counterclockwise pr
 
 \rule{\textwidth}{0.5pt}
 
+$$\oint_{C}F\cdot dr=\iint_{S}\text{curl }F\cdot\widehat{N}dS$$
+Find curl F:
+$$\text{curl }F=
+\begin{vmatrix}
+  i&j&k\\
+\frac{ \partial  }{ \partial x } & \frac{ \partial  }{ \partial y } & \frac{ \partial  }{ \partial z } \\
+-y^3&x^3&-z^3
+\end{vmatrix}
+=i(0-0)-j(0-0)+k(3x^2-(-3y^2))=3(x^2+y^2)
+$$
+$$\widehat{N}dS=2i+2j+z$$
+Using cylindrical coordinates:
+$$0\leq r\leq 1$$
+
+
+ans:$$\frac{3\pi}{2}$$
 \subsubsection{Example 4: Divergence Theorem}
 Use the Divergence Theorem to calculate the flux of the given vector field out
 of the sphere $s$ with equation $x^2 + y^2 + z^2 = a^2$, where $a > 0$ and
-$$\mathbf{F}=(x^{2}+y^{2})\mathbf{i}+(y^{2}-z^{2})\mathbf{j}+z\mathbf{k}$$
+$$\mathbf{F}=(x^{3})\mathbf{i}+(3yz^{2})\mathbf{j}+(3y^2z+x^2)\mathbf{k}$$
+
+\rule{\textwidth}{0.5pt}
+$$\oiint_{s}(F \cdot \widehat{N}) d S=\iiint_V \operatorname{div} F d V$$
+Find div F:
+$$\text{div }\mathbf{F}=3x^2+3z^2+3y^2$$
+Use spherical coordinates:
+$$dV=\rho^2\sin(\phi)d\phi d\rho d\theta$$
+$$x^2 + y^2 + z^2 = a^2=\rho^2$$
+Limits for the integral:
+$$0\leq \rho \leq a\qquad 0\leq\phi\leq \pi\qquad 0\leq\theta\leq 2\pi$$
+Convert function to spherical:
+$$3x^2+3z^2+3y^2=3(x^2+y^2+z^2)=3\rho^2$$
+$$\int_0^{2\pi}\int_0^{\pi}\int_0^a3\rho^2\rho^2\sin(\phi)d\rho d\phi d\theta$$
+$$\int_0^{2\pi}\int_0^{\pi}\sin(\phi)\int_0^a3\rho^4d\rho d\phi d\theta$$
+$$=\int_0^{2\pi}\int_0^{\pi}\sin(\phi)\left[\frac{3\rho^5}{5} \right]_0^ad\phi d\theta=\int_0^{2\pi}\int_0^{\pi}\sin(\phi)\frac{3a^5}{5}d\phi d\theta$$
+$$=\int_0^{2\pi}\int_0^{\pi}\sin(\phi)\frac{3a^5}{5}d\phi d\theta=\frac{3a^5}{5}\int_0^{2\pi}\int_0^{\pi}\sin(\phi)d\phi d\theta$$
+$$=\frac{3a^5}{5}\int_0^{2\pi}\left[-\cos(\phi)\right]_0^\pi d\theta=\frac{3a^5}{5}\int_0^{2\pi}-(-1)-(-1) d\theta$$
+$$=\frac{6a^5}{5}\int_0^{2\pi} d\theta$$
+$$=\frac{6a^5}{5}\left[\theta\right]_0^{2\pi}=\frac{12a^5\pi}{5}$$
