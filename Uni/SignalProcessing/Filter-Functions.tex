@@ -57,17 +57,24 @@ When selecting the filter function for a given application, we are interested in
   \item Linear phase.
 \end{enumerate}
 
+\begin{center}
+  \includegraphics[width=\textwidth]{Images/Filter-Transform.png} 
+\end{center}
+
 \subsubsection{Butterworth}
 $$|H(j\omega)|^2=\frac{1}{1+(\frac{\omega}{\omega_{a}})^{2N}}$$
 where $\omega_{a}$ is the cut-off frequency [rad/s]
 
 All poles for $H(j\omega)$ lie in the left half-plane on a circle with radius $\omega_{a}$ and centre at the origin.
 
-A Butterworth filter has the following characteristics
-1. Optimal in terms of constant gain in the passband.
-2. Has 3 dB attenuation at the cut-off frequency and then the filter gain drops rapidly by 20 dB/dec. (dec is when the power of 10 changes by 1)
-3. The phase of the filter is not constant in the passband, which causes ringing at the step input.
+A Butterworth filter has the following characteristics:
+\begin{enumerate}
+  \item Optimal in terms of constant gain in the passband.
+  \item Has 3 dB attenuation at the cut-off frequency and then the filter gain drops rapidly by 20 dB/dec. (dec is when the power of 10 changes by 1)
+  \item The phase of the filter is not constant in the passband, which causes ringing at the step input.
+\end{enumerate}
 All pole pairs of a Butterworth filter have a natural natural natural frequency $\omega_{n}$, which is equal to the cut-off frequency $\omega_a$.
+
 \subsubsection{Chebyshev}
 $$|H(\omega)|^2=\frac{1}{1+e^{ 2 }T_{N}^2(\omega-\omega_{a})}$$
 where $T_{N}(\omega)$ is Chebyshev polynomial of degree N given by
@@ -79,10 +86,11 @@ $$T_{N}(\omega)=\left\{ \begin{array}{cl}
 The size of the passband ripple $\delta$ in dB is given by $\epsilon$
 $$\delta=10\cdot $$
 A Chebyshev filter has the following characteristics 
-1. Has varying gain in the passband - the size of the passband ripple can be freely selected. 
-2. The gain decreases rapidly around the cut-off frequency. 
-3. The phase of the filter is not constant in the passband, which causes ringing at the step input.
-
+\begin{enumerate}
+  \item Has varying gain in the passband - the size of the passband ripple can be freely selected. 
+  \item The gain decreases rapidly around the cut-off frequency. 
+  \item The phase of the filter is not constant in the passband, which causes ringing at the step input.
+\end{enumerate}
 The DC gain of a Chebyshev low-pass filter is not the maximum gain of the filter if the pole count is even.
 
 \subsubsection{Bessel}
@@ -90,49 +98,60 @@ The transfer function for an Nth order Bessel filter is
 $$H_{N}(s)=\frac{b_{0}}{s^N+b_{N-1} s^{N-1}+\cdots +b_{1}s+b_{0}} $$
 where
 $$b_{k}=\frac{(2N-k)!}{2^{N-k}k!(N-k)!}$$
-A Bessel filter has the following properties
-1. Does not have ripple in the passband, but the amplitude is not as constant as a Butterworth filter. 
-2. Has attenuation that is very smooth. The amplitude characteristic of the filter is like that of the first order filter for the first 6 dB of attenuation regardless of the number of poles. 
-3. The phase is almost linear with frequency within the passband.
+A Bessel filter has the following properties:
+\begin{enumerate}
+  \item Does not have ripple in the passband, but the amplitude is not as constant as a Butterworth filter. 
+  \item Has attenuation that is very smooth. The amplitude characteristic of the filter is like that of the first order filter for the first 6 dB of attenuation regardless of the number of poles. 
+  \item The phase is almost linear with frequency within the passband.
+\end{enumerate}
 
-The filter's order number
+\subsubsection{The filter's order number}
 The order number of filters can be found by reading the amplitude characteristic of a given filter function and comparing it to the attenuation requirements at the stopband frequency. 
 $$Y=20\log\left( \frac{A}{A_{\text{ max }}} \right)$$
 Frequency normalised (form factor)
 $$X=\frac{\omega}{\omega_{a}}$$
-Filter transformers
-Low pass to high pass transformation
+
+
+\subsection{Filter transformers}
+\subsubsection{Low pass to high pass transformation}
 High-pass filters can be designed from normalised prototype low-pass filters based on the following specification:
-- The filter function (Bessel, Butterworth, Chebyshev) 
-- The filter cut-off frequency $\omega_{a}$
-- The filter stopband frequency $\omega_{s}$
-- The filter stopband attenuation $A_{s}$ at the stopband frequency $\omega_{s}$
+\begin{itemize}
+  \item The filter function (Bessel, Butterworth, Chebyshev) 
+  \item The filter cut-off frequency $\omega_{a}$
+  \item The filter stopband frequency $\omega_{s}$
+  \item The filter stopband attenuation $A_{s}$ at the stopband frequency $\omega_{s}$
+\end{itemize}
 
-![[Pasted image 20230918163041.png|center|600]]
+\begin{center}
+  \includegraphics[width=\textwidth]{Images/LP-to-HP.png} 
+\end{center}
 A low-pass filter can be transformed into a high-pass filter by:
-$$H_{\text{ hp }}(s)=H_{\text{ lp }}(\bar{s})|_{\bar{s}=\frac{1}{s}}$$
+$$H_{\text{hp}}(s)=H_{\text{lp}}(\bar{s})|_{\bar{s}=\frac{1}{s}}$$
+
+Process: Low pass to high pass transformation
+\begin{enumerate}
+  \item Find the stopband frequency for the normalized low-pass filter (used for the design):$$\frac{\omega_{a}}{\omega_{s}}$$
+  \item Filter order selection based on amplitude characteristics for lowpass filters.
+  \item The transfer function of the normalized low-pass filter is transformed to the transfer function of the normalized high-pass filter by replacing $s$ with $\frac{1}{s}$
+  \item The transfer function of the denormalized high-pass filter is found by replacing $s$ with $\frac{s}{\omega_{a}}$
+\end{enumerate}
 
 
-> [!example]- Low pass to high pass transformation
-> 1. Find the stopband frequency for the normalized low-pass filter (used for the
-the design):
-$$\frac{\omega_{a}}{\omega_{s}}$$
-> 2. Filter order selection based on amplitude characteristics for lowpass filters.
-> 3. The transfer function of the normalized low-pass filter is transformed to the transfer function of the normalized high-pass filter by replacing $s$ with $\frac{1}{s}$
-> 4. The transfer function of the denormalized high-pass filter is found by replacing $s$ with $\frac{s}{\omega_{a}}$
-
-
-Low pass to bandpass transformation
+\subsubsection{Low pass to bandpass transformation}
 Bandpass filters can be designed from normalized prototype low-pass filters based on the following specification
-- The filter function (Bessel, Butterworth, Chebyshev) 
-- The filter center frequency $\omega_{s}$
-- The passband bandwidth $\Delta \omega _a$
-- Stopband bandwidth $\Delta \omega _s$
-- Filter stopband attenuation $A_{s}$
+\begin{itemize}
+  \item The filter function (Bessel, Butterworth, Chebyshev) 
+  \item The filter center frequency $\omega_{s}$
+  \item The passband bandwidth $\Delta \omega _a$
+  \item Stopband bandwidth $\Delta \omega _s$
+  \item Filter stopband attenuation $A_{s}$
+\end{itemize}
 
-![[Pasted image 20230918163750.png|center|600]]
+\begin{center}
+  \includegraphics[width=\textwidth]{Images/LP-to-BP.png} 
+\end{center}
 A low-pass filter can be transformed into a bandpass filter by
-$$H_{\text{ bp }}(s)=H_{\text{ lp }}(\bar{s})|_{\bar{s}=\frac{1}{W_{a}}\left( s+\frac{1}{s} \right)}$$
+$$H_{\text{bp}}(s)=H_{\text{lp}}(\bar{s})|_{\bar{s}=\frac{1}{W_{a}}\left( s+\frac{1}{s} \right)}$$
 
 To design the filter, the bandpass filter is normalised, i.e. the normalised stopband width and the normalised passband width are calculated as:
 $$W_{a}=\frac{\Delta f_{a}}{f_{c}}$$
@@ -141,30 +160,38 @@ and the form factor for bandpass filter:
 $$F=\frac{\Delta f_{s}}{\Delta f_{a}}=\frac{W_{s}}{W_{a}}$$
 
 
-> [!example] Low pass to bandpass transformation
-> 1. To design the filter, the bandpass filter is normalized, i.e. the normalized stopband width and the normalized passband width are calculated.
-> 2. The form factor is found.
-> 3. Filter order selection based on amplitude characteristics for lowpass filters.
-> 4. The normalised filter is found by replacing $s$ with $\frac{1}{W_{a}} \left( s + \frac{1}{s} \right)$ in the low-pass filter.
-> 5. The denormalized bandpass filter is found by replacing $s$ in the normalized bandpass filter with $\frac{s}{\omega_{c}}$.
+Process: Low pass to bandpass transformation
+\begin{enumerate}
+  \item To design the filter, the bandpass filter is normalized, i.e. the normalized stopband width and the normalized passband width are calculated.
+  \item The form factor is found.
+  \item Filter order selection based on amplitude characteristics for lowpass filters.
+  \item The normalised filter is found by replacing $s$ with $\frac{1}{W_{a}} \left( s + \frac{1}{s} \right)$ in the low-pass filter.
+  \item The denormalized bandpass filter is found by replacing $s$ in the normalized bandpass filter with $\frac{s}{\omega_{c}}$.
+\end{enumerate}
 
-Low pass to bandstop transformation
-Bandstop filters can be designed from normalised prototype low-pass filters based on the following specification
-- Filter function (Bessel, Butterworth, Chebyshev) 
-- Filter centre frequency $\omega_{c}$ 
-- Passband bandwidth $\Delta\omega_{c}$ 
-- Stopband bandwidth $\Delta\omega_{s}$ 
-- Filter stopband attenuation $A_{s}$
+\subsubsection{Low pass to bandstop transformation}
+Bandstop filters can be designed from normalised prototype low-pass filters based on the following specification:
+\begin{itemize}
+  \item Filter function (Bessel, Butterworth, Chebyshev) 
+  \item Filter centre frequency $\omega_{c}$ 
+  \item Passband bandwidth $\Delta\omega_{c}$ 
+  \item Stopband bandwidth $\Delta\omega_{s}$ 
+  \item Filter stopband attenuation $A_{s}$
+\end{itemize}
 
-![[Pasted image 20230918173146.png|center|600]]
+\begin{center}
+  \includegraphics[width=\textwidth]{Images/LP-to-BP.png} 
+\end{center}
 A low-pass filter can be transformed into a bandstop filter by
-$$H_{\text{ bs }}(s)=H_{\text{ lp }}(\bar{s})|_{\bar{s}=\frac{W_{a}}{s+\frac{1}{s}}}$$
+$$H_{\text{bs}}(s)=H_{\text{lp}}(\bar{s})|_{\bar{s}=\frac{W_{a}}{s+\frac{1}{s}}}$$
 and the form factor for bandstop filter:
 $$F=\frac{\Delta f_{a}}{\Delta f_{s}}=\frac{W_{a}}{W_{s}}$$
 
-> [!example]- Low pass to bandstop transformation
-> 1. To design the filter, the bandstop filter is normalized, i.e. the normalized stopband width and the normalized passband width are calculated.
-> 2. The form factor is found.
-> 3. Filter order selection based on amplitude characteristics for lowpass filters.
-> 4. The normalised filter is found by replacing $s$ with $\frac{W_{a}}{s+\frac{1}{s}}$ in the low-pass filter.
-> 5. The denormalized bandpass filter is found by replacing $s$ in the normalized bandpass filter with $\frac{s}{\omega_{c}}$.
+Process: Low pass to bandstop transformation
+\begin{enumerate}
+  \item To design the filter, the bandstop filter is normalized, i.e. the normalized stopband width and the normalized passband width are calculated.
+  \item The form factor is found.
+  \item Filter order selection based on amplitude characteristics for lowpass filters.
+  \item The normalised filter is found by replacing $s$ with $\frac{W_{a}}{s+\frac{1}{s}}$ in the low-pass filter.
+  \item The denormalized bandpass filter is found by replacing $s$ in the normalized bandpass filter with $\frac{s}{\omega_{c}}$.
+\end{enumerate}

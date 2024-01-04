@@ -1,1 +1,33 @@
 \section{FFT}
+\subsection{DFT}
+The DTF is given by:
+$$X(m)=\sum_{n=0}^{N-1}x(n)W_{N}^{m n}=\sum_{n=0}^{N-1}x(n)e^{\frac{-j2\pi m n}{N}}$$
+for $m=0,1,\dots,N-1$ and $W_N=e^{-j2\pi/N}$
+
+The sequence can be found from the spectrum $X(m)$:
+$$x(n)=\frac{1}{N}\sum_{m=0}^{N-1}X(m)W_{N}^{-m n}=\frac{1}{N}\sum_{m=0}^{N-1}X(m)e^{\frac{j2\pi m n}{N}}$$
+for $m=0,1,\dots,N-1$
+
+\subsection{Examples}
+\subsubsection{Example 1: DFT of a sequence}
+Consider the sequence:
+$$x(n)=\begin{cases}
+  10&n=0\\ 
+  0&n=1\\
+  0&n=2\\
+  -10&n=3\\
+  0&n=4\\
+\end{cases}$$
+Calculate the 5-point discrete Fourier transform of the sequence.
+Find $X(1)$ and $X(2)$
+
+\rule{\textwidth}{0.5pt}
+$$X(m)=\sum_{n=0}^{N-1}x(n)e^{\frac{-j2\pi m n}{N}}$$
+Insert $N=5$ and calculate the sum:
+$$X(m)=\underbrace{10e^{\frac{-j2\pi m \cdot 0}{5}}}_{n=0}+\underbrace{0}_{n=1}+\underbrace{0}_{n=2}\underbrace{-10e^{\frac{-j2\pi m \cdot 3}{5}}}_{n=3}+\underbrace{0}_{n=4}$$
+$$X(m)=10-e^{\frac{-j2\pi m \cdot 3}{5}}$$
+
+Find $X(1)$ and $X(2)$:
+$$X(1)=10-10e^{\frac{-j2\pi\cdot 1 \cdot 3}{5}}=10-10e^{\frac{-j6\pi\cdot}{5}}$$
+$$X(2)=10-10e^{\frac{-j2\pi \cdot2 \cdot 3}{5}}=10-10e^{\frac{-j12\pi}{5}}$$
+

@@ -6,14 +6,12 @@ The totality of solutions to a PDE is called its general solution, and there can
 \subsection{Classification of PDEs}
 General representation of a PDE:
 \[
-  A\frac{\partial^2u}{\partial x^2}+B\frac{\partial^2u}{\partial x\partial y}+C\frac{\partial^2u}{\partial y^2}+D\frac{\partial u}{\partial x}+E\frac{\partial u}{\partial y}+Fu=G
+  A\frac{\partial^2u}{\partial x^2}+2B\frac{\partial^2u}{\partial x\partial y}+C\frac{\partial^2u}{\partial y^2}+D\frac{\partial u}{\partial x}+E\frac{\partial u}{\partial y}+Fu=G
 \]
 \[
-  Au_{xx}+Bu_{xy}+Cu_{yy}+Du_x+Eu_y+Fu=G
+  Au_{xx}+2Bu_{xy}+Cu_{yy}+Du_x+Eu_y+Fu=G
 \]
 Conditions:
-%todo: Is this correct?
-
 $$\begin{array}{l}
 \textbf{Linear: }A,B,C,D,E,F \text{ are only function of x,y variables, not u.}\\
 \textbf{Quasi-linear: }A,B,C,D,E,F \text{ may be function of } (x,y,u,u_x,u_y)\\
@@ -22,9 +20,9 @@ $$\begin{array}{l}
 
 \subsection{Characteristics of PDEs}
 $$\begin{array}{llll}
-  B^2-4AC>0&2\text{ real roots}&2\text{ characteristics}&\textbf{Hyperbolic PDE}\\
-  B^2-4AC=0&1\text{ real roots}&1\text{ characteristics}&\textbf{Parabolic PDE}\\
-  B^2-4AC<0&0\text{ real roots}&0\text{ characteristics}&\textbf{Elliptic PDE}\\
+  AC-B^2<0&2\text{ real roots}&2\text{ characteristics}&\textbf{Hyperbolic PDE}\\
+  AC-B^2=0&1\text{ real roots}&1\text{ characteristics}&\textbf{Parabolic PDE}\\
+  AC-B^2>0&0\text{ real roots}&0\text{ characteristics}&\textbf{Elliptic PDE}\\
 \end{array}$$
 Tyoes of varius PDEs:
 
@@ -135,8 +133,8 @@ $$Au_{xx}+2Bu_{xy}+Cu_{yy}=f(x,y,u,u_x,u_y)$$
 $$A=0\qquad 2B=1\Rightarrow B=\frac{1}{2}\qquad C=-1$$
 
 Find the type:
-$$B^2-4AC=\left(\frac{1}{2}\right)^2-4\cdot 0\cdot -1=\frac{1}{4}$$
-Since $B^2-4AC>0$ the PDE is hyperbolic.
+$$AC-B^2=0\cdot -1-\left(\frac{1}{2}\right)^2=-\frac{1}{4}$$
+Since $AC-B^2<0$ the PDE is hyperbolic.
 
 Transform to normal form:
 $$Ay''-2By'+C=0\quad\Rightarrow\quad-y'-1=0\quad\Rightarrow\quad y'=-1$$
@@ -173,8 +171,8 @@ $$Au_{xx}+2Bu_{xy}+C_u{yy}=f(x,y,u,u_x,u_y)$$
 $$A=1\qquad 2B=-4\Rightarrow B=-2\qquad C=3$$
 
 Find the type:
-$$B^2-4AC=(-2)^2-4\cdot 1\cdot 3=4-7=-3$$
-Since $B^2-4AC<0$ the PDE is elliptic.
+$$AC-B^2=1\cdot 3-(-2)^2=3-4=-1$$
+Since $AC-B^2<0$ the PDE is hyperbolic.
 
 Transform to normal form:
 $$Ay''-2By'+C=0\quad\Rightarrow\quad y''+4y'+3=0\quad\Rightarrow\quad y'=\begin{cases}

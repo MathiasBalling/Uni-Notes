@@ -105,10 +105,24 @@ $$\int_{0}^1\int_0^1(6u^2v^5-6u^2v^5+3u^2v^5)\,d u\,d v=\int_{0}^1\int_0^13u^2v^
 $$=\int_{0}^1\left[u^3v^5\right]_0^1\,d v=\int_{0}^1v^5\,d v$$
 $$=\left[\displaystyle\frac{v^6}{6}\right]_0^1=\boxed{\frac{1}{6}}$$
 
-% \subsubsection{Example 4: Flux}
-%
-% \rule{\textwidth}{0.5pt}
-%
+\subsubsection{Example 4: Surface Integral}
+Evaluate $\iint_S z\ dS$ over conical surface $z=\sqrt{x^2+y^2}$ between $z=0$ and $z=1$
+
+\rule{\textwidth}{0.5pt}
+
+For a surface $S$ given by $z=g(x,y)$, where $(x,y)$ is in the domain $D$ in the $xy$-plane, the surface area is given by:
+$$\iint_{S}f(x,y,z)d S=\iint_{D}f(x,y,z(x,y))\sqrt{1+\left(\frac{ \partial g(x,y) }{ \partial x } \right)^{2}+\left(\frac{ \partial g(x,y) }{ \partial y } \right)^{2}}d x d y$$ 
+$$g(x,y)=\sqrt{x^2+y^2}$$
+$$\frac{\partial g}{\partial x}=\frac{x^2}{\sqrt{x^2+y^2}}\qquad\frac{\partial g}{\partial y}=\frac{y^2}{\sqrt{x^2+y^2}}$$
+
+$$dS=\sqrt{\frac{x^2}{x^2+y^2}+\frac{y^2}{x^2+y^2}+1}\ dxdy=\sqrt{2}dxdy$$
+Using polar coordinates:
+$$z=\sqrt{r^2}=r$$
+Limits:
+$$0\leq r\leq 1\qquad 0\leq \theta\leq 2\pi$$
+Setup integral:
+$$\int_0^{2\pi}\int_0^1r\sqrt{2}rdrd\theta=\int_0^{2\pi}\left[ \frac{\sqrt{2} r^3}{3} \right]_0^1d\theta$$
+$$=\frac{\sqrt{2}}{3}\int_0^{2\pi}d\theta=\frac{\sqrt{2}}{3}\left[ \theta \right]_0^{2\pi}=\frac{2\sqrt{2}\pi}{3}$$
 % \subsubsection{Example 5: Flux}
 %
 % \rule{\textwidth}{0.5pt}
