@@ -1,1 +1,32 @@
 \section{System-analysis}
+\subsection{Impulse response}
+The impulse response of a discrete-time system is called $h(n)$, and is identical to the output sequence of the system when the input sequence is a unit sample $\delta(n)$
+
+The impulse response sequence $h(n)$ of a system is found by inverse z-transformation of the system's transfer function $H(z)$.
+
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{Images/Impluse-response.png}
+\end{center}
+\subsection{Stability}
+\textbf{Stable system:} A system is stable if its impulse response $h(n)$ goes to zero when $n$ goes to infinity.
+$$|h(n)|\to 0 \quad\text{when }n\to \infty$$
+If all poles of the transfer function $H(z)$ are inside the unit circle.
+$$|p_i|\leq 1\quad\text{for }i=1,2,\dots,N$$
+
+\textbf{Marginally stable system:} A system is marginally stable if its impulse response $h(n)$ approaches a constant value different from zero or oscillates with constant amplitude and frequency as it approaches infinity.
+
+If one pole of the transfer function $H(z)$ are on the unit circle and the rest are inside.
+$$|p_i|\leq 1\quad\text{for }i=1,2,\dots,N$$
+$$|p_j|= 1\quad\text{for }j\in\{1,2,\dots,N\}$$
+
+\textbf{Unstable system:} A system is unstable if its impulse response $h(n)$ grows indefinitely as it approaches infinity.
+$$|h(n)|\to \infty \quad\text{when }n\to \infty$$
+If one pole of the transfer function $H(z)$ are outside the unit circle.
+$$|p_j|> 1\quad\text{for }j\in\{1,2,\dots,N\}$$
+
+\subsection{Frequency response analysis}
+A frequency response analysis gives the response of a system at a sinusoidal input sequence.
+$$y(n)=AM(\omega)\cos(\omega t+\varphi(\omega))$$
+where
+$$M(\omega)=|H(j\omega)| \qquad \qquad\varphi(\omega)=\angle H(j\omega)$$
+$$H(j\omega)=H(z)|_{z=e^{j\omega}T}\qquad\qquad H(j\omega)=|H(\omega)|\angle\varphi(\omega)$$

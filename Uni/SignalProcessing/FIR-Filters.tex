@@ -71,7 +71,6 @@ $$w(n)=\begin{cases}
 \end{cases}$$
 
 \subsection{Examples}
-\subsubsection{Low-pass filter}
 \subsubsection{High-pass filter}
 A FIR high-pass filter with cutoff frequency $f_{a}=\SI{1}{\kilo\hertz}$, a trasisition band of $\Delta f\leq\SI{0.5}{\kilo\hertz}$, maximum stopband attenuation of $H_s\leq\SI{-50}{\decibel}$ and sample frequency $f_s=\SI{5}{\kilo\hertz}$ is designed.
 
@@ -97,5 +96,4 @@ c_1=c_{-1}&=&\frac{1}{1\cdot\pi}\left(\sin(1\cdot\pi)-\sin(2\pi\cdot 1\cdot\frac
 c_2=c_{-2}&=&\frac{1}{2\cdot\pi}\left(\sin(2\cdot\pi)-\sin(2\pi\cdot 2\cdot\frac{1}{5000}\cdot1000)\right)=-0.0935\\
 c_3=c_{-3}&=&\frac{1}{3\cdot\pi}\left(\sin(3\cdot\pi)-\sin(2\pi\cdot 3\cdot\frac{1}{5000}\cdot1000)\right)=0.0624\\
 \end{eqnarray*}
-\subsubsection{Band-pass filter}
-\subsubsection{Band-stop filter}
+\subsubsection{With window function}

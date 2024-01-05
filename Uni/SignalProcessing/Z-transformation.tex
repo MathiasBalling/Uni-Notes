@@ -1,18 +1,96 @@
 \section{Z-transformation}
+\subsection{Z-transformation}
 $$X(z)=\sum_{n=0}^{\infty}x(n)z^{-n}$$
 Notation:
 $$X(z)=\mathcal{Z}\{x(n)\}\qquad x(n)=\mathcal{Z}^{-1}\{X(z)\}$$
 \subsubsection{s and z domain}
+$$X_s(s)=X(z)\qquad \text{when }z=e^{st}\quad s=\displaystyle\frac{1}{T}\ln(z)$$
+where $s=\sigma+j\omega$
+\begin{center}
+  \includegraphics[width=0.5\textwidth]{Images/z-s_domain.png}
+\end{center}
+Here we see $\sigma<0$ is mapped inside the unit circle $|z|<1$.
+\subsubsection{Transformation rules/pairs}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|>{\columncolor[HTML]{C0C0C0}}c|c|c|}
+\hline
+\textbf{Rule}& $x(n)$& $X(z)$ \\ \hline
+Z1& $ax_1(n)+bx_2(n)$&$aX_1(z)+bX_2(z)$\\ \hline
+Z2& $x(n-m)$&$z^{-m}X(z)$ \\ \hline
+Z3& $x(n)a^{-n}$ &$X(az)$ \\ \hline
+Z4&$x(n)s^{-bn}$&$X(e^{bT}z)$ \\ \hline
+Z5&$\sum_{m=0}^n x(m)h(n-m)$&$X(z)H(z)$ \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|>{\columncolor[HTML]{C0C0C0}}c|c|c|}
+\hline
+\textbf{Pair}& $x(n)$& $X(z)$ \\ \hline
+ZT1& $\delta(n)$& $1$\\ \hline
+ZT2& $u(n)$&$\frac{z}{z-1}$ \\ \hline
+ZT3& $n$ &$\frac{z}{(z-1)^2}$ \\ \hline
+ZT4&$a^n$&$\frac{z}{z-a}$ \\ \hline
+ZT5&$e^{s_0nT}$&$\frac{z}{z-e^{s_0T}}$ \\ \hline
+ZT6&$\sin(\omega_0nT)$&$\frac{\sin(\omega_0T)z}{z^2-2\cos(\omega_0T)z+1}$ \\ \hline
+ZT7&$\cos(\omega_0nT)$&$\frac{z^2-\cos(\omega_0T)z}{z^2-2\cos(\omega_0T)z+1}$ \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Differential equations}
+A N'th order differential equation, that describes a causal system:
+$$y(n)+b_{1}y(n-1)+\cdots+b_{N}y(n-N)=a_{0}x(n)+a_{1}x(n-1)+\cdots+a_{N}x(n-N)$$
+where $x(n-i)$ is the time-delayed input sequence, $y(n-i)$ is the time-delayed output sequence
+and $a_i,b_i$ are real koefficients.
+
+This can also be written as:
+$$y(n)=\sum_{i=0}^Na_ix(n-i)-\sum_{i=1}^Nb_iy(n-i)$$
+
 \subsection{Transfer Functions}
+Discrete-time systems (like continuous-time systems) can be described by transfer functions, defined as:
 $$H(z)=\frac{Y(z)}{X(z)}$$
 $H(z)$ is the transfer function.\\
 $X(z)$ is the input sequence.\\
 $Y(z)$ is the output sequence.
 
-\subsection{Inverse Z-transformation}
+A transfer function is found by Z-transformation of a differential equation:
+$$y(n)+\sum_{i=1}^Nb_iy(n-i)=\sum_{i=0}^Na_ix(n-i)$$
+By Z-transformation using Z2:
+$$Y(z)+Y(z)\sum_{i=1}^N b_i z^{-i}=X(z)\sum_{i=0}^Na_i z^{-1}$$
+The transfer function becomes:
+$$H(z)=\frac{Y(z)}{X(z)}=\frac{\sum_{i=0}^Na_i z^{-i}}{1+\sum_{i=1}^N b_i z^{-i}}=\frac{a_{0}z^{N}+a_{1}z^{N-1}+a_{2}z^{N-2}+\cdots+a_{N}}{z^N+b_{1}z^{N-1}+b_{2}z^{N-2}+\cdot\cdot\cdot\cdot+b_{N}}$$
+\subsubsection{Poles and Zeros}
+$$H(z)=\frac{P(z)}{Q(z)}$$
+Poles ($H(z)=\infty$) of z when $Q(z)=0$\\
+Zeros ($H(z)=0$) of z when $P(z)=0$
 
+Therefore a transfer function can be written as:
+$$H(z)=a_0\frac{(z-z_1)(z-z_2)\cdots(z-z_N)}{(z-p_1)(z-p_2)\cdots(z-p_N)}$$
+
+\subsection{Inverse Z-transformation}
+The inverse transform is used to determine the output response $y(n)$ of a time-discrete system for a given input stimulus $x(n)$. This analysis is performed according to the following procedure:
+\begin{enumerate}
+  \item The transfer function $H(z)$ of the system is set up with positive powers of $z$.
+  \item The input sequence $x(n)$ is z-transformed. (Use table lookup)
+  \item The output response in $z$ domain is calculated $Y(z)=H(z)X(z)$.
+  \item The output sequence $y(n)$ is calculated by inverse z-transformation of $Y(z)$.
+\end{enumerate}
+
+\subsubsection{Partial fractions}
+1. Setup a expression for $Y(z)$ with positive powers of $z$ in factorized form:
+$$Y(z)=\frac{T(z)}{N(z)}=\frac{T(z)}{(z-p_1)(z-p_2)\cdots(z-p_N)}$$
+where $p_1,p_2,\dots,p_N$ are roots of the denominator polynomial of $Y(z)$
+
+2. Divide $Y(z)$ with $z$ so that the denominator's ordinal number is greater than the numerator's ordinal number. This expression resolves into fractions:
+$$\frac{Y(z)}{z}=\frac{T(z)}{z N(z)}=\frac{k_{1}}{z-p_{1}}+\frac{k_{2}}{z-p_{2}}+\cdot\cdot\cdot+\frac{k_{N}}{z-p_{N}}$$
+
+3. The coefficients are calculated as:
+$$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
+
+4. Write $\frac{Y(z)}{z}$ in partial fraction resolved form and multiply by $z$
 \subsection{Examples}
 \subsubsection{Example 1: Z-transformation}
 \subsubsection{Example 2: Inverse Z-transformation}
