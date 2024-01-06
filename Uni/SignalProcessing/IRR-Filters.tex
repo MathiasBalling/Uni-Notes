@@ -60,7 +60,7 @@ The corresponding digital realization structure:
   \includegraphics[width=0.4\textwidth]{Images/Matched-z-2nd.png}
 \end{center}
 \subsection{Impulse invariance method}
-The following procedure is used to design digital IIR filters using the impulse invariantz transform.
+The following procedure is used to design digital IIR filters using the impulse invariant z transform.
 \begin{enumerate}
   \item Determine the frequency-normalized transfer function $H(s)$ of the analog prototype filter.
   \item Partial fractionally resolve $H(s)$ into 1st and 2nd order transfer functions (maximum number of 2nd order transfer functions).
@@ -68,6 +68,36 @@ The following procedure is used to design digital IIR filters using the impulse 
   \item Determine the coefficients of the digital transfer function.
   \item Implement the transfer function as a parallel structure.
 \end{enumerate}
+
+To find impulse invariant z-transformation, the impulse response is z-transformed:
+$$H(z)=T\cdot \mathcal{Z}[h(n)]$$
+Given a N'th order filter:
+$$H(s)=\frac{\sum_{i=0}^M A_is^i}{\sum_{i=0}^N B_is^i}\qquad M\leq N$$
+where $s_i$ is the i pole of the analog filter.
+
+Using partial fractions, it can be written as:
+$$H(s)=\sum_{i=1}^N \frac{k_i}{s-s_i}$$
+And the z-transformation is:
+$$H(z)=T\cdot \sum_{i=1}^N \frac{k_i}{1-e^{s_i T}z^{-1}}$$
+
+\subsection{1st Order System}
+$$H(s)=\frac{A_0}{s+B_0}=\frac{-\sigma_i}{s-\sigma_i}$$
+Using the impulse invariant z-transformation:
+$$H(z)=\frac{a_0}{1+b_1z^{-1}}$$
+where
+$$a_0=-\sigma_i T \qquad b_1=-e^{\sigma_iT}$$
+\subsection{2nd Order System}
+$$H(s)=\frac{A_0}{s^2+B_1s+B_0}$$
+Find the partial fractions:
+$$H(s)=\frac{k_i}{s-s_i}+\frac{k_i^*}{s-s_i^*}$$
+where
+$$s_i=\sigma_i+j\omega_i\qquad k_i=\alpha_i+j\beta_i$$
+Using the impulse invariant z-transformation:
+$$H(z)=\frac{a_0+a_1z^{-1}}{1+b_1z^{-1}+b_2z^{-2}}$$
+where
+$$a_0=-2\alpha_i T \qquad a_1=-2e^{\sigma_iT}(\alpha_i\cos(\omega_iT)-\beta_i\sin(\omega_iT))$$
+$$b_1=-(2e^{\sigma_iT}\cos(\omega_iT)) \qquad b_2=e^{2\sigma_iT}$$
+
 \subsection{Bilinear z transformation}
 The following is the procedure for the design of digital filters using bilinearz transformation.
 \begin{enumerate}
@@ -87,14 +117,14 @@ $$\Omega_a=C\tan\left({\frac{\omega_a T}{2}}\right)\qquad\mathrm{\left[rad/s\rig
 Normalized stop-band frequency:
 $$\frac{\Omega_i}{\Omega_s}=\frac{1}{\Omega_s}$$
 where $i=a$ for low and high pass and $i=c$ for band-pass and band-stop.
-\subsubsection{1. Order Bilinear z transformation}
+\subsubsection{1st Order Bilinear z transformation}
 First order system:
 $$H(s)=\frac{A_{1}s+A_{0}}{B_{1}s+B_{0}}$$
 Using bilinear z transformation:
 $$H(z)=\frac{a_0+a_1z^{-1}}{1+b_1z^{-1}}$$
 where
 $$a_{0}=\frac{A_{0}+A_{1}C}{B_{0}+B_{1}C}\qquad a_{1}=\frac{A_{0}-A_{1}C}{B_{0}+B_{1}C}\qquad b_{1}=\frac{B_{0}-B_{1}C}{B_{0}+B_{1}C}$$
-\subsubsection{2. Order Bilinear z transformation}
+\subsubsection{2nd Order Bilinear z transformation}
 A second order system:
 $$H(s)={\frac{A_{2}s^{2}+A_{1}s+A_{0}}{B_{2}s^{2}+B_{1}s+B_{0}}}$$
 Using bilinear z transformation:
@@ -103,7 +133,7 @@ where
 $$a_{0}=\frac{A_{0}+A_{1}C+A_{2}C^{2}}{B_{0}+B_{0}C+B_{2}C^{2}}\qquad a_{1}=\frac{2(A_{0}-A_{2}C^{2})}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad a_{2}=\frac{A_{0}-A_{1}C+A_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}$$
 $$b_{1}=\frac{2(B_{0}-B_{2}C^{2})}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad b_{2}=\frac{B_{0}-B_{1}C+B_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}$$
 \subsection{Examples}
-\subsubsection{Example 1: Matched 1. order z-transform}
+\subsubsection{Example 1: Matched 1st order z-transform}
 Consider the following analog first order lowpass filter with cutoff frequency $\omega_a=2\pi f_a$ where $f_a=\SI{300}{\hertz}$:
 $$H(s)=\frac{\omega_a}{s+\omega_a}=\frac{1885}{s+1885}$$
 which has a pole in $s_1=\sigma_1=-1885$.\\
@@ -117,7 +147,7 @@ $$a_0=1+b_1=0.1111$$
 The digital lowpass filter is given by:
 $$H(z)=\frac{a_1}{1+b_0z^{-1}}=\frac{0.1111}{1-0.8888z^{-1}}$$
 
-\subsubsection{Example 2: Matched 3. order matched z-transform}
+\subsubsection{Example 2: Matched 3rd order matched z-transform}
 Consider the following Butterworth 3rd order low-pass filter (frequency-normalized filter) 
 and design an equivalent digital low-pass filter with cut-off frequency at $\SI{1}{\kilo\hertz}$ and sample frequency at $\SI{8}{\kilo\hertz}$. 
 $${\tilde{H}}(s)=\frac{1}{s+1}\frac{1}{s^{2}+s+1}$$
@@ -155,7 +185,7 @@ $$H_2(z)=\frac{0.4559}{1-1.0507z^{-1}+0.4559z^{-2}}$$
 Combining the two transfer functions:
 $$H(z)=H_1(z)H_2(z)=\frac{0.5441}{1-0.4559z^{-1}}\frac{0.4052}{1-1.0507z^{-1}+0.4559z^{-2}}$$
 
-\subsubsection{Example 2: Matched 3. order impulse invariance z-transform}
+\subsubsection{Example 3: Matched 3. order impulse invariance z-transform}
 Consider the following Butterworth 3rd order low-pass filter (frequency-normalized filter) 
 and design an equivalent digital low-pass filter with cut-off frequency at $\SI{1}{\kilo\hertz}$ and sample frequency at $\SI{8}{\kilo\hertz}$. 
 $${\tilde{H}}(s)=\frac{1}{s+1}\frac{1}{s^{2}+s+1}$$
@@ -176,7 +206,7 @@ $$H(s)=\frac{k_1}{s-(s_1)}+\frac{k_2}{s-(s_2)}+\frac{k_2^*}{s-(s_2^*)}=\frac{k_1
 \textbf{3. Denormalize $k_i$ and the poles}
 
 \textbf{4. Find the coefficients of the digital transfer function}
-\subsubsection{Example 3: Bilinear z-transform}
+\subsubsection{Example 4: Bilinear z-transform}
 An analog 5th order Butterworth low-pass filter $H(s)$ has a -3 dB cut-off frequency $f_3= 3$ kHz and -30 dB stopband frequency $f_{30}= 6$ kHz. 
 The filter is digitized by bilinear z-transformation with a sample rate of 16 kHz. 
 

@@ -8,6 +8,7 @@ The sequence can be found from the spectrum $X(m)$:
 $$x(n)=\frac{1}{N}\sum_{m=0}^{N-1}X(m)W_{N}^{-m n}=\frac{1}{N}\sum_{m=0}^{N-1}X(m)e^{\frac{j2\pi m n}{N}}$$
 for $m=0,1,\dots,N-1$
 
+When performing an N-point DFT, the distance between frequencies in the DFT will be $F=f_s/N$. If a higher resolution of the frequency spectrum is desired, zero filling can be used to increase the signal to $L$ samples
 \subsection{Examples}
 \subsubsection{Example 1: DFT of a sequence}
 Consider the sequence:

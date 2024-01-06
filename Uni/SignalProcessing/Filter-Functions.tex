@@ -73,7 +73,11 @@ A Butterworth filter has the following characteristics:
   \item Has 3 dB attenuation at the cut-off frequency and then the filter gain drops rapidly by 20 dB/dec. (dec is when the power of 10 changes by 1)
   \item The phase of the filter is not constant in the passband, which causes ringing at the step input.
 \end{enumerate}
-All pole pairs of a Butterworth filter have a natural natural natural frequency $\omega_{n}$, which is equal to the cut-off frequency $\omega_a$.
+All pole pairs of a Butterworth filter have a natural frequency $\omega_{n}$, which is equal to the cut-off frequency $\omega_a$.
+
+Construction tables: Page 169 (Digital Signal Behandling: Erik Hüche)\\
+Amplitude characteristics to determine order: Page 161 (Digital Signal Behandling: Erik Hüche)
+
 
 \subsubsection{Chebyshev}
 $$|H(\omega)|^2=\frac{1}{1+e^{ 2 }T_{N}^2(\omega-\omega_{a})}$$
@@ -93,6 +97,9 @@ A Chebyshev filter has the following characteristics
 \end{enumerate}
 The DC gain of a Chebyshev low-pass filter is not the maximum gain of the filter if the pole count is even.
 
+Construction tables: Page 170 (Digital Signal Behandling: Erik Hüche)\\
+Amplitude characteristics to determine order: Page 162 (Digital Signal Behandling: Erik Hüche)
+
 \subsubsection{Bessel}
 The transfer function for an Nth order Bessel filter is
 $$H_{N}(s)=\frac{b_{0}}{s^N+b_{N-1} s^{N-1}+\cdots +b_{1}s+b_{0}} $$
@@ -104,6 +111,9 @@ A Bessel filter has the following properties:
   \item Has attenuation that is very smooth. The amplitude characteristic of the filter is like that of the first order filter for the first 6 dB of attenuation regardless of the number of poles. 
   \item The phase is almost linear with frequency within the passband.
 \end{enumerate}
+
+Construction tables: Page 173 (Digital Signal Behandling: Erik Hüche)\\
+Amplitude characteristics to determine order: Page 163 (Digital Signal Behandling: Erik Hüche)
 
 \subsubsection{The filter's order number}
 The order number of filters can be found by reading the amplitude characteristic of a given filter function and comparing it to the attenuation requirements at the stopband frequency. 
@@ -130,7 +140,7 @@ $$H_{\text{hp}}(s)=H_{\text{lp}}(\bar{s})|_{\bar{s}=\frac{1}{s}}$$
 
 Process: Low pass to high pass transformation
 \begin{enumerate}
-  \item Find the stopband frequency for the normalized low-pass filter (used for the design):$$\frac{\omega_{a}}{\omega_{s}}$$
+  \item Find the stopband frequency for the normalized low-pass filter (used for the design):$$\frac{\omega_{a}}{\omega_{s}}=\frac{f_{a}}{f_{s}}$$
   \item Filter order selection based on amplitude characteristics for lowpass filters.
   \item The transfer function of the normalized low-pass filter is transformed to the transfer function of the normalized high-pass filter by replacing $s$ with $\frac{1}{s}$
   \item The transfer function of the denormalized high-pass filter is found by replacing $s$ with $\frac{s}{\omega_{a}}$
