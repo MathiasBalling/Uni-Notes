@@ -40,6 +40,9 @@ ZT7&$\cos(\omega_0nT)$&$\frac{z^2-\cos(\omega_0T)z}{z^2-2\cos(\omega_0T)z+1}$ \\
 \end{tabular}
 \end{table}
 
+If $|x|<1$:
+$$\sum_{i=0}^\infty=\frac{1}{1-x}$$
+
 \subsection{Differential equations}
 A N'th order differential equation, that describes a causal system:
 $$y(n)+b_{1}y(n-1)+\cdots+b_{N}y(n-N)=a_{0}x(n)+a_{1}x(n-1)+\cdots+a_{N}x(n-N)$$
@@ -94,3 +97,47 @@ $$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
 \subsection{Examples}
 \subsubsection{Example 1: Z-transformation}
 \subsubsection{Example 2: Inverse Z-transformation}
+\subsubsection{Example 3: Differential equation}
+Find the transfer function of:
+$$2y(n)+3y(n-2)=3x(n)+2x(n-2)$$
+
+\rule{\textwidth}{0.5pt}
+
+$$2Y(z)+3Y(z)z^{-2}=3X(z)+2X(z)z^{-2}$$
+$$Y(z)(2+3z^{-2})=X(z)(3+2z^{-2})$$
+$$\frac{Y(z)}{X(z)}=\frac{3+2z^{-2}}{2+3z^{-2}}=\frac{3z^2+2}{2z^2+3}$$
+\subsubsection{Example 4: Differential equation}
+Find the transfer function from the following differential equation. It must have positive exponents.
+$$y_k+5y_{k-1}+2y_{k-2}=x_k-x_{k-1}$$
+
+\rule{\textwidth}{0.5pt}
+
+$$Y(z)+5Y(z)z^{-1}+2Y(z)z^{-2}=X(z)-X(z)z^{-1}$$
+$$Y(z)(1+5z^{-1}+2z^{-2})=X(z)(1-z^{-1})$$
+$$\frac{Y(z)}{X(z)}=\frac{1-z^{-1}}{1+5z^{-1}+2z^{-2}}\frac{z^2}{z^2}=\frac{z^2-z}{z^2+5z+2}$$
+
+\subsubsection{Example 5: Poles and Zeros}
+How many poles and zeros does the transfer function have:
+$$G(z)=\frac{z^2-3}{z^3+2z}$$
+
+\rule{\textwidth}{0.5pt}
+
+There are as many poles and zeroes as the ordinal number:\\
+2 Zeros\\
+3 Poles
+
+\subsubsection{Example 6: Impluse Response Sequence}
+Find the Impluse Response Sequence of the following discrete transfer function:
+$$G(z)=\frac{Y(z)}{X(z)}=\frac{1}{1-0.75z^{-1}+0.125z^{-2}}$$
+
+\rule{\textwidth}{0.5pt}
+
+$$G(z)=\frac{Y(z)}{X(z)}=\frac{z^2}{z^2-0.75z+0.125}$$
+Factor:
+$$G(z)=\frac{z^2}{(z-0.5)(z-0.25)}$$
+$$G(z)=\frac{z}{z-0.5}\cdot\frac{z}{z-0.25}$$
+Inverse z-transformation:
+$$g(n)=\mathcal{Z}^{-1}\left\{\frac{z}{z-0.5}\right\}\cdot\mathcal{Z}^{-1}\left\{\frac{z}{z-0.25}\right\}$$
+Using table lookup (ZT4):
+$$a^n=\mathcal{Z}^{-1}\left\{\frac{z}{z-a}\right\}$$
+$$g(n)=0.5^n\cdot 0.25^n$$

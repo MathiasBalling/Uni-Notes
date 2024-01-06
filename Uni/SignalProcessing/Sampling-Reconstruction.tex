@@ -1,3 +1,20 @@
 \section{Sampling-Reconstruction}
 \textbf{Nyquist-Shannon Phrase:}\\
 A continuous-time signal $x(t)$ can only be correctly recovered from $x_{s}(t)$ if the sampling frequency is at least \textbf{twice} the highest frequency in the spectrum of $x(t)$.
+
+\subsection{Examples}
+\subsubsection{Example 1: Reconstruction}
+Which of the following sample frequencies can be used to fully reconstruct the signal:
+$$x(t)=\cos(6\pi\cdot t+2)+\sin(5\pi\cdot t+4)$$
+\begin{enumerate}
+  \item $f_s=1\text{ kHz}$
+  \item $f_s=2\text{ kHz}$
+  \item $f_s=3\text{ kHz}$
+  \item $f_s=10\text{ kHz}$
+\end{enumerate}
+
+\rule{\textwidth}{0.5pt}
+
+Using Nyquist-Shannon Phrase, we know the samples frequency must be a least twice as high as the highest frequency in the signal.
+
+The highest in $x(t)$ is $2\pi f_s=6\pi\qr 2f_s\geq 6$ therefore 10 kHz can be used to fully reconstruct the signal.

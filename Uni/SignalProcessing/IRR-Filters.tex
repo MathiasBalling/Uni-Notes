@@ -1,4 +1,5 @@
 \section{IRR-Filters}
+\textbf{Infinite Impulse Response} filters where the impulse response of the system is of infinite duration.
 \subsection{Design of IRR-filters}
 Design of IRR-filters is done in the following steps:
 \begin{enumerate}
@@ -79,6 +80,13 @@ The following is the procedure for the design of digital filters using bilinearz
   \item The filter is implemented as a cascaded realization structure.
 \end{enumerate}
 \subsubsection{Warping and Pre-warping}
+$$\Omega={\frac{2}{T}}\tan\left({\frac{\omega T}{2}}\right)\qquad\mathrm{\left[rad/s\right]}$$
+$$\omega={\frac{2}{T}}\tan^{-1}\left({\frac{\Omega T}{2}}\right)\qquad\mathrm{\left[rad/s\right]}$$
+
+$$\Omega_a=C\tan\left({\frac{\omega_a T}{2}}\right)\qquad\mathrm{\left[rad/s\right]}$$
+Normalized stop-band frequency:
+$$\frac{\Omega_i}{\Omega_s}=\frac{1}{\Omega_s}$$
+where $i=a$ for low and high pass and $i=c$ for band-pass and band-stop.
 \subsubsection{1. Order Bilinear z transformation}
 First order system:
 $$H(s)=\frac{A_{1}s+A_{0}}{B_{1}s+B_{0}}$$
@@ -169,3 +177,9 @@ $$H(s)=\frac{k_1}{s-(s_1)}+\frac{k_2}{s-(s_2)}+\frac{k_2^*}{s-(s_2^*)}=\frac{k_1
 
 \textbf{4. Find the coefficients of the digital transfer function}
 \subsubsection{Example 3: Bilinear z-transform}
+An analog 5th order Butterworth low-pass filter $H(s)$ has a -3 dB cut-off frequency $f_3= 3$ kHz and -30 dB stopband frequency $f_{30}= 6$ kHz. 
+The filter is digitized by bilinear z-transformation with a sample rate of 16 kHz. 
+
+\rule{\textwidth}{0.5pt}
+
+$$N\left[\frac{2 \tan ^{-1}\left(\frac{3000\ 2 \pi }{16000\ 2}\right)}{\frac{1}{16000}}\right]$$

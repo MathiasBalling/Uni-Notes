@@ -84,7 +84,7 @@ $$T_{N}(\omega)=\left\{ \begin{array}{cl}
 \end{array} \right.$$
 
 The size of the passband ripple $\delta$ in dB is given by $\epsilon$
-$$\delta=10\cdot $$
+$$\delta=10\cdot \log(\epsilon^2+1)$$
 A Chebyshev filter has the following characteristics 
 \begin{enumerate}
   \item Has varying gain in the passband - the size of the passband ripple can be freely selected. 
@@ -156,7 +156,13 @@ $$H_{\text{bp}}(s)=H_{\text{lp}}(\bar{s})|_{\bar{s}=\frac{1}{W_{a}}\left( s+\fra
 To design the filter, the bandpass filter is normalised, i.e. the normalised stopband width and the normalised passband width are calculated as:
 $$W_{a}=\frac{\Delta f_{a}}{f_{c}}$$
 $$W_{s}=\frac{\Delta f_{s}}{f_{c}}$$
-and the form factor for bandpass filter:
+$$\omega_c=\sqrt{\omega_{a_1}\cdot\omega_{a_1}}$$
+If $\omega_c$ and $\Delta\omega_a$ is known:
+$$\omega_{a_1}=\sqrt{\frac{(\Delta \omega_a)^2}{4}+\omega_c^2}-\frac{\Delta\omega_a}{2}$$
+$$\omega_{a_2}=\sqrt{\frac{(\Delta \omega_a)^2}{4}+\omega_c^2}+\frac{\Delta\omega_a}{2}$$
+These can also be used with $\omega_s$
+
+The form factor for bandpass filter:
 $$F=\frac{\Delta f_{s}}{\Delta f_{a}}=\frac{W_{s}}{W_{a}}$$
 
 
@@ -180,7 +186,7 @@ Bandstop filters can be designed from normalised prototype low-pass filters base
 \end{itemize}
 
 \begin{center}
-  \includegraphics[width=\textwidth]{Images/LP-to-BP.png} 
+  \includegraphics[width=\textwidth]{Images/LP-to-BS.png} 
 \end{center}
 A low-pass filter can be transformed into a bandstop filter by
 $$H_{\text{bs}}(s)=H_{\text{lp}}(\bar{s})|_{\bar{s}=\frac{W_{a}}{s+\frac{1}{s}}}$$
@@ -195,3 +201,6 @@ Process: Low pass to bandstop transformation
   \item The normalised filter is found by replacing $s$ with $\frac{W_{a}}{s+\frac{1}{s}}$ in the low-pass filter.
   \item The denormalized bandpass filter is found by replacing $s$ in the normalized bandpass filter with $\frac{s}{\omega_{c}}$.
 \end{enumerate}
+
+\subsection{Examples}
+\subsubsection{Example 1:}

@@ -48,6 +48,11 @@ Kasier ($\beta=2\pi$)&4.4 & $2.2f_s/\Delta_f$ &  65 dB&0.01 dB\\ \hline
 \end{tabular}
 \end{table}
 
+The new fouirer coefficients $c'_m$ if $-M\leq m \leq M$:
+$$c'_m=c_mw_m$$
+Therefore 
+$$a_i=c'_{M-i}$$
+
 \subsubsection{Rectangular window}
 $$w(n)=\begin{cases}
 1 & \text{if } -M\leq n\leq M\\
@@ -71,7 +76,7 @@ $$w(n)=\begin{cases}
 \end{cases}$$
 
 \subsection{Examples}
-\subsubsection{High-pass filter}
+\subsubsection{Example 1: High-pass filter}
 A FIR high-pass filter with cutoff frequency $f_{a}=\SI{1}{\kilo\hertz}$, a trasisition band of $\Delta f\leq\SI{0.5}{\kilo\hertz}$, maximum stopband attenuation of $H_s\leq\SI{-50}{\decibel}$ and sample frequency $f_s=\SI{5}{\kilo\hertz}$ is designed.
 
 \textbf{Which window function should be used?}\\
@@ -87,13 +92,45 @@ Therefore the minimum filter order is $2M=40$.
 \textbf{What is the transfer function for the filter?}\\
 Using the following formula:
 $$H(z)=\frac{Y(z)}{X(z)}=\sum_{i=0}^{2M}a_iz^{-i}$$
-where $a_i=c_{M-i}$ is the coefficient for the $z^{-i}$ term, which for a high-pass filter is given by:
+where $a_i=c_{M-i}w_{M-i}$ is the coefficient for the $z^{-i}$ term, which for a high-pass filter is given by:
 $$c_0=1-2Tf_a\qquad c_m=\frac{1}{m\pi}(\sin(m\pi)-\sin(2\pi m T f_{a}))$$
-Calculating the coefficients:
+And the Hamming window ($\alpha=0.54$):
+$$w_m=\alpha+(1-\alpha)\cos\left(\frac{m\pi}{M}\right)$$
+Calculating the coefficients for the filter without window:
 \begin{eqnarray*}
 c_0&=&1-2\cdot\frac{1}{5000}\cdot1000=0.6\\
 c_1=c_{-1}&=&\frac{1}{1\cdot\pi}\left(\sin(1\cdot\pi)-\sin(2\pi\cdot 1\cdot\frac{1}{5000}\cdot1000)\right)=-0.3027\\
 c_2=c_{-2}&=&\frac{1}{2\cdot\pi}\left(\sin(2\cdot\pi)-\sin(2\pi\cdot 2\cdot\frac{1}{5000}\cdot1000)\right)=-0.0935\\
 c_3=c_{-3}&=&\frac{1}{3\cdot\pi}\left(\sin(3\cdot\pi)-\sin(2\pi\cdot 3\cdot\frac{1}{5000}\cdot1000)\right)=0.0624\\
 \end{eqnarray*}
-\subsubsection{With window function}
+Calculating the coefficients for the window:
+$$w_0=0.54+(1-0.54)\cos\left(\frac{0\cdot\pi}{20}\right)=1$$
+$$w_1=w_{-1}=0.54+(1-0.54)\cos\left(\frac{1\pi}{20}\right)=0.9943$$
+$$w_2=w_{-2}=0.54+(1-0.54)\cos\left(\frac{2\pi}{20}\right)=0.9775$$
+$$w_3=w_{-3}=0.54+(1-0.54)\cos\left(\frac{3\pi}{20}\right)= 0.9499$$
+
+Calculate $a_i=c_{M-i}w_{M-i}$:
+$$a_{20}=c_{20-20}w_{20-20}=c_{0}w_{0}=0.6\cdot 1=0.6$$
+$$a_{19}=c_1w_1=-0.3027\cdot 0.9943=-0.3010$$
+$$a_{18}=c_2w_2=-0.0935\cdot 0.9775=-0.0914$$
+$$a_{17}=c_3w_3=0.0624\cdot 0.9499=0.0592$$
+
+\subsubsection{Example 2: Band-stop filter}
+Find the filter coefficients for a FIR band-stop filter without a window. 
+The filter has cutoff frequencies: $f_{a_1}=1\text{ kHz }f_{a_2}=2\text{ kHz}$ and a sample frequency of $f_s=10\text{ kHz}$.
+The filter shall have 5 samples.
+
+\rule{\textwidth}{0.5pt}
+
+For a band-stop filter:
+$$c_0=1-2T(f_{a_2}-f_{a_1})\qquad c_m=\frac{1}{m\pi}(\sin(m\pi)+\sin(2\pi m T f_{a_{1}})-\sin(2\pi m T f_{a_{2}}))$$
+Calculate the coefficients:
+$$T=\frac{1}{f_s}=0,0001$$
+$$M=\frac{N-1}{2}=2$$
+$$c_0=1-2T(f_{a_2}-f_{a_1})=1-2(0,0001)(2000-1000)=1-0.2=\boxed{0.8}$$
+$$c_m=\frac{1}{m\pi}(\sin(m\pi)+\sin(2\pi m (0,0001) 1000)-\sin(2\pi m (0.0001) 2000))$$
+$$=\frac{1}{m\pi}(\sin(m\pi)+\sin(2\pi m (0.1))-\sin(2\pi m (0.2)))$$
+$$c_1=c_{-1}=\frac{1}{1\pi}(\sin(1\pi)+\sin(2\pi 1 (0.1))-\sin(2\pi 1 (0.2)))$$
+$$=\frac{1}{\pi}(\sin(0.2\pi)-\sin(0.4\pi)=\boxed{-0.1156}$$
+$$c_2=c_{-2}=\frac{1}{2\pi}(\sin(2\pi)+\sin(2\pi 2 (0.1))-\sin(2\pi 2 (0.2)))$$
+$$=\frac{1}{2\pi}(\sin(0.4\pi)-\sin(0.8\pi)=\boxed{0.0578}$$

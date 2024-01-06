@@ -30,3 +30,23 @@ $$y(n)=AM(\omega)\cos(\omega t+\varphi(\omega))$$
 where
 $$M(\omega)=|H(j\omega)| \qquad \qquad\varphi(\omega)=\angle H(j\omega)$$
 $$H(j\omega)=H(z)|_{z=e^{j\omega}T}\qquad\qquad H(j\omega)=|H(\omega)|\angle\varphi(\omega)$$
+
+\subsection{Examples}
+\subsubsection{Example 1: Stability}
+Is the following transfer function stable?
+$$G(z)=\frac{(z+0.2)(z-0.2)}{(z+0.5)(z-1.1)}$$
+
+\rule{\textwidth}{0.5pt}
+
+Looking at the poles we see:
+$$p_1=-0.5\qquad p_2=1.1$$
+Since $|p_2|> 1$ the transfer function is not stable.
+\subsubsection{Example 2: Stability}
+Is the following transfer function stable?
+$$G(z)=\frac{z+2}{(z-0.9)(z+0.2)}$$
+
+\rule{\textwidth}{0.5pt}
+
+Looking at the poles we see:
+$$p_1=0.9\qquad p_2=-0.2$$
+Since $|p_1|< 1$ and $|p_2|< 1$ the transfer function is stable.
