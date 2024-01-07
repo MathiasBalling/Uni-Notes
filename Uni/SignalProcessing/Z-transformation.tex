@@ -95,11 +95,15 @@ $$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
 
 4. Write $\frac{Y(z)}{z}$ in partial fraction resolved form and multiply by $z$
 \subsection{DC-amplification}
-For z-domain:
+\textbf{For z-domain:}
 $$A_{DC}=\lim_{z\to 1}H(z)$$
-$$H(z)=\frac{a_0+}{}$$
-For s-domain:
+To find the DC-amplification in z-domain at $f_x$ when the sample frequency of the filter is $f_s$:
+$$|A(f_x)|=|H(e^{j\omega_x T_s})|$$
+\textbf{For s-domain:}
 $$A_{DC}=\lim_{s\to 0}H(s)$$
+To find the DC-amplification in s-domain at $f_x$:
+$$|A(f_x)|=|H(j\omega_x)|$$
+
 \subsection{Examples}
 \subsubsection{Example 1: Z-transformation}
 \subsubsection{Example 2: Inverse Z-transformation}
@@ -184,3 +188,5 @@ There are as many poles and zeroes as the ordinal number:\\
 2 Zeros\\
 3 Poles
 
+\subsubsection{Example 7: DC-amplification}
+\subsubsection{Example 8: DC-amplification}

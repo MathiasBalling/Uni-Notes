@@ -225,9 +225,47 @@ $$H(z)=T\cdot \sum_{i=1}^N \frac{k_i}{1-e^{s_i T}z^{-1}}$$
 $$T=\frac{1}{f_s}=\frac{1}{8000}$$
 Just insert the values to get $H(z)$...
 \subsubsection{Example 4: Bilinear z-transform}
-An analog 5th order Butterworth low-pass filter $H(s)$ has a -3 dB cut-off frequency $f_3= 3$ kHz and -30 dB stopband frequency $f_{30}= 6$ kHz. 
-The filter is digitized by bilinear z-transformation with a sample rate of 16 kHz. 
+Design a bandpass filter with maximum flat passband that meets the following specification:
+\begin{itemize}
+  \item Center frequency $f_c= 1.5$ kHz.
+  \item Passband width (-3 dB) $\Delta f_3= 250$ Hz.
+  \item Stop bandwidth (-40 dB) $\Delta f_{40}\leq 1.1$ kHz.
+\end{itemize}
+The digital filter must be found using bilinear z-transformation and have a sample frequency of 10 kHz
 
 \rule{\textwidth}{0.5pt}
 
-$$N\left[\frac{2 \tan ^{-1}\left(\frac{3000\ 2 \pi }{16000\ 2}\right)}{\frac{1}{16000}}\right]$$
+Find the prewarping constant:
+$$C=\cot\left(\frac{\omega_cT}{2}\right)=\cot\left(\frac{2\pi1500\cdot 1/10000}{2}\right)=1.963$$
+Using:
+$$f_{a_1}=\sqrt{\frac{(\Delta f_a)^2}{4}+f_c^2}-\frac{\Delta f_a}{2}$$
+$$f_{a_2}=\sqrt{\frac{(\Delta f_a)^2}{4}+f_c^2}+\frac{\Delta f_a}{2}$$
+Find the frequencies (log scale):
+$$f_{3_1}=\sqrt{\frac{(250)^2}{4}+1500^2}-\frac{250}{2}=1380.2$$
+$$f_{3_2}=\sqrt{\frac{(250)^2}{4}+1500^2}+\frac{250}{2}=1630.2$$
+$$f_{40_1}=\sqrt{\frac{(1100)^2}{4}+1500^2}-\frac{1100}{2}=1047.65$$
+$$f_{40_2}=\sqrt{\frac{(1100)^2}{4}+1500^2}+\frac{1100}{2}=2147.65$$
+Find the prewarped frequencies using:
+$$\Omega_a=C\tan\left({\frac{\omega_a T}{2}}\right)\qquad\mathrm{\left[rad/s\right]}$$
+$$\Omega_{3_1}=1.963\cdot\tan\left({\frac{2\pi 1380.2\cdot 1/10000}{2}}\right)=0.9088$$
+$$\Omega_{3_2}=1.963\cdot\tan\left({\frac{2\pi 1630.2\cdot 1/10000}{2}}\right)=1.10355$$
+$$\Omega_{40_1}=1.963\cdot\tan\left({\frac{2\pi 1047.65\cdot 1/10000}{2}}\right)=0.670157$$
+$$\Omega_{40_2}=1.963\cdot\tan\left({\frac{2\pi 2147.65\cdot 1/10000}{2}}\right)=1.57028$$
+
+$$W_3=1.10355-0.9088=0.19475$$
+$$W_{40}=1.57028-0.670157=0.900123$$
+Form factor for bandpass:
+$$F=\frac{W_{40}}{W_3}=4.62194$$
+From the book:\\
+We need a 4th order Butterworth filter:
+$$\frac{1}{(s^2+1.84776s+1)}\frac{1}{(s^2+0.76537s+1)}$$
+Transform to band-pass filter: ...
+
+And then:
+
+Using bilinear z transformation:
+$$H(z)={\frac{a_{0}+a_{1}z^{-1}+a_{2}z^{-2}}{1+b_{1}z^{-1}+b_{2}z^{-2}}}$$
+where
+$$a_{0}=\frac{A_{0}+A_{1}C+A_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad a_{1}=\frac{2(A_{0}-A_{2}C^{2})}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad a_{2}=\frac{A_{0}-A_{1}C+A_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}$$
+$$b_{1}=\frac{2(B_{0}-B_{2}C^{2})}{B_{0}+B_{1}C+B_{2}C^{2}}\qquad b_{2}=\frac{B_{0}-B_{1}C+B_{2}C^{2}}{B_{0}+B_{1}C+B_{2}C^{2}}$$
+
