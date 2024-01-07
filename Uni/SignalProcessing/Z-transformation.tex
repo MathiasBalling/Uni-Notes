@@ -82,7 +82,7 @@ The inverse transform is used to determine the output response $y(n)$ of a time-
   \item The output sequence $y(n)$ is calculated by inverse z-transformation of $Y(z)$.
 \end{enumerate}
 
-\subsubsection{Partial fractions}
+\subsubsection{Partial fractions for z-domain}
 1. Setup a expression for $Y(z)$ with positive powers of $z$ in factorized form:
 $$Y(z)=\frac{T(z)}{N(z)}=\frac{T(z)}{(z-p_1)(z-p_2)\cdots(z-p_N)}$$
 where $p_1,p_2,\dots,p_N$ are roots of the denominator polynomial of $Y(z)$
@@ -94,6 +94,12 @@ $$\frac{Y(z)}{z}=\frac{T(z)}{z N(z)}=\frac{k_{1}}{z-p_{1}}+\frac{k_{2}}{z-p_{2}}
 $$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
 
 4. Write $\frac{Y(z)}{z}$ in partial fraction resolved form and multiply by $z$
+\subsection{DC-amplification}
+For z-domain:
+$$A_{DC}=\lim_{z\to 1}H(z)$$
+$$H(z)=\frac{a_0+}{}$$
+For s-domain:
+$$A_{DC}=\lim_{s\to 0}H(s)$$
 \subsection{Examples}
 \subsubsection{Example 1: Z-transformation}
 \subsubsection{Example 2: Inverse Z-transformation}
