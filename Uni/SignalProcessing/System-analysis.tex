@@ -51,4 +51,21 @@ Looking at the poles we see:
 $$p_1=0.9\qquad p_2=-0.2$$
 Since $|p_1|< 1$ and $|p_2|< 1$ the transfer function is stable.
 
-\subsubsection{Example 3: Stability}
+\subsubsection{Example 3: Impluse Response}
+Find the Impluse Response Sequence of the following discrete transfer function:
+$$G(z)=\frac{Y(z)}{X(z)}=\frac{1}{1-0.75z^{-1}+0.125z^{-2}}$$
+
+\rule{\textwidth}{0.5pt}
+
+The input impluse $x(n)=\delta(n)$:
+$$G(z)=\frac{Y(z)}{X(z)}=1\cdot\frac{z^2}{z^2-0.75z+0.125}$$
+Factor:
+$$G(z)=\frac{z^2}{(z-0.5)(z-0.25)}$$
+$$G(z)=\frac{z}{z-0.5}\cdot\frac{z}{z-0.25}$$
+Inverse z-transformation:
+$$g(n)=\mathcal{Z}^{-1}\left\{\frac{z}{z-0.5}\right\}\cdot\mathcal{Z}^{-1}\left\{\frac{z}{z-0.25}\right\}$$
+Using table lookup (ZT4):
+$$a^n=\mathcal{Z}^{-1}\left\{\frac{z}{z-a}\right\}$$
+$$g(n)=0.5^n\cdot 0.25^n$$
+
+\subsubsection{Example 3: Frequency Response}

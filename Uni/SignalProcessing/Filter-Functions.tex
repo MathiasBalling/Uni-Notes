@@ -213,4 +213,39 @@ Process: Low pass to bandstop transformation
 \end{enumerate}
 
 \subsection{Examples}
-\subsubsection{Example 1:}
+\subsubsection{Example 1: Butterworth High-pass filter}
+Design a Butterworth high-pass filer that have stopband attenuation of 50 dB and the following amplitude characteristics:
+$$\omega_s=1200\qquad \omega_a=6000$$
+
+\rule{\textwidth}{0.5pt}
+
+Stopband frequency for the low-pass filter:
+$$\frac{\omega_a}{\omega_s}=\frac{6000}{1200}=5$$
+Using fig. 3.9 on Page 161 (Digital Signal Behandling: Erik Hüche):\\
+The filter orden is 4.
+
+Using table 3.1 on Page 169 (Digital Signal Behandling: Erik Hüche):\\
+The normalized filter is:
+$$H(s)_{lp}=\frac{1}{s^2+1.84776s+1}\frac{1}{s^2+0.76537s+1}$$
+Transform to high by $s=1/s$:
+$$H(s)_{hp}=\frac{1}{(1/s)^2+1.84776/s+1}\frac{1}{(1/s)^2+0.76537/s+1}$$
+$$H(s)_{hp}=\frac{s^3}{1+1.84776+1}\frac{s^3}{(1+0.76537+1}$$
+Denormalize $s=s/\omega_a$:
+$$H(s)_{hp}=\frac{(s/6000)^3}{1+1.84776+1}\frac{(s/6000)^3}{(1+0.76537+1}$$
+
+\subsubsection{Example 2: Chebyshev Band-pass filter}
+Design a Chebyshev band-pass filter with the following amplitude characteristics:
+\begin{center}
+  \includegraphics[width=0.4\textwidth]{Images/Chev-bandpass-ex.png}
+\end{center}
+
+\rule{\textwidth}{0.5pt}
+
+Find $W_a, W_s, F$ for the normalised bandpass filter:
+$$F=\frac{\Delta f_{s}}{\Delta f_{a}}=\frac{W_{s}}{W_{a}}=\frac{1000}{250}=4$$
+The filter orden from fig 3.12 2 dB Chebyshev filter since 3 dB is not in the book:\\
+4th order filter must be used.
+
+Using table 3.1 on Page 169 (Digital Signal Behandling: Erik Hüche):\\
+The normalized filter is:
+% $$H(s)_{lp}=\frac{1}{s^2+1.84776s+1}\frac{1}{s^2+0.76537s+1}$$

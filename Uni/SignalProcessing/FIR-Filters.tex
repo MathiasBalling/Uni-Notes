@@ -86,13 +86,9 @@ The Hamming window is chosen, which has a $B_n=4$ and minimum stopband attenuati
 \textbf{What is the minimum filter order?}\\
 The filter order is given by $2M$, where $M$ is:
 $$M=\frac{B_nf_s}{2\Delta f}=\frac{4\cdot5000}{2\cdot 500}=20$$
-This satisfies $M_{min}$ of $20\geq\frac{2f_s}{\Delta_f}=\frac{2\cdot5000}{500}=20$ for the Hamming window.
 Therefore the minimum filter order is $2M=40$.
 
-\textbf{What is the transfer function for the filter?}\\
-Using the following formula:
-$$H(z)=\frac{Y(z)}{X(z)}=\sum_{i=0}^{2M}a_iz^{-i}$$
-where $a_i=c_{M-i}w_{M-i}$ is the coefficient for the $z^{-i}$ term, which for a high-pass filter is given by:
+\textbf{What is the coefficients for the filter?}
 $$c_0=1-2Tf_a\qquad c_m=\frac{1}{m\pi}(\sin(m\pi)-\sin(2\pi m T f_{a}))$$
 And the Hamming window ($\alpha=0.54$):
 $$w_m=\alpha+(1-\alpha)\cos\left(\frac{m\pi}{M}\right)$$
@@ -103,17 +99,21 @@ c_1=c_{-1}&=&\frac{1}{1\cdot\pi}\left(\sin(1\cdot\pi)-\sin(2\pi\cdot 1\cdot\frac
 c_2=c_{-2}&=&\frac{1}{2\cdot\pi}\left(\sin(2\cdot\pi)-\sin(2\pi\cdot 2\cdot\frac{1}{5000}\cdot1000)\right)=-0.0935\\
 c_3=c_{-3}&=&\frac{1}{3\cdot\pi}\left(\sin(3\cdot\pi)-\sin(2\pi\cdot 3\cdot\frac{1}{5000}\cdot1000)\right)=0.0624\\
 \end{eqnarray*}
+And so on... to $c_M=c_{20}$
+
 Calculating the coefficients for the window:
 $$w_0=0.54+(1-0.54)\cos\left(\frac{0\cdot\pi}{20}\right)=1$$
 $$w_1=w_{-1}=0.54+(1-0.54)\cos\left(\frac{1\pi}{20}\right)=0.9943$$
 $$w_2=w_{-2}=0.54+(1-0.54)\cos\left(\frac{2\pi}{20}\right)=0.9775$$
 $$w_3=w_{-3}=0.54+(1-0.54)\cos\left(\frac{3\pi}{20}\right)= 0.9499$$
+And so on... to $w_M=w_{20}$
 
-Calculate $a_i=c_{M-i}w_{M-i}$:
+Calculate the final coefficients $a_i=c_{M-i}w_{M-i}$:
 $$a_{20}=c_{20-20}w_{20-20}=c_{0}w_{0}=0.6\cdot 1=0.6$$
 $$a_{19}=c_1w_1=-0.3027\cdot 0.9943=-0.3010$$
 $$a_{18}=c_2w_2=-0.0935\cdot 0.9775=-0.0914$$
 $$a_{17}=c_3w_3=0.0624\cdot 0.9499=0.0592$$
+And so on... from $a_0 \to a_{2M}=a_{40}$
 
 \subsubsection{Example 2: Band-stop filter}
 Find the filter coefficients for a FIR band-stop filter without a window. 
@@ -134,7 +134,7 @@ $$c_1=c_{-1}=\frac{1}{1\pi}(\sin(1\pi)+\sin(2\pi 1 (0.1))-\sin(2\pi 1 (0.2)))$$
 $$=\frac{1}{\pi}(\sin(0.2\pi)-\sin(0.4\pi)=\boxed{-0.1156}$$
 $$c_2=c_{-2}=\frac{1}{2\pi}(\sin(2\pi)+\sin(2\pi 2 (0.1))-\sin(2\pi 2 (0.2)))$$
 $$=\frac{1}{2\pi}(\sin(0.4\pi)-\sin(0.8\pi)=\boxed{0.0578}$$
-The coefficients is ($a_i=c_{M-i}$):
+The coefficients are ($a_i=c_{M-i}$):
 $$a_0=0.0578$$
 $$a_1=-0.1156$$
 $$a_2=0.8$$

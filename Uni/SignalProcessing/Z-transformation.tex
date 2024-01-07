@@ -97,7 +97,59 @@ $$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
 \subsection{Examples}
 \subsubsection{Example 1: Z-transformation}
 \subsubsection{Example 2: Inverse Z-transformation}
-\subsubsection{Example 3: Differential equation}
+Given a transfer function:
+$$H(z)=\frac{1}{1-0.5z^{-1}}=\frac{z}{z-0.5}$$
+Find the output sequence when the input sequence is the unit step sequence $u(n)$. $y(n)=0\quad n<0$
+
+\rule{\textwidth}{0.5pt}
+
+First find the z-transformation of $u(n)$ (ZT2):
+$$X(z)=\frac{z}{z-1}$$
+$$Y(z)=X(z)\cdot H(z)=\frac{z}{z-1}\cdot \frac{z}{z-0.5}=\frac{z^2}{(z-1)(z-0.5)}$$
+The two poles are:
+$$p_1=1\qquad p_2=0.5$$
+Find the partial fractions:
+$$\frac{Y(z)}{z}=\frac{z}{(z-1)(z-0.5)}=\frac{k_1}{z-1}+\frac{k_2}{z-0.5}$$
+Using:
+$$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
+We get:
+$$k_{1}=(z-1)\frac{z}{(z-1)(z-0.5)}\vert_{z=1}=\frac{1}{1-0.5}=2$$
+$$k_{2}=(z-0.5)\frac{z}{(z-1)(z-0.5)}\vert_{z=0.5}=\frac{0.5}{0.5-1}=-1$$
+
+$$\frac{Y(z)}{z}=\frac{2}{z-1}-\frac{1}{z-0.5}$$
+$$Y(z)=\frac{2z}{z-1}-\frac{z}{z-0.5}$$
+Find the inverse z-transformation using ZT2 and ZT4:
+$$y(n)=2u(n)-0.5^{n}=2-0.5^{n}$$
+
+\subsubsection{Example 3: Inverse Z-transformation}
+Given a transfer function:
+$$H(z)=\frac{1+z^{-1}}{1-z^{-1}+0.8125z^{-2}}$$
+Find the output sequence when the input sequence is the unit step sequence $u(n)$. $y(n)=0\quad n<0$
+
+\rule{\textwidth}{0.5pt}
+
+Positive exponents of z:
+$$H(z)=\frac{Y(z)}{X(z)}=\frac{z^2+z}{z^2-z+0.8125}$$
+$$Y(z)=\frac{z^2+z}{z^2-z+0.8125}\cdot \frac{z}{z-1}$$
+Find the poles:
+$$p_1=1\qquad p_2=0.5 +0.75j\qquad p_2^*=0.5 -0.75j$$
+Setup partial fraction:
+$$\frac{Y(z)}{z}=\frac{k_1}{z-1}\frac{k_2}{z-(0.5+0.75j)}\frac{k_2^*}{z-(0.5-0.75j)}$$
+
+$$\frac{Y(z)}{z}=\frac{z^2+z}{(z-1)(z-(0.5+0.75j))(z-(0.5-0.75j))}$$
+Using:
+$$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
+We get:
+$$k_{1}=(z-1)\frac{z^2+z}{(z-1)(z-(0.5+0.75j))(z-(0.5-0.75j))}\vert_{z=1}=2.46154$$
+$$k_{2}=(z-(0.5+0.75j))\frac{z^2+z}{(z-1)(z-(0.5+0.75j))(z-(0.5-0.75j))}\vert_{z=(0.5+0.75j)}$$
+$$=-0.730769-0.846154j$$
+$$k_{2}^*=(z-1)\frac{z^2+z}{(z-1)(z-(0.5+0.75j))(z-(0.5-0.75j))}\vert_{z=1}=-0.730769+0.846154j$$
+Insert:
+$$\frac{Y(z)}{z}=\frac{2.46154}{z-1}\frac{-0.730769-0.846154j}{z-(0.5+0.75j)}\frac{-0.730769+0.846154j}{z-(0.5-0.75j)}$$
+$$Y(z)=\frac{2.46154z}{z-1}\frac{z(-0.730769-0.846154j)}{z-(0.5+0.75j)}\frac{z(-0.730769+0.846154j)}{z-(0.5-0.75j)}$$
+Find the inverse z-transformation using ZT2 and ZT4:
+$$y(n)=2.46144 +(-0.730769-0.846154j)(0.5+0.75j)^n+(-0.730769+0.846154j)(0.5-0.75j)^n$$
+\subsubsection{Example 4: Differential equation}
 Find the transfer function of:
 $$2y(n)+3y(n-2)=3x(n)+2x(n-2)$$
 
@@ -106,7 +158,7 @@ $$2y(n)+3y(n-2)=3x(n)+2x(n-2)$$
 $$2Y(z)+3Y(z)z^{-2}=3X(z)+2X(z)z^{-2}$$
 $$Y(z)(2+3z^{-2})=X(z)(3+2z^{-2})$$
 $$\frac{Y(z)}{X(z)}=\frac{3+2z^{-2}}{2+3z^{-2}}=\frac{3z^2+2}{2z^2+3}$$
-\subsubsection{Example 4: Differential equation}
+\subsubsection{Example 5: Differential equation}
 Find the transfer function from the following differential equation. It must have positive exponents.
 $$y_k+5y_{k-1}+2y_{k-2}=x_k-x_{k-1}$$
 
@@ -116,7 +168,7 @@ $$Y(z)+5Y(z)z^{-1}+2Y(z)z^{-2}=X(z)-X(z)z^{-1}$$
 $$Y(z)(1+5z^{-1}+2z^{-2})=X(z)(1-z^{-1})$$
 $$\frac{Y(z)}{X(z)}=\frac{1-z^{-1}}{1+5z^{-1}+2z^{-2}}\frac{z^2}{z^2}=\frac{z^2-z}{z^2+5z+2}$$
 
-\subsubsection{Example 5: Poles and Zeros}
+\subsubsection{Example 6: Poles and Zeros}
 How many poles and zeros does the transfer function have:
 $$G(z)=\frac{z^2-3}{z^3+2z}$$
 
@@ -126,18 +178,3 @@ There are as many poles and zeroes as the ordinal number:\\
 2 Zeros\\
 3 Poles
 
-\subsubsection{Example 6: Impluse Response Sequence}
-Find the Impluse Response Sequence of the following discrete transfer function:
-$$G(z)=\frac{Y(z)}{X(z)}=\frac{1}{1-0.75z^{-1}+0.125z^{-2}}$$
-
-\rule{\textwidth}{0.5pt}
-
-$$G(z)=\frac{Y(z)}{X(z)}=\frac{z^2}{z^2-0.75z+0.125}$$
-Factor:
-$$G(z)=\frac{z^2}{(z-0.5)(z-0.25)}$$
-$$G(z)=\frac{z}{z-0.5}\cdot\frac{z}{z-0.25}$$
-Inverse z-transformation:
-$$g(n)=\mathcal{Z}^{-1}\left\{\frac{z}{z-0.5}\right\}\cdot\mathcal{Z}^{-1}\left\{\frac{z}{z-0.25}\right\}$$
-Using table lookup (ZT4):
-$$a^n=\mathcal{Z}^{-1}\left\{\frac{z}{z-a}\right\}$$
-$$g(n)=0.5^n\cdot 0.25^n$$
