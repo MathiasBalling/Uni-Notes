@@ -1,0 +1,151 @@
+\section*{Problem 11}
+Udregn en 8-punkts DFT af $x(n)$. Bestem $X(1)$ og $X(4)$
+$$x(n)=\begin{cases}
+  1&n=0\\
+  0&n=1\\
+  2&n=2\\
+  0&n=3\\
+  3&n=4\\
+  0&n=5\\
+  4&n=6\\
+  0&n=7
+\end{cases}$$
+
+\rule{\textwidth}{0.5pt}
+Using:
+$$X(m)=\sum_{n=0}^{N-1}x(n)e^{\frac{j2\pi m n}{N}}$$
+$$N=8$$
+$$n=0:\qquad 1e^{\frac{j2\pi m 0}{8}}=1$$
+$$n=1:\qquad 0e^{\frac{j2\pi m 1}{8}}=0$$
+$$n=2:\qquad 2e^{\frac{j2\pi m 2}{8}}$$
+$$n=3:\qquad 0e^{\frac{j2\pi m 3}{8}}=0$$
+$$n=4:\qquad 3e^{\frac{j2\pi m 4}{8}}=3e^{j\pi m}$$
+$$n=5:\qquad 0e^{\frac{j2\pi m 5}{8}}=0$$
+$$n=6:\qquad 4e^{\frac{j2\pi m 6}{8}}$$
+$$n=7:\qquad 0e^{\frac{j2\pi m 7}{8}}=0$$
+$$X(m)=1+2e^{\frac{j2\pi m 2}{8}}+3e^{j\pi m}+4e^{\frac{j2\pi m 6}{8}}$$
+Find $X(1)$ og $X(4)$:
+$$X(1)=1+2e^{\frac{j2\pi (1) 2}{8}}+3e^{j\pi (1)}+4e^{\frac{j2\pi (1) 6}{8}}$$
+$$=1+2i-3-4i=-2 - 2i$$
+$$X(4)=1+2e^{\frac{j2\pi (4) 2}{8}}+3e^{j\pi (4)}+4e^{\frac{j2\pi (4) 6}{8}}=10$$
+
+\section*{Problem 12}
+Betragt
+$$3y(n+1)-5y(n-1)=3x(n)+5x(n-3)-5x(n-5)$$
+
+a) Bestem overføringsfunktionen med positive eksponenter.
+
+b) Er overføringsfunktionen stabil?
+
+\rule{\textwidth}{0.5pt}
+\textbf{a)}
+$$3Y(z)z-5Y(z)z^{-1}=3X(z)+5X(z)z^{-3}+5X(z)z^{-5}$$
+Faktoriser:
+$$Y(z)(3z-5z^{-1})=X(z)(3+5z^{-3}+5z^{-5})$$
+Find $G(z)$:
+$$G(z)=\frac{Y(z)}{X(z)}=\frac{3+5z^{-3}+5z^{-5}}{3z-5z^{-1}}$$
+Forlæng med $\frac{z^5}{z^5}$:
+$$\boxed{G(z)=\frac{Y(z)}{X(z)}=\frac{3z^5+5z^{2}+5}{3z^6-5z^{4}}}$$
+
+\textbf{b)} Er den stabil?
+
+Find polerne for funktionen:
+$$3z^6-5z^4=0$$
+$$p_1=0\qquad p_2=0\qquad p_3=0\qquad p_4=0\qquad p_5=-\sqrt{5/3}=-1.29099\qquad p_6=\sqrt{5/3}=1.29099$$
+Alle polerne er ikke indenfor enhedscirklen, derfor er overføringsfunktionen $G(z)$ ikke stabil.
+\section*{Problem 13}
+Benyt invers z-transformation til at finde $y(n)$ for overføringsfunktionen når $x(n)=\delta(n)$
+$$G(z)={\frac{Y(z)}{X(z)}}={\frac{z^{2}-0,2z}{z^{2}-0,7z+0,06}}$$
+
+\rule{\textwidth}{0.5pt}
+
+Fra ZT1:
+$$\mathcal{Z}\{x(n)\}=1$$
+
+$$Y(z)=1\cdot{\frac{z^{2}-0,2z}{z^{2}-0,7z+0,06}}={\frac{z^{2}-0,2z}{z^{2}-0,7z+0,06}}$$
+Find polerne for funktionen:
+$$p_1=0.1\qquad p_2= 0.6$$
+Opstil de partielle brøker:
+$$\frac{Y(z)}{z}=\frac{k_1}{z-0.1}+\frac{k_2}{z-0.6}=\frac{z-0.2}{(z-0.1)(z-0.6)}$$
+Find koefficienterne ved brug af:
+$$k_{i}=(z-p_{i})\frac{Y(z)}{z}\vert_{z=p_{i}}$$
+$$k_{1}=(z-0.1)\frac{z-0.2}{(z-0.1)(z-0.6)}\vert_{z=0.1}=\frac{z-0.2}{z-0.6}|_{z=0.1}$$
+$$=\frac{0.1-0.2}{0.1-0.6}=\frac{-0.1}{-0.5}=\frac{1}{5}$$
+
+$$k_{2}=(z-0.6)\frac{z-0.2}{(z-0.1)(z-0.6)}\vert_{z=0.6}=\frac{z-0.2}{z-0.1}|_{z=0.6}$$
+$$=\frac{0.6-0.2}{0.6-0.1}=\displaystyle\frac{0.4}{0.5}=\frac{4}{5}$$
+
+Inset i $Y(z)/z$:
+$$\frac{Y(z)}{z}=\frac{1/4}{z-0.1}+\frac{1/5}{z-0.6}$$
+Gang med z:
+$$Y(z)=\frac{1/4z}{z-0.1}+\frac{1/5z}{z-0.6}$$
+Invers z-transformation (ZT4):
+$$y(n)=\frac{1}{4}0.1^n+\frac{4}{5}0.6^n$$
+
+
+\section*{Problem 14}
+Betragt følgende 1. ordens Bessel lavpasfilter:
+$$H(s)=\frac{1}{s+1}$$
+a) Transformer Bessel lavpasfiltret til et frekvensnormeret båndpasfilter med frekvensnormeret pasbåndsbredde $W_a=0.1$
+
+b) Design et lavpasfilter $H(z)$ ved brug af bilineær z-transformation med afskæringsfrekvens 2 kHz og samplefrekvens på 20 kHz.
+
+\rule{\textwidth}{0.5pt}
+
+\textbf{a)}
+Erstat s med $s=\frac{1}{W_a}(s+\frac{1}{s})$
+$$H(s)=\frac{1}{\frac{1}{0.1}(s+\frac{1}{s})+1}$$
+
+For rigtig opstilling bruges:
+$$H_{lp}(s)=\frac{A_0}{s+B_0}$$
+$$H_{bp}(s)=\frac{a_1s}{s^2+b_1s+b_0}$$
+hvor
+$$a_1=W_a\cdot A_0=0.1\qquad b_0=1\qquad b_1=W_a\cdot B_0=0.1$$
+Båndpassfilteret bliver derfor:
+$$H_{bp}(s)=\frac{0.1s}{s^2+0.1s+1}$$
+
+\textbf{b)}
+Find prewarping konstanten:
+$$C=\cot\left(\frac{\omega_aT}{2}\right)=\cot\left(\frac{2000 \cdot 1/20000}{2}\right)=19.9833$$
+Ud fra:
+$$H(s)=\frac{A_1s+A_0}{B_1s+B_0}$$
+Fåes den digitale bilineære 1. ordens overføringsfunktionen som: 
+$$H(z)=\frac{a_0+a_1z^{-1}}{1+b_1z^{-1}}$$
+hvor 
+$$a_0=\frac{A_0+A_1C}{B_0+B_1C}=\frac{1}{1+19.9833}=0.04765$$
+$$a_1=\frac{A_0-A_1C}{B_0+B_1C}=\frac{1}{1+19.9833}=0.04765$$
+$$b_0=1$$
+$$b_1=\frac{B_0-B_1C}{B_0+B_1C}=\frac{1-19.9833}{1+19.9833}=-0.90468$$
+Det digitale lavpass filter bliver:
+$$H(z)=\frac{0.04765+0.04765z^{-1}}{1-0.90468z^{-1}}$$
+
+\section*{Problem 15}
+Bestem filterkoefficienterne for et FIR båndpasfilter med et rektangulært-vindue.
+Båndpassfiltret skal have en afskæringsfrekvenser $f_{a_1}$ = 1 kHz og $f_{a_2}$ = 5 kHz samt samplefrekvens 50 kHz. 
+Filtret skal have 3 samples.
+
+\rule{\textwidth}{0.5pt}
+Hej der er både nævnt et båndpassfilter og et båndstopfilter i opgaven. Her laves et båndpass:
+
+Find $M$:
+$$N=3\qquad M=\frac{N-1}{2}=1$$
+For et båndpass
+$$c_0=2T(f_{a_2}-f_{a_1})\qquad c_m=\frac{1}{m\pi}{\bigl(}\sin(2\pi m T f_{a_{2}})-\sin(2\pi m T f_{a_{1}}){\bigr)}$$
+
+
+Rektangulært vindue:
+$$w(n)=\begin{cases}
+1 & \text{hvis } -M\leq n\leq M\\
+0 & \text{ellers}
+\end{cases}$$
+
+Med en vinduesfunktion er $c'=c_mw_m$
+$$c_0=2\cdot\frac{1}{50000}(5000-1000)=\frac{8000}{50000}=\frac{4}{25}$$
+$$c_1=c_{-1}=\frac{1}{1\pi}{\bigl(}\sin(2\pi \cdot 1\cdot \frac{1}{50000} 5000)-\sin(2\pi \cdot 1\cdot \frac{1}{50000} 1000){\bigr)}$$
+$$=\frac{1}{\pi}{\bigl(}\sin(2\pi \cdot  0.1)-\sin(2\pi \cdot 0.02){\bigr)}=0.147203$$
+Siden $w_m=1$ når $-M\leq m \leq M$, vil $c'_m=c_m$.
+
+Filterkoefficienterne kan nu findes ved $a_i=c'_{M-i}$:
+$$a_0=0.147203$$
+$$a_1=\frac{4}{25}$$
+$$a_2=0.147203$$
