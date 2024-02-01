@@ -11,8 +11,9 @@ The function has to go through (0,0) in 2D for it to be linear due to homogeneit
 
 
 \textbf{Time-Invariant System} \newline
-Let $\sigma: R x R^m -> R^p$ define the input-output behavior of a system model $\SUM$.
-The system \SUM is time-invariant if for any input signal $u:R->R^m$
+% Mathias kan du evt. spotte fejlen på de to næste linjer?
+% Let $\sigma: R x R^m -> R^p$ define the input-output behavior of a system model $\SUM$.
+% The system $\SUM$ is time-invariant if for any input signal $u:R->R^m$ \newline
 and any delay $\tau \epsilon R$ the following relation holds:
 $$ y(t-\tau)= \sigma(t,u(t-\tau))$$
 for all times $t\epsilon R$, where $y$ denotes the output signal of the system.
@@ -23,7 +24,23 @@ compared to if you do the same at 5pm.
 
 \subsection{Time-Domain models}
 
-
+Two types of linear time-domain models. \newline
+Continous-time state space models
+(based on differential equations)
+$$\dot{x} = Ax+Bu$$
+$$y=Cx+Du$$
+\begin{itemize}
+	\item x = state
+	\item u = input
+	\item y = output
+	\item A = system matrix
+	\item B = input matrix
+	\item C = output matrix
+	\item D = Direct feedtrhough matrix
+\end{itemize}
+Discrete-time state space models (based on difference equations)
+$$x_{k+1} = \Sigma x_k + \Gamma u_k$$
+$$y_k = Cx_k + Du_k$$
 
 
 \subsection{Examples}
