@@ -1,2 +1,39 @@
 \section{Stability and Performance Analysis}
+
+\subsection{Basic System Classes}
+
+\subsubsection{First Order Systems}
+State-space representation of first order system:
+$$\dot{x} = -\frac{1}{\tau}x+\frac{k}{\tau}u$$
+$$y=x$$
+
+A first-order system has one  pole and is described by:
+$$H(s)=\frac{k}{\tau s+1}$$
+Where \emph{k} is the DC-gain and $\tau$ is the time-constant. The system has a pole
+in $s=-\frac{1}{\tau}$ i.e., the smaller time-constant, the faster system response.
+
+
+\subsubsection{Second Order Systems}
+The transfer funciton of a second-order system is given by:
+$$H(s) = \frac{k \omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}$$
+Where $\omega_n>0$ is the natural frequency, $\zeta>0$ is the damping ratio and k is the gain.
+
+
+
+\subsection{Performance specifications}
+\subsection{Stability}
+The stability of the dynamical system can be determined from the eigenvalues of A in the time domain.
+$$\dot{x} = Ax+Bu$$
+$$y=Cx+Du$$
+
+When the eigenvalues of A are in the left half plane, the system is stable.
+
+
+In the frequency domain the stability can be determined from the poles of G(s) seen from the transfer function:
+$$G(s) = \frac{Q(s)}{P(s)}$$
+
+When the poles of G(s) are in the left half plane, the system is stable.
+
+
+
 \subsection{Examples}
