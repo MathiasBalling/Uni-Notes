@@ -48,21 +48,48 @@ $$y(t) = k(1-e^{-\omega_nt}-\omega_n te^{-\omega_nt})$$
 
 \subsection{Performance specifications}
 
+Three different performance measurements of dynamical systems are:
+\begin{enumerate}
+	\item{The rise time $t_r$ (stigetid)}
+	\item{The settling time $t_s$ (indsvingingstid)}
+	\item{The overshoot $M_p$ (oversving)}
+\end{enumerate}
 
+The rise time is the time it takes for the system to go from 10\% to 90\% of the final value.
+The settling time is the time it takes for the system to reach and stay within a certain \% of the final value.
+The overshoot is the maximum percentage that the system goes over the final value.
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{Images/performance.png}
+\end{center}
+
+The peak time is denoted $t_p$ which is the time where the signal reaches its maximum value.
+
+For a second-order system the rise time can be approximated as:
+$$t_r = \frac{1.8}{\omega_n}$$
+
+For a second-order system the settling time can be approximated as:
+$$t_s = \frac{-log(\alpha/100)}{\zeta \omega_n}$$
+Log is ln in the equation.
 
 
 \subsection{Stability}
 The stability of the dynamical system can be determined from the eigenvalues of A in the time domain.
+This is the equivalent of poles in the frequency domain.
 $$\dot{x} = Ax+Bu$$
-$$y=Cx+Du$$
+When the eigenvalues of A have a negative real part, the system is stable.
 
-When the eigenvalues of A are in the left half plane, the system is stable.
+\textbf{Definition}
+A linear discrete-time system
+$$x_{k+1}=\Phi x_k$$
+The state of the next time step is given by $\phi$ mutliplied by $x_k$.
 
+Where $x_k \in \mathbb{R}^{n \times n}$ is asymptotically (asymptotisk) stable if
+$$\lim_{k \to \infty} x_k = 0$$
+for any $x_0 \in \mathbb{R}^n$.
 
-In the frequency domain the stability can be determined from the poles of G(s) seen from the transfer function:
-$$G(s) = \frac{Q(s)}{P(s)}$$
+A linear discrete-time system is stable if all the eigenvalues are inside the unit circle.
 
-When the poles of G(s) are in the left half plane, the system is stable.
 
 
 
