@@ -31,7 +31,26 @@ When $\zeta>1$ the system is overdamped and has real and distinct poles.
 	\includegraphics[width=0.5\textwidth]{Images/secondOrderSystem.png}
 \end{center}
 
+\newpage
+Impulse response of a underdamped second-order system:
+$$h(t) = k \frac{\omega_n}{\sqrt{1-\zeta ^2}} e^{-\sigma t} sin(\omega_d t) 1(t) $$
+
+The step resonse of a underdamped second-order system:
+$$y(t) = k(1-e^{-\sigma t}(\cos(\omega_d t)+\frac{\sigma}{\omega_d}\sin(\omega_d t)))$$
+
+Impulse response of a critically damped second order system:
+$$h(t) = k\omega_n^2te^{-\omega_n t}$$
+
+Having a overdamped system with a damping ration that is greater than one leads to a slower impulse response.
+
+The step response of a critically damped second order system:
+$$y(t) = k(1-e^{-\omega_nt}-\omega_n te^{-\omega_nt})$$
+
 \subsection{Performance specifications}
+
+
+
+
 \subsection{Stability}
 The stability of the dynamical system can be determined from the eigenvalues of A in the time domain.
 $$\dot{x} = Ax+Bu$$
