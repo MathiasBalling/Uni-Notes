@@ -72,11 +72,23 @@ For a second-order system the settling time can be approximated as:
 $$t_s = \frac{-log(\alpha/100)}{\zeta \omega_n}$$
 Log is ln in the equation.
 
-\subsection{Poles and Zeros}
+\subsection{Poles and Zeros of Space-State Models}
+Using thee state-space matrices:
+$$G(s) = C(sI-A)^{-1}B+D$$
+\textbf{Poles} can be found using the following equation:
 
-Poles can be found using the following equation:
+When $G(s)\to \infty$ the system has a pole at $s\to p$.
+$$\det(pI-A) = 0$$
+Here $p$ is the eigenvalue of $A$.
 
-Zeros can be found using the following equation:
+\textbf{Zeros} can be found using the following equation:
+
+When $G(s)=0$ the system has a zero at $s=z$.
+$$\begin{vmatrix}
+  A-zI & B \\
+  C & D
+  \end{vmatrix} = 0$$
+
 
 
 
