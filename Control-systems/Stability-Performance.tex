@@ -46,6 +46,15 @@ Having a overdamped system with a damping ration that is greater than one leads 
 The step response of a critically damped second order system:
 $$y(t) = k(1-e^{-\omega_nt}-\omega_n te^{-\omega_nt})$$
 
+Looking at the bode plot of a second-order system depends on the damping ratio.
+For every pole the magnitude of the bode plot decreases by 20dB/decade.
+And the phase of the bode plot decreases by 90 degrees for every pole.
+
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{Images/bodeSec.png}
+\end{center}
+
+
 \subsection{Performance specifications}
 
 Three different performance measurements of dynamical systems are:
@@ -72,6 +81,21 @@ For a second-order system the settling time can be approximated as:
 $$t_s = \frac{-log(\alpha/100)}{\zeta \omega_n}$$
 Log is ln in the equation.
 
+The peak time can be found using:
+$$t_p = \frac{\pi}{\omega_d}$$
+
+The overshoot is computed from the step response at the peak time. This gives
+an expression for the overshoot:
+$$M_p = e^{-\frac{\zeta \pi}{\sqrt{1-\zeta^2}}}$$
+for $0<\zeta<1$. The overshoot is given in percentage.
+
+
+\textbf{Overview for determining performance variables}
+\begin{center}
+	\includegraphics[width=\textwidth]{Images/perfSpec.png}
+\end{center}
+
+
 \subsection{Poles and Zeros of Space-State Models}
 Using thee state-space matrices:
 $$G(s) = C(sI-A)^{-1}B+D$$
@@ -85,9 +109,9 @@ Here $p$ is the eigenvalue of $A$.
 
 When $G(s)=0$ the system has a zero at $s=z$.
 $$\begin{vmatrix}
-  A-zI & B \\
-  C & D
-  \end{vmatrix} = 0$$
+		A-zI & B \\
+		C    & D
+	\end{vmatrix} = 0$$
 
 
 
@@ -110,6 +134,7 @@ for any $x_0 \in \mathbb{R}^n$.
 A linear discrete-time system is stable if all the eigenvalues are inside the unit circle.
 
 
+The closer the poles are to origin the more dominating the pole is in the system.
 
 
 \subsection{Examples}
