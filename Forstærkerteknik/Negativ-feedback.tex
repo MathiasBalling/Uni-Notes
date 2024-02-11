@@ -1,1 +1,46 @@
-\section{Negativ feedback}
+\section{Feedback}
+
+\subsection{Negative feedback}
+In negative feedback, a portion of the output voltage is fed back to the inverting input.
+
+Closed loop gain can be calculated using the formula:
+$$A_f = \frac{A_{OL}}{1 + \beta A_{OL}}$$
+Where $A_f$ is the closed loop gain, $A_{OL}$ is the open loop gain and $\beta$ is the feedback factor.
+
+The product $A* \beta$ is called the loop gain and is a measure of the feedback strength. The loop gain
+must be much larger than 1 for the feedback to be effective.
+
+\subsection{Positive feedback}
+In positive feedback, a portion of the output voltage is fed back to the non-inverting input
+
+Positive feedback leads to poor gain stability.
+
+Because of the probelms with gain instability and oscillation, positive
+feedback is almost never used intentionally in amplifiers.
+
+
+\subsection{Types of feedback}
+\begin{itemize}
+	\item{Voltage feedback: If the feedback network samples the output voltage}
+	\item{Current feedback: If the feedback network samples the output current}
+	\item{Series feedback}
+	\item{Parallel feedback}
+\end{itemize}
+
+
+\subsection{Effects of feedback}
+\begin{table}[!ht]
+	\centering
+	\begin{adjustbox}{width=\textwidth}
+		\begin{tabular}{|l|l|l|l|l|l|l|}
+			\hline
+			Feedback type    & x\_s  & x\_0  & Gain stabilized                    & Input impedance           & Output Impedance              & Ideal Amplifier  \\ \hline
+			Series voltage   & $v_s$ & $v_0$ & $A_{vf} = \frac{A_v}{1+A_v \beta}$ & $R_i(1+A_v\beta)$         & $\frac{R_0}{1+\beta A_{voc}}$ & Voltage          \\ \hline
+			Series current   & $v_s$ & $i_0$ & $G_{mf}=\frac{G_m}{1+G_m \beta}$   & $R_i(1+G_m \beta)$        & $R_0(1+\beta G_{msc})$        & Transconductance \\ \hline
+			Parallel voltage & $i_s$ & $v_0$ & $R_{mf} = \frac{R_m}{1+R_m \beta}$ & $\frac{R_i}{1+R_m \beta}$ & $\frac{R_0}{1+\beta R_{moc}}$ & Transresistance  \\ \hline
+			Parallel current & $i_s$ & $i_0$ & $A_{if}=\frac{A_i}{1+A_i \beta}$   & $\frac{R_i}{1+A_i \beta}$ & $R_0(1+\beta A_{isc})$        & Current          \\ \hline
+		\end{tabular}
+	\end{adjustbox}
+\end{table}
+
+
