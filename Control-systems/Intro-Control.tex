@@ -23,12 +23,74 @@ The theorem can also be used to determine the DC gain of a system, i.e., the out
 By integrating an impulse response, the step response is obtained. The step response is the integral of the impulse response,
 and the impulse response is the derivative of the step response.
 
-
+If the system has a disturbance an open loop control system will not be able to compensate for this.
 
 \subsection{Feedback Control}
-(tilbagekobling)
-\subsection{Ready State Tracking}
+(tilbagekobling). Tilbagekobling anvendes for at elminere forstyrrelsesundertrykkelse.
 
+The connection of a controller K(s) and a system (also called plant) G(s) is called a closed-loop system.
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{Images/feedbackControl.png}
+\end{center}
+
+e(s) is the error signal, and is the difference between the reference signal r(t) and the output signal y(t).
+The error signal is used to adjust the input signal u(t) to the system. The controller K(s) is used to adjust the input signal.
+
+The closed-loop transfer function is given by:
+$$\frac{y(s)}{r(s)} = \frac{G(s)K(s)}{1+G(s)K(s)}$$
+
+K(s) can be designed to meet certain requirements, such as stability, disturbance rejection, and sensitivity analysis.
+
+
+\textbf{Stability}
+
+The closed-loop system is stable if all the closed-loop poles are in the open left half-plane.
+
+The \textbf{loop gain (sløjfe-forstærkning)} is defined as: $L(s) = G(s)K(s)$. The closed-loop poles are given by:
+$$1+L(s) = 0$$
+
+The closed loop poles satisfy:
+$$1+L(s) = 0 \Rightarrow L(s) = -1$$
+
+\textbf{Disturbance Rejection}
+
+Open loop control system:
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{Images/openLoop.png}
+\end{center}
+The output is given by:
+$$y_m(s)=G(s)d(s)+G(s)D(s)r(s)$$
+
+
+Closed loop control system:
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{Images/closedLoop.png}
+\end{center}
+The output is given by (superposition can be applied for deriving the expression):
+$$y_m(s) = \frac{G(s)}{1+G(s)K(s)}v(s) + \frac{G(s)K(s)}{1+G(s)K(s)}r(s)$$
+
+The larger the amplification of the feedback loop, the smaller the effect of the disturbance on the output.
+
+
+\textbf{Sensitivity Analysis}
+
+The sensitivity S of the open-loop system is given by the ratio of $\delta T_{ol}/T_ol$ to $\delta G_0/G_0$.
+For the open loop system S=1.
+
+For the closed loop the sensitivity is given by:
+$$S = \frac{1}{1+G_0 K_0}$$
+This means that a large amplification leads to a low sensitivity.
+
+\textbf{Linearization}
+
+
+
+\subsection{Steady State Tracking}
+
+\textbf{Definition of system type}
+
+Stable systems can be classified according to its system type, defined to be the degree of the polynomial
+for which the steady-state error in a nonzero finite constant.
 
 
 \subsection{Cascase Control}
