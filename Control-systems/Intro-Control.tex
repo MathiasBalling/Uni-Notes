@@ -93,11 +93,31 @@ Stable systems can be classified according to its system type, defined to be the
 for which the steady-state error in a nonzero finite constant.
 
 
-\subsection{Cascase Control}
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{Images/systemTypes.png}
+\end{center}
 
 
+An expression for the tracing error is computed to determine the steady-state error. The error is given by:
+$$e(s) = \frac{1}{1+L(s)}r(s)$$
+Where r(s) is the reference signal and L(s) is the loop gain.
+
+The amount of poles at s=0 in the denominator of L(s) determines the system type.
+
+\subsection{Cascade Control}
+A cascade control uses the output from one controller as the input to another controller.
 
 
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{Images/cascade.png}
+\end{center}
+
+The nested control loops are called the inner loop (secondary) and the outer loop (primary).
+A fundamental reason for applying cascade control is to obtain better disturbance rejection
+and lower sensitivity to parameter variations.
+
+
+\subsection{DC Motor Dynamics}
 
 
 
