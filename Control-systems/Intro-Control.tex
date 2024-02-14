@@ -1,2 +1,42 @@
 \section{Introduction to Control}
+
+\subsection{Open Loop Control}
+(åbensløjfe regulering)
+
+Steady-State Value of Time Function:
+
+Suppose that Y(s) is the Laplace transform of y(t). Then the final value of y(t) is either:
+\begin{itemize}
+	\item{Ubounded. If Y(s) has any poles in the open right half-plane (unstable)}
+	\item{Undefined. If Y(s) has a pole pair on the imaginary axis.}
+	\item{Constant. If all poles of Y(s) are in the open left half-plane, except for one at s=0}
+\end{itemize}
+
+\textbf{The Final Value Theorem (slutværdi-sætningen)}
+
+If all poles of sY(s) are in the open left half-plane, then:
+$$\lim_{t \to \infty} y(t) = \lim_{s \to 0} sY(s)$$
+
+The Final Value Theorem determines the constant value that the impulse response of a stable system converges to.
+The theorem can also be used to determine the DC gain of a system, i.e., the output when a step input is applied to the system.
+
+By integrating an impulse response, the step response is obtained. The step response is the integral of the impulse response,
+and the impulse response is the derivative of the step response.
+
+
+
+\subsection{Feedback Control}
+(tilbagekobling)
+\subsection{Ready State Tracking}
+
+
+
+\subsection{Cascase Control}
+
+
+
+
+
+
+
 \subsection{Examples}
