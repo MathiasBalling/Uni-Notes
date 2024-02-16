@@ -3,6 +3,11 @@
 \subsection{Open Loop Control}
 (åbensløjfe regulering)
 
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{Images/openLoopControl.png}
+\end{center}
+
+
 Steady-State Value of Time Function:
 
 Suppose that Y(s) is the Laplace transform of y(t). Then the final value of y(t) is either:
@@ -44,9 +49,11 @@ K(s) can be designed to meet certain requirements, such as stability, disturbanc
 
 \textbf{Stability}
 
-The closed-loop system is stable if all the closed-loop poles are in the open left half-plane.
+The closed-loop system is stable if all the closed-loop poles are in the
+open left half-plane.
 
-The \textbf{loop gain (sløjfe-forstærkning)} is defined as: $L(s) = G(s)K(s)$. The closed-loop poles are given by:
+The \textbf{loop gain (sløjfe-forstærkning)} is defined as: $L(s) = G(s)K(s)$.
+The closed-loop poles are given by:
 $$1+L(s) = 0$$
 
 The closed loop poles satisfy:
@@ -67,29 +74,32 @@ Closed loop control system:
 	\includegraphics[width=0.6\textwidth]{Images/closedLoop.png}
 \end{center}
 The output is given by (superposition can be applied for deriving the expression):
-$$y_m(s) = \frac{G(s)}{1+G(s)K(s)}v(s) + \frac{G(s)K(s)}{1+G(s)K(s)}r(s)$$
+$$y_m(s) = \frac{G(s)}{1+G(s)K(s)}d(s) + \frac{G(s)K(s)}{1+G(s)K(s)}r(s)$$
 
-The larger the amplification of the feedback loop, the smaller the effect of the disturbance on the output.
+The larger the amplification of the feedback loop, the smaller the effect of the
+disturbance on the output.
 
+%Muligvis slide 16 her
 
 \textbf{Sensitivity Analysis}
 
 The sensitivity S of the open-loop system is given by the ratio of $\delta T_{ol}/T_ol$ to $\delta G_0/G_0$.
-For the open loop system S=1.
+For the open loop system S=1. $\delta$ is the relative change in the transfer function.
 
 For the closed loop the sensitivity is given by:
 $$S = \frac{1}{1+G_0 K_0}$$
 This means that a large amplification leads to a low sensitivity.
 
 \textbf{Linearization}
-
+Taylor approximation, YES.
 
 
 \subsection{Steady State Tracking}
 
 \textbf{Definition of system type}
 
-Stable systems can be classified according to its system type, defined to be the degree of the polynomial
+Stable systems can be classified according to its system type, defined to be the
+degree of the polynomial
 for which the steady-state error in a nonzero finite constant.
 
 
@@ -102,7 +112,14 @@ An expression for the tracing error is computed to determine the steady-state er
 $$e(s) = \frac{1}{1+L(s)}r(s)$$
 Where r(s) is the reference signal and L(s) is the loop gain.
 
-The amount of poles at s=0 in the denominator of L(s) determines the system type.
+\textbf{The amount of poles at s=0 in the denominator of L(s) determines the system type.}
+
+Final value theorem is used to determine the steady-state error when
+the reference signal is a polynomial $r(t) = t^k 1(t)$.
+
+$$e_ss = \lim_{t \to \infty} e(t) = \lim_{s \to 0} e(s)s$$
+$$\lim_{s \to 0} e(s)s = \lim_{s \to 0} s\frac{1}{1+L(s)}r(s)$$
+$$\lim_{s \to 0} s\frac{1}{1+L(s)}\frac{1}{s^{k+1}}$$
 
 \subsection{Cascade Control}
 A cascade control uses the output from one controller as the input to another controller.
