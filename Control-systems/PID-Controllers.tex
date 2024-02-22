@@ -108,4 +108,42 @@ A block diagram of the controller is given below:
 Alternatively, the PID-controlelr with filter on the D-term is
 $$K(s) = K_p (1+\frac{1}{T_i s} + \frac{sT_d}{1+sT_d/N})$$
 
+\subsection{Tuning a PID Controller}
+
+\subsubsection{Pole placement}
+
+If a model of the system is available, then it is possible to compute an expression
+for the characteristic polynomial of the closed-loop system. Based on this polynomial,
+it may be possible to place the poles at desired locations.
+
+\subsubsection{Ziegler-Nichols method}
+
+Sometimes a model of the plant is not availabe, then the controller should be tuned
+by only studying the input-output behaviour of the system.
+Ziegler and Nichols has proposed two methods for tuning PID controllers without
+explicit use of a plant model.
+
+\begin{itemize}
+	\item{Ziegler-Nichols tuning based on step response}
+	\item{Ziegler-Nichols tuning - The ultimate sensitivity method}
+\end{itemize}
+
+
+\textbf{Tuning based on step response}
+
+The considered system is assumed to have the transfer function
+$$\frac{y(s)}{u(s)} = \frac{A}{\tau s + 1} e^{-st_d}$$
+
+This is a first-order system with a time delay of $t_d$.
+
+The parameters for the PID controller can be found using the following table:
+
+\textbf{The ultimate sensitivity method}
+
+Start using a P-controller, and increase the gain until the system starts to oscillate.
+The value of $K_p$ when the output oscillates with a constant amplitude is called the ultimate gain $K_u$.
+The period of the oscillation is called the ultimate period $P_u$.
+
+
+
 \subsection{Examples}
