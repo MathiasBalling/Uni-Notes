@@ -67,7 +67,7 @@ overshoot.
 \subsection{PD-controller}
 The derivative term provides an anticipatory action to the control,
 by doing feedback based on the trend of the error, i.e.
-$$u(t) = K_p e(t) + K_d \frac{de(t)}{dt} = K_p (e+T_d\frac{de(t)}{dt})$$
+$$u(t) = K_p e(t) + K_d \frac{de(t)}{dt} = K_p \left(e+T_d\frac{de(t)}{dt}\right)$$
 
 Where $k_d$ is the derivative gain and $T_d$ is the derivative time constant and $e_p$
 is a prediction of the error  ($T_d$ forwards in time). The parenthesis in the equation on the right
@@ -82,7 +82,7 @@ Noise is an issue for controllers that include a derivative term. Therefore, the
 be implemented in a low-pass filtered version.
 
 The transfer function of the controller is
-$$T_{ue}(s) = K_p (N-\frac{N}{1+sT_d/N}) = K_p \frac{sT_d}{1+sT_d/N}$$
+$$T_{ue}(s) = K_p \left(N-\frac{N}{1+sT_d/N}\right) = K_p \frac{sT_d}{1+sT_d/N}$$
 
 Where N is a filter constant (typical values of N are 2 to 20), and $T_d$ is the derivative time constant.
 
@@ -106,10 +106,9 @@ A block diagram of the controller is given below:
 \end{center}
 
 Alternatively, the PID-controlelr with filter on the D-term is
-$$K(s) = K_p (1+\frac{1}{T_i s} + \frac{sT_d}{1+sT_d/N})$$
+$$K(s) = K_p \left(1+\frac{1}{T_i s} + \frac{sT_d}{1+sT_d/N}\right)$$
 
 \subsection{Tuning a PID Controller}
-
 \subsubsection{Pole placement}
 
 If a model of the system is available, then it is possible to compute an expression
@@ -137,6 +136,21 @@ $$\frac{y(s)}{u(s)} = \frac{A}{\tau s + 1} e^{-st_d}$$
 This is a first-order system with a time delay of $t_d$.
 
 The parameters for the PID controller can be found using the following table:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\cellcolor[HTML]{C0C0C0} \textbf{Controller type}& \cellcolor[HTML]{C0C0C0}\textbf{Gains}  \\ \hline
+P&$K_p=\frac{1}{RL}$ \\ \hline
+PI&$K_p=\frac{0.9}{RL}$\\
+  &$T_i=\frac{L}{0.3}$\\ \hline
+& $K_p=\frac{1.2}{RL}$ \\
+ PID &$T_i=2L$ \\
+  &$T_d=0.5L$\\ \hline
+\end{tabular}
+\end{table}
+
+where $R=A/\tau$ is the amplitude of the oscillation, and $L$ is the period of the oscillation.
 
 \textbf{The ultimate sensitivity method}
 
@@ -144,6 +158,20 @@ Start using a P-controller, and increase the gain until the system starts to osc
 The value of $K_p$ when the output oscillates with a constant amplitude is called the ultimate gain $K_u$.
 The period of the oscillation is called the ultimate period $P_u$.
 
+The parameters for the PID controller can be found using the following table:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\cellcolor[HTML]{C0C0C0} \textbf{Controller type}& \cellcolor[HTML]{C0C0C0}\textbf{Gains}  \\ \hline
+P&$K_p=0.5K_u$ \\ \hline
+PI&$K_p=0.45K_u$\\
+  &$T_i=\frac{P_u}{1.2}$\\ \hline
+& $K_p=0.6K_u$ \\
+ PID &$T_i=0.5K_u$ \\
+  &$T_d=\frac{1}{8}P_u$\\ \hline
+\end{tabular}
+\end{table}
 
 
 \subsection{Examples}
