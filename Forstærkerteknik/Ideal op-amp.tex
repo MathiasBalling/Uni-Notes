@@ -1,4 +1,4 @@
-\section{Ideal op-amp}
+\section{Op-amps}
 
 The common-mode signal $v_{icm}$ is the average of the input voltages and given by:
 $$v_{icm} = \frac{v_1 + v_2}{2}$$
@@ -16,3 +16,17 @@ An opertional amplifier (op-amp) is an idealized amplifier with the following pr
 \end{itemize}
 
 
+\textbf{Slewrate}
+
+The slewrate is the maximum rate of change of the output voltage and is given by:
+$$| \frac{dv_{out}}{dt}| <= SR$$
+
+\textbf{Full power bandwidth}
+
+The full power bandwidth of an op amp is
+the range of frequencies for which the op amp can produce an
+undistorted sinusoidal output with peak amplitude equall to the guaranteed
+maximum output voltage.
+
+The full power bandwidth is given by:
+$$f_{FP} = \frac{SR}{2\pi V_{o max}}$$
