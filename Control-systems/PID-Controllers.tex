@@ -137,20 +137,20 @@ This is a first-order system with a time delay of $t_d$.
 
 The parameters for the PID controller can be found using the following table:
 \begin{table}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\cellcolor[HTML]{C0C0C0} \textbf{Controller type}& \cellcolor[HTML]{C0C0C0}\textbf{Gains}  \\ \hline
-P&$K_p=\frac{1}{RL}$ \\ \hline
-PI&$K_p=\frac{0.9}{RL}$\\
-  &$T_i=\frac{L}{0.3}$\\ \hline
-& $K_p=\frac{1.2}{RL}$ \\
- PID &$T_i=2L$ \\
-  &$T_d=0.5L$\\ \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\cellcolor[HTML]{C0C0C0} \textbf{Controller type} & \cellcolor[HTML]{C0C0C0}\textbf{Gains} \\ \hline
+		P                                                 & $K_p=\frac{1}{RL}$                     \\ \hline
+		PI                                                & $K_p=\frac{0.9}{RL}$                   \\
+		                                                  & $T_i=\frac{L}{0.3}$                    \\ \hline
+		                                                  & $K_p=\frac{1.2}{RL}$                   \\
+		PID                                               & $T_i=2L$                               \\
+		                                                  & $T_d=0.5L$                             \\ \hline
+	\end{tabular}
 \end{table}
 
-where $R=A/\tau$ is the amplitude of the oscillation, and $L$ is the period of the oscillation.
+where $R=A/\tau$ is the amplitude of the oscillation, and $L = t_d$ .
 
 \textbf{The ultimate sensitivity method}
 
@@ -160,17 +160,17 @@ The period of the oscillation is called the ultimate period $P_u$.
 
 The parameters for the PID controller can be found using the following table:
 \begin{table}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\cellcolor[HTML]{C0C0C0} \textbf{Controller type}& \cellcolor[HTML]{C0C0C0}\textbf{Gains}  \\ \hline
-P&$K_p=0.5K_u$ \\ \hline
-PI&$K_p=0.45K_u$\\
-  &$T_i=\frac{P_u}{1.2}$\\ \hline
-& $K_p=0.6K_u$ \\
- PID &$T_i=0.5K_u$ \\
-  &$T_d=\frac{1}{8}P_u$\\ \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\cellcolor[HTML]{C0C0C0} \textbf{Controller type} & \cellcolor[HTML]{C0C0C0}\textbf{Gains} \\ \hline
+		P                                                 & $K_p=0.5K_u$                           \\ \hline
+		PI                                                & $K_p=0.45K_u$                          \\
+		                                                  & $T_i=\frac{P_u}{1.2}$                  \\ \hline
+		                                                  & $K_p=0.6K_u$                           \\
+		PID                                               & $T_i=0.5K_u$                           \\
+		                                                  & $T_d=\frac{1}{8}P_u$                   \\ \hline
+	\end{tabular}
 \end{table}
 
 
