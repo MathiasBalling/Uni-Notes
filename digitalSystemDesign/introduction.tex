@@ -15,13 +15,38 @@ Comments are written with two hyphens (- -).
 \textbf{if, case and loop statements}
 
 Every if statement has a corresponding then component and each if statement is terminated with an end if;
-If an else if statement is needed then it can be written as elsif.
+If an else if statement is needed then it can be written as elsif. Before
+each if statement a process statement must be written. The process
+statement includes the sensitivity list which is a list of signals that the process is sensitive to.
+
 \begin{verbatim}
-if x = '0' and y = '0' or z = '1' then
-  blah;
-  blah;
-end if;
+process (sel, I)
+begin
+  if (sel == "00") then
+    a <= 'I';
+    b <= '0';
+    c <= '0';
+    d <= '0';
+      
+  elsif (sel == "01") then
+    a <= '0';
+    b <= 'I';
+    c <= '0';
+    d <= '0';
+  elsif (sel == "10") then
+    a <= '0';
+    b <= '0';
+    c <= 'I';
+    d <= '0';
+  else
+    a <= '0';
+    b <= '0';
+    c <= '0';
+    d <= 'I';
+  end if;
+end process;
 \end{verbatim}
+
 
 Each case statement is terminated with end case; Each loop statement has a corresponding end loop;
 
@@ -132,6 +157,72 @@ as seen in algorithmic programming languages such as C.
 The process statement is a stement which contains a certain number of instructions that, when the process statement
 is executed, are executed sequentially. In other words the process statement is a tool that can be used
 for executing a certain number of instructions in a sequential manner.
+
+\textbf{Multiplexer}
+
+A general multiplexer has n data inputs, one output, and m select inputs. The number of select inputs determines the number of data inputs. The number of select inputs determines the number of data inputs. The number of data inputs is 2 to the power of the number of select inputs.
+
+
+\begin{center}
+	\includegraphics[width=0.3\textwidth]{images/mux.png}
+\end{center}
+
+
+\textbf{Demultiplexer}
+
+It selects one ouput from the multiple output line and feteches the single input through
+the selection line.
+
+
+\begin{center}
+	\includegraphics[width=0.2\textwidth]{images/demux.png}
+\end{center}
+
+
+\textbf{Encoders}
+
+Encoders are used to encode data into a coded form and decoders
+are used to convert it back into its original form. An encoder that has
+$2^n$ input lines and n output lines is called an $n-to-2^n$ encoder.
+It is assumed that only one input has a value of 1 at any given time.
+It is used to minimize the number of input lines.
+
+Priority encders are a modified version of an encoder. It gives a priority
+to an input signal and provides an output based on that priority.
+
+Example of a 4-to-2 priority encoder:
+
+\begin{verbatim}
+entity Priority_Encoder is
+  port (D: in std_logic_vector(3 downto 0);
+        Y: out std_logic_vector(1 downto 0));
+end Priority_Encoder;
+
+architecture Behavioral of Priority_Encoder is
+
+begin
+  process (D)
+  begin
+    if (D(3) = '1') then
+      Y <= "11";
+    elsif (D(2) = '1') then
+      Y <= "10";
+    elsif (D(1) = '1') then
+      Y <= "01";
+    elsif (D(0) = '1') then
+      Y <= "00";
+    else
+      Y <= "---";
+    end if;
+  end process;
+end Behavioral;
+\end{verbatim}
+
+\textbf{Decoders}
+
+Decoders are used to decode data that has been encoded using a binary encoder.
+An n-bit code can represent $2^n$ different values.
+An encoder can be used with enable inputs. The enable inputs are used to enable or disable the decoder.
 
 \newpage
 \subsection{Standard models in VHDL Architecture}
