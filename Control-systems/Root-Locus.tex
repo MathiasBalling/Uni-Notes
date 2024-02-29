@@ -1,2 +1,85 @@
 \section{Root Locus}
+Rudkurve metoden.
+Grafisk metode til desgin af regulatorer.
+
+\textbf{Rule 1}
+
+Consider the characteristic equation:
+$$ 1+KG(s) = 1 + K\frac{Q(s)}{P(s)} = 0$$
+This can be written as:
+$$P(s) = KQ(s)$$
+
+This is a polynoial of degree $N = max(m,n)$ where m is the number of poles and n is the number of zeros.
+Lemma. A univariate polynomial of degree d has d roots in $\mathbb{C}$ .
+
+There are $N$ lines (loci) where $N=max(m,n)$. Where m is the number of poles and n is the number of zeros.
+
+\textbf{Rule 2}
+
+Similar to previously, the characteristic equation is rewritten as:
+$$P(s) = KQ(s)$$
+Let $K=0$, then we observe that the roots of the characteristic equation are the poles of
+the open-loop system.
+
+Let $K\to \infty$, then we observe that the roots of the characteristic equation are the zeros of
+the open-loop system.
+
+Defintion: As $K$ increases from 0 to $\infty$, the root move from the poles of $G(s)$
+to the zeros of $G(s)$.
+
+\textbf{Rule 3}
+
+When roots are complex they occur in conjugate pairs.
+
+\textbf{Rule 4}
+
+We study the rewritten characteristic equation:
+$$\frac{Q(s)}{P(s)} = -\frac{1}{K}$$
+And see that the phase of $\frac{Q(s)}{P(s)}$ is $180^\circ$ to satisfy the equation.
+
+The transfer function can be written as:
+$$T(s) = \frac{Q(s)}{P(s)} = \frac{(s-z_1)(s-z_2)\cdots(s-z_m)}{(s-p_1)(s-p_2)\cdots(s-p_n)}$$
+where $z_i$ are the zeros and $p_i$ are the poles.
+Let $z \in \mathbb{C}$ then $zz* = |z|^2$; hence, complex pole pairs and pairs of complex
+conjugated zeros do not affect the phase of $T(s)$ for $s \in \mathbb{R}$.
+
+The phase of $(s-z_m)$ when $s,z_m \in \mathbb{R}$ is
+\begin{equation}
+	\angle(s-z_m) =
+	\begin{cases}
+		180^\circ & \text{if } s > z_m \\
+		0^\circ   & \text{otherwise}
+	\end{cases}
+\end{equation}
+The portion of the real axis to the left of an odd number of open loop poles and zeros
+are part of the loci.
+
+\textbf{Rule 5}
+
+Lines leave and enter the real axis at $90^\circ$ angles.
+
+\textbf{Rule 6}
+
+For very large values of $s$ the equation:
+$$1+K\frac{s^m+b_1s^{m-1}+\cdots+b_m}{s^n+a_1s^{n-1}+\cdots+a_n} = 0$$
+can be approximated to:
+$$1+K\frac{1}{(s-\alpha)^{n-m}}$$
+
+The phase of this expression should be $180^\circ$ for this expression to hold.
+This implies that:
+$$(n-m)\phi_l = 180^\circ+360^\circ(l-1)$$
+where $\phi_l$ is the phase of the expression.
+
+let $m<n-1$ then:
+$$-\sum r_i = -\sum p_i$$
+where $r_i$ are the closed-loop poles and $p_i$ are the open-loop poles.
+
+For $s$ going to $\infty$, it is known that $m$ closed-loop poles go towards the open-loop zeros,
+and $n-m$ closed-loop poles go towards $\alpha$, i.e.
+$$-\sum r_i = -(n-m)\alpha - \sum z_i = -\sum p_i$$
+where $z_i$ are the open-loop zeros.
+
+Thus,
+$$\alpha = \frac{\sum z_i - \sum p_i}{n-m}$$
+
 \subsection{Examples}

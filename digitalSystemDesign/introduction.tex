@@ -224,6 +224,35 @@ Decoders are used to decode data that has been encoded using a binary encoder.
 An n-bit code can represent $2^n$ different values.
 An encoder can be used with enable inputs. The enable inputs are used to enable or disable the decoder.
 
+
+\textbf{Latches}
+
+Level sensitive memory cell that is transparent to signals passing from
+the D input to Q output when enabled. It holds the value of D on Q at the
+time when it becomes disabled.
+
+Latches with clear input. The clear input means that when the clear signal
+goes to 1 the output is set to 0.
+
+
+\textbf{D-type Flip-flops}
+
+Is an edge triggered memory device that transfers a signal's value on its
+D input to its Q output, when an active edge transition occurs on its clock input.
+The output value is held until the next active edge transition occurs.
+
+Rising edge is preferred. Using an implemented function called rising\_edge(clk)
+is more robust to noise compared to using clk'event and clk = '1'.
+
+If you want to use flip-flops with reset it is good practice to use asynchronous reset.
+
+\textbf{Registers}
+
+A parallel register is simply a bank of D-type flip-flops. Its implementation
+has the same structure as for one flip-flop but with extended inputs and outputs.
+
+
+
 \newpage
 \subsection{Standard models in VHDL Architecture}
 
