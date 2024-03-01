@@ -7,7 +7,7 @@ Grafisk metode til desgin af regulatorer.
 Consider the characteristic equation:
 $$ 1+KG(s) = 1 + K\frac{Q(s)}{P(s)} = 0$$
 This can be written as:
-$$P(s) = KQ(s)$$
+$$P(s) + KQ(s) = 0$$
 
 This is a polynoial of degree $N = max(m,n)$ where m is the number of poles and n is the number of zeros.
 Lemma. A univariate polynomial of degree d has d roots in $\mathbb{C}$ .
@@ -17,12 +17,14 @@ There are $N$ lines (loci) where $N=max(m,n)$. Where m is the number of poles an
 \textbf{Rule 2}
 
 Similar to previously, the characteristic equation is rewritten as:
-$$P(s) = KQ(s)$$
+$$P(s) + KQ(s) = 0$$
 Let $K=0$, then we observe that the roots of the characteristic equation are the poles of
 the open-loop system.
 
 Let $K\to \infty$, then we observe that the roots of the characteristic equation are the zeros of
 the open-loop system.
+
+$$\frac{P(s)}{K} + Q(s) = 0$$
 
 Defintion: As $K$ increases from 0 to $\infty$, the root move from the poles of $G(s)$
 to the zeros of $G(s)$.
