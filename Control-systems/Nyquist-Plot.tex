@@ -1,2 +1,29 @@
-\section{The Nyquist Plot}
+\section{The Nyquist Stability Criterion}
+
+\subsection{Frequency response}
+The frequency response of a system is the steady-state response of a system to a sinusoidal input.
+The output of a time-invariant system will have the same frequency as the sinusoidal input,
+but possibly with a different amplitude and phase.
+
+The output of a time-invariant system is given by:
+$$y(t) = \int_{-\infty}^{\infty} h(\tau)u(t-\tau)d\tau$$
+Where y is the output, u  is the input, and h is the impulse response of the system.
+
+To obtain the frequency response, only sinusoidal inputs are considered.
+
+The frequency response of H(s) is given by the magnitude and phase of $H(j\omega)$
+
+$$M = |H(j\omega)|$$
+$$\phi = \angle H(j\omega)$$
+The M is the amplitude ratio and $\phi$ is the phase shift.
+
+The bandwidth of a closed-loop system $T(s)$ is defined to be the maximum frequency at which
+the output y of a system will track a sinusoidal input $r$ in a satisfactory manner. Output attaenuated to $1/\sqrt{2}$ of the input amplitude.
+Formally the bandwidth $\omega_{BW}$ of $T(s)$ is the maximal frequency such that:
+
+$$T(j\omega) >= 1/\sqrt{2}$$
+
+The maximal value of the frequency response is called the resonant peak  $M_r$
+
+
 \subsection{Examples}
