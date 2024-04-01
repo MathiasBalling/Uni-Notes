@@ -1,1 +1,29 @@
 \section{Komparatorer og multivibratorer}
+
+An ideal comparator compares two input voltages and produces a logic output signal whose value (high or low) depends on which
+of the two inputs is largest. For a comparator it has an inverting and a non-inverting input, and the output is a digital signal.
+If the voltage $v_1$ applied on t the noninverting input is larger than the voltage $v_2$ applied to the inverting input, the output
+will be high, and vice versa.
+
+Comparators are designed to minimize the time delay between the input signal and the output signal.
+
+\textbf{Schmitt trigger} is a comparator with hysteresis, which means that it has two different threshold levels for rising and falling edge.
+A schmitt trigger uses positive feedback to prevent oscillation and to increase the speed of the switching.
+
+\textbf{Astable multivibrator} is a switching oscillator, that can be formed by adding an RC feedback network to a Schmitt trigger.
+These circuits are useful for generating relatively low frequency square waves. The output of the multivibrator is a square wave.
+
+When designing an astable multivibrator you should think of  asmall capacitance calls for a large resistance. However, using a large resistance
+leads the charging current to be small and can be significantly affected by the bias current of the comparator, which is unpredictable.
+
+\textbf{555 Timer}
+
+The 555 timer IC is economical and convenient for use in multivibrator circuits because few external components are required.
+
+
+
+\textbf{A 555 monostable multivibrator} is a circuit that produces an output pulse of fixed duration in response to a trigger signal.
+Monostables are useful in producing timing signals. For example, automatic garage-door openers often have a light that is turned on when the door is opened.
+The light stays on for a few minutes and then automatically turns off.
+
+For a 555 monostable multivibrator circuit only  two external components are needed: a resistor and a capacitor.
