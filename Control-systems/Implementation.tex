@@ -102,6 +102,10 @@ A discrete controller can be designed by emulation for the system $G(s)$ accordi
 
 \subsubsection{Discrete Design}
 Design the discrete controller directly, without computing $K(s)$ first.
+Therefore it relies on a discretized plant model. The discrete transfer function of a system $G(s)$ and preceding
+zero-order hold is
+$$G(z) = (1-z^{-1})Z\{\frac{G(s)}{s}\}$$
+where $Z$ denotes the Z-transform.
 
 \subsection{Examples}
 
