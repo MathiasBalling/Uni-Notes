@@ -95,7 +95,31 @@ A discrete controller can be designed by emulation for the system $G(s)$ accordi
 
 
 \subsubsection{Numerical Integration Methods}
+There is three methods to convert a continous controller to a discrete controller:
+\begin{center}
+	\includegraphics[width=0.5\textwidth]{Images/Numerical-Integration.png}
+\end{center}
+Get an approximation of the discrete transfer function by replacing $s$ with:
+$$\begin{array}{cc}
+  \textbf{Method:}& \textbf{Approximation:} \\
+  \text{Forward rule:}& s\gets\frac{z-1}{T} \\
+  \text{Backward rule:}& s\gets\frac{z-1}{Tz} \\
+  \text{Trapezoidal rule:}& s\gets\frac{2}{T} \frac{z-1}{z+1}
+\end{array}$$
 
+Get an approximation of the discrete transfer function by replacing $z$ with:
+$$\begin{array}{cc}
+  \textbf{Method:}& \textbf{Approximation:} \\
+  \text{Forward rectangular rule:}& z\gets 1+Ts \\
+  \text{Backward rectangular rule:}& z\gets \frac{1}{1-Ts} \\
+  \text{Bilinear rule:}& z\gets \frac{1+Ts/2}{1-Ts/2}
+\end{array}$$
+
+The left half-plane is mapped to different regions in the $z$-plane for the different methods.
+\begin{center}
+	\includegraphics[width=0.8\textwidth]{Images/digitization-mapping.png}
+\end{center}
+This means that the discretization of a stable system using the forward rule can result in an unstable system.
 
 
 
@@ -104,8 +128,22 @@ A discrete controller can be designed by emulation for the system $G(s)$ accordi
 Design the discrete controller directly, without computing $K(s)$ first.
 Therefore it relies on a discretized plant model. The discrete transfer function of a system $G(s)$ and preceding
 zero-order hold is
-$$G(z) = (1-z^{-1})Z\{\frac{G(s)}{s}\}$$
+$$G(z) = (1-z^{-1}) Z  \left\{\frac{G(s)}{s}\right\}$$
 where $Z$ denotes the Z-transform.
+
+The system can subsequently be analyzed based on the clode-loop transfer function:
+$$T_{cl}(z)=\frac{G(z)K(z)}{1+G(z)K(z)}$$
+Since the structure of the continuous and discrete closed-loop transfer functions are the same, the stability of the system can be studied via the characteristic equation:
+$$1+G(z)K(z)=0$$
+Consequently, the controller K(z) can be designed via root locus or any of the other methods.
+
+\textbf{Design procedure}
+\begin{enumerate}
+  \item Transform the continuous-time plant into discrete time as follows:
+    $$G_d(z) = (1-z^{-1}) Z  \left\{\frac{G(s)}{s}\right\}$$
+  \item Design the feedback controller $K(z)$ using the same approaches as for a continuous-time.
+  \item Verify the design on the sampled data system.
+\end{enumerate}
 
 \subsection{Examples}
 
