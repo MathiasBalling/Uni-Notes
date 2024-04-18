@@ -1,2 +1,49 @@
-\section{State Feedback}
+\section{State Feedback Control}
+
+
+
+
+\subsection{Controllability (styrbarhed)}
+
+A continuous time system
+$$ \dot{x} = Ax(t) + Bu(t), x(0)=0 $$
+is said to be controllable if and only if for any $\zeta \in \mathbb{R}^n$,
+there exists $u(t)$ such that for some $T>0, x(T)=\zeta$
+
+
+
+
+A discrete time system
+$$x_{k+1} = \Phi x_k + \Gamma u_k, x_0=0$$
+is said to be controllable if and only if for any $\zeta \in \mathbb{R}^n$, there exists
+$(u_0, u_1, \cdots)$ such that for some $N>0, x_N=\zeta$
+
+From iterating through the discrete time system, we get:
+$$ x_n = \Phi^{n-1} \Gamma u_0 + \dots + \Phi \Gamma u_{n-2} + \Gamma u_{n-1} $$
+
+The controllability matrix (styrbarheds matricen):
+$$ x_n = \begin{bmatrix}  \Gamma & \Phi \Gamma & \cdots & \phi ^{n-1} \Gamma \end{bmatrix} $$
+
+A system where $x \in \mathbb{R}^n, u \in \mathbb{R}^m$ is controlable if and only if:
+
+
+
+Having only 1 input signal, the system is controllable if:
+$$ \det \begin{Bmatrix} B & AB & \cdots & A^{n-1}B \end{Bmatrix} \neq 0 $$
+
+
+
+
+\subsection{Controllable Cannonical Form}
+\subsection{State Feedback and Pole Assignment}
+
+
+
+
+
+
+
+
+
+
 \subsection{Examples}
