@@ -1,2 +1,43 @@
 \section{Observer Design}
+
+
+\subsection{Observability}
+Estimation of state.
+
+
+\textbf{Observability matrix}
+
+\subsection{Full Order Observer}
+Estimation of all states. (tilstandsestimator)
+
+$$\dot{\hat{x}} = A\hat{x} + Bu + L(C\hat{x}-y)$$
+$$\hat{y} = C\hat{x}$$
+
+Error, $e = \hat{x} - x$:
+$$\dot{e} = \dot{\hat{x}} - \dot{x} = A\hat{x}+Bu+L(C\hat{x} - y) - (Ax+Bu) $$
+$$ = A(\hat{x}-x) + L(C\hat{x}-Cx)$$
+$$ = (A+LC)e$$
+
+Eigenvalues for A+LC should be placed in the left half plane for the error to converge to zero.
+This has to be done by only changing L.
+
+\textbf{Theorem}
+
+A full order observer for the system with observer gain $L$ is stable,
+if and only if the eigenvalues of the matrix $A+LC$ all have a negative real part.
+Moreover, such an $L$ always exists, if (A,C) is observable.
+
+
+\textbf{Observable Canonical Form}
+
+\subsection{Observer Design}
+\subsection{Observer Based Control}
+
+Combination of observer and state feedback.
+This gives 2n poles because of the extra eigenvalues.
+The state feedback poles should be placed 2 to 6 times further
+to the left than the observer poles.
+
+
+
 \subsection{Examples}
