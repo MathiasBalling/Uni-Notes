@@ -24,9 +24,10 @@ $$\lim_{t \to \infty} y(t) = \lim_{s \to 0} sY(s)$$
 
 The Final Value Theorem determines the constant value that the impulse response of a stable system converges to.
 The theorem can also be used to determine the DC gain of a system, i.e., the output when a step input is applied to the system.
+When finding the DC gain of a system G(s) then recall that the impulse response of the trtansfer function $1/s$ is a constant. Thus the DC gain is given by:
+$$\lim_{s \to 0} sG(s)\frac{1}{s} = \lim_{s \to 0} G(s)$$
 
-By integrating an impulse response, the step response is obtained. The step response is the integral of the impulse response,
-and the impulse response is the derivative of the step response.
+The reason as to $1/s$ is used is because you go from impulse response to step response by integrating the impulse response.
 
 If the system has a disturbance an open loop control system will not be able to compensate for this.
 
@@ -85,16 +86,23 @@ disturbance on the output.
 
 The sensitivity S of the open-loop system is given by the ratio of $\delta T_{ol}/T_ol$ to $\delta G_0/G_0$.
 For the open loop system S=1. $\delta$ is the relative change in the transfer function.
+This means that if the DC gain of the system changes by 10\% then the output will change by 10\%.
 
 For the closed loop the sensitivity is given by:
 $$S = \frac{1}{1+G_0 K_0}$$
 This means that a large amplification leads to a low sensitivity.
 
-\textbf{Linearization}
-Taylor approximation, YES.
+\newpage
 
+\textbf{Linearization}
+
+\begin{center}
+	\includegraphics[width=\textwidth]{Images/linearization.png}
+\end{center}
 
 \subsection{Steady State Tracking}
+
+Referencefølge
 
 \textbf{Definition of system type}
 
@@ -107,19 +115,31 @@ for which the steady-state error in a nonzero finite constant.
 	\includegraphics[width=0.6\textwidth]{Images/systemTypes.png}
 \end{center}
 
+If you want zero steady state error to a constant reference signal, then the system must be of type 1.
+However, if you apply a ramp signal as a reference signal to a type 0 system, then the steady state error will be infinite.
+Thus, you will have a static error if the system type matches the input type as shown in the previous figure.
 
 An expression for the tracing error is computed to determine the steady-state error. The error is given by:
 $$e(s) = \frac{1}{1+L(s)}r(s)$$
 Where r(s) is the reference signal and L(s) is the loop gain.
 
-\textbf{The amount of poles at s=0 in the denominator of L(s) determines the system type.}
 
 Final value theorem is used to determine the steady-state error when
-the reference signal is a polynomial $r(t) = t^k 1(t)$.
+the reference signal is a polynomial $r(t) = t^k 1(t)$. Where k is the input type.
 
-$$e_ss = \lim_{t \to \infty} e(t) = \lim_{s \to 0} e(s)s$$
+$$e_{ss} = \lim_{t \to \infty} e(t) = \lim_{s \to 0} e(s)s$$
 $$\lim_{s \to 0} e(s)s = \lim_{s \to 0} s\frac{1}{1+L(s)}r(s)$$
 $$\lim_{s \to 0} s\frac{1}{1+L(s)}\frac{1}{s^{k+1}}$$
+
+The expression for the steady state error is simplified by rewriting the loop gain as:
+$$L(s) = \frac{L_0(s)}{s^n}$$
+where n is the number of poles at the origin of L(s). This means that the amount of poles at s=0 of the systems loop gain L(s) determines the system type.
+
+
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{Images/ssTracking.png}
+\end{center}
+
 
 \subsection{Cascade Control}
 A cascade control uses the output from one controller as the input to another controller.
@@ -133,6 +153,18 @@ The nested control loops are called the inner loop (secondary) and the outer loo
 A fundamental reason for applying cascade control is to obtain better disturbance rejection
 and lower sensitivity to parameter variations.
 
+\textbf{Disturbance rejection}
+
+Single loop control with two plants:
+$$ y(s) = P_2(s)P_1(s)d(s) + P_2(s)P_1(s)u'(s)$$
+
+Cascade control with two plants and two control loops:
+$$ y(s) = \frac{P_2(s)P_1(s)}{1+P_1(s)C_s(s)}d(s) + \frac{P_2(s)P_1(s)C_s(s)}{1+P_1(s)C_s(s)}u'(s)$$
+
+where $C_s(s)$ is the controller for the secondary loop.
+
+The inner loop should be faster than the outer loop. A rule of thumb is that the average residence times should have a ratio
+of at least five. Essential disturbances should act in the inner loop.
 
 \subsection{DC Motor Dynamics}
 
