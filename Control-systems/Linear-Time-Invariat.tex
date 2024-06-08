@@ -48,6 +48,12 @@ Discrete-time state space models (based on difference equations)
 $$x_{k+1} = \Phi x_k + \Gamma u_k$$
 $$y_k = Cx_k + Du_k$$
 
+$$\Phi = e^{AT}$$
+$$\Gamma = \int_0^T e^{A(T-\tau)}B d\tau$$
+
+Matrix exponential can be computed with expm in Matlab.
+
+
 \subsection{Frequency-Domain models}
 Transfer function:
 $$G(s)=\frac{Q(s)}{P(s)}$$
@@ -71,6 +77,38 @@ $$Y(s)=G(s)U(s)$$
 $$G(s)=C\left(sI-A\right)^{-1}B+D$$
 \subsubsection{Transfer function to state space}
 
+$$G(s)=\frac{1}{s^2+a_1s+a_2}$$
+$$y(s)=\frac{1}{s^2+a_1s+a_2}u(s)$$
+$$s^2Y(s)+a_1sY(s)+a_2Y(s)=U(s)$$
+Inverse Laplace transform:
+$$\ddot{y}(t)+a_1\dot{y}(t)+a_2y(t)=u(t)$$
+
+Now $x_1=y(t)$ and $x_2=\dot{y}(t)$:
+
+%Write the state space model on matrix form:
+$$\begin{bmatrix}
+		\dot{x}_1 \\
+		\dot{x}_2
+	\end{bmatrix}=\begin{bmatrix}
+		0    & 1    \\
+		-a_2 & -a_1
+	\end{bmatrix}\begin{bmatrix}
+		x_1 \\
+		x_2
+	\end{bmatrix}+\begin{bmatrix}
+		0 \\
+		1
+	\end{bmatrix}
+	u
+$$
+
+$$y=\begin{bmatrix}
+		1 & 0
+	\end{bmatrix}\begin{bmatrix}
+		x_1 \\
+		x_2
+	\end{bmatrix}+(0)u$$
+
 \subsubsection{Discrete-time transfer function}
 Discretization from $s$-domain to $z$-domain can be done using:
 \begin{itemize}
@@ -83,4 +121,3 @@ Discretization from $s$-domain to $z$-domain can be done using:
 \end{center}
 
 \subsection{Examples}
-

@@ -1,2 +1,38 @@
 \section{Kalman Filter}
+
+\subsection{Random Values}
+
+Probability density function is used for determining
+the probability of a random variable falling within a particular range of values.
+This is done because a continuous random variable X often has zero probability of being one particular value.
+
+$$ Pr(a \leq X \leq b) = \int_{a}^{b} f_X(x) dx $$
+
+
+The expected value (mean value) of a continuous random variable X
+can be determined from the probiability density function $f_X(x)$ as follows:
+
+$$ E[X] = \int_{-\infty}^{\infty} x f_X(x) dx $$
+
+The variance of X is defined as:
+
+$$ Var[X] = E[(X - E[X])^2] $$
+
+
+For a multivariate random variable X, the expected value is a vector:
+$$ X = \begin{bmatrix} X_1 \\ X_2 \\ \vdots \\ X_n \end{bmatrix} $$
+
+Covariance matrix
+
+$$ \sum = E[(X - E[X])(X - E[X])^T] $$
+
+The variance for the different values can be found on the diagonal of the covariance matrix.
+
+
+
+\subsection{Kalman Filter}
+
+
+
 \subsection{Examples}
+
