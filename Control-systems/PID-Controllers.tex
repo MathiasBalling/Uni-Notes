@@ -170,6 +170,19 @@ The parameters for the PID controller can be found using the following table:
 where $R=A/\tau$ is the amplitude of the oscillation, and $L = t_d$ . Remember that the table above
 is only an inital guess, and the controller should be tuned further.
 
+
+$T_i$ is the time integration constant. The constant describes how fast
+the integral term is accumulated. A large $T_i$ will give a slow response, but
+a small overshoot. A small $T_i$ will give a fast response, but a large overshoot.
+$T_d$ is the derivative time constant. The constant describes the period over which
+the derivative term is calculated.
+A large $T_d$ will enhance the controller's responsiveness to changes in error,
+but at the risk of amplifying noise.
+$T_d$ is used to predict and counteract future errors.
+Whereas the $T_i$ term is used to eliminate steady state errors.
+
+
+
 \textbf{The ultimate sensitivity method}
 
 Start using a P-controller, and increase the gain until the system starts to oscillate.

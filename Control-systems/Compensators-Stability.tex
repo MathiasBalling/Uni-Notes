@@ -7,14 +7,26 @@ Gain margin: factor by which the gain can be rained before a system becomes unst
 Phase margin: The amount by which the phase can be increased before the system becomes unstable. (exceeds $-180 ^\circ$)
 
 
+For a system to be robust the gain margin should be 3 to 6dB and the phase margin
+should be $30^\circ$ to $45^\circ$.
 
+The phase margin can be found on a bode plot by looking at the phase at the frequency
+where the gain is 0dB. The phase margin is then $180^\circ$ minus the phase at that frequency.
+The gain margin is the gain at the frequency where the phase is $-180^\circ$.
+
+
+\begin{center}
+	\includegraphics[width=0.7\textwidth]{Images/margin.jpg}
+\end{center}
 
 \subsection{Dynamic compensation}
 
 Lead compensator is equivalent to a d-part for a PID controller.
-A lead compensator has a positive phase.
+A lead compensator has a positive phase. A lead compensater decreases
+the rise time and overshoot.
 
 Lag compensator is equivalent to an i-part for a PID controller.
+The lag controller improves the steady state error.
 
 Both compensators are given by the transfer function:
 
