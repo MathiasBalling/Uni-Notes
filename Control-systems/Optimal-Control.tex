@@ -1,10 +1,18 @@
 \section{Integral Control and Optimal Control}
 
 \subsection{Integral Control}
+
+
+
+
+
+
 \subsection{Anti-windup}
 Must always be applied when having an integrator in the controller.
 
 \textbf {Designing Saturation Gain}
+
+M is a compensator gain. The compensator gain is only used when $F*\hat{x}$ is in saturation.
 
 Dynamics of controller during saturation
 $$ \dot{\hat{x}} = (A+LC+MF)\hat{x}$$
@@ -16,6 +24,8 @@ any desired poles to the saturated controller.
 
 \subsection{Optimal Control}
 
+Linear quadratic regulator (LQR). Optimal refers to speed and precision.
+
 Consider a linear control system of the form:
 $$ \dot{x} = Ax + Bu, x(0)=x_0 $$
 $$ y = Cx $$
@@ -24,6 +34,9 @@ A control law for such a system is said to be optimal, if it minimizes the cost 
 
 $$ J = \int_{0}^{\infty} (x^TQx + u^TRu) dt $$
 Where $Q=Q^T$ is a positive semi-definite matrix (eigenvalues larger than or equal to 0) and $R=R^T$ is a positive definite matrices.
+Positive definite means that the eigenvalues must be larger than 0.
+The cost is optimal if the equation is close to zero.
+
 
 Algebraic Riccati Equation is a second order matrix equation in an indeterminate $P=P^T \in \mathbb{R}^{n \times n}$:
 $$ A^TP + PA - PBR^{-1}B^TP + Q = 0 $$
@@ -36,5 +49,11 @@ $$u = Fx$$
 Where F is given by:
 $F = -R^{-1}B^TP$
 
+
+\textbf{Brysons rule}
+
+Used to determine the diagonal matrices Q and R. The rule states that the optimal control law is given by:
+$$ Q_{ii} = \frac{1}{\text{maximum acceptable value of } x_i^2} $$
+$$ R_{jj} = \frac{1}{\text{maximum acceptable value of } u_j^2} $$
 
 \subsection{Examples}

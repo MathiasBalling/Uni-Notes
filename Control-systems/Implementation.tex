@@ -4,7 +4,13 @@
 
 Real electromechanical systems has saturations on their physical variables. In particular,
 the output of any actuator is limited from above and below. (Clipping).
-If you stay between the limits, the system will behave as a linear system.
+If you stay between the limits, the system will behave as a linear system. An example can be that
+a motor specified to use 24V, will not be able to handle 30V.
+
+What happens to a PID controller when the system is saturated? The integrator will keep integrating
+the error, which will cause a large overshoot when the system is no longer saturated. This is called
+an integrator windup. To avoid this, anti-windup schemes are introduced.
+
 
 \textbf{Back-calculation}
 
@@ -24,6 +30,7 @@ hence, its input must be zero, i.e.
 
 $$ e_s = -\frac{K_p T_t}{T_i}e $$
 
+If $T_t$ is chosen to be small, the integrator will respond quickly to changes in the system.
 
 \textbf{Conditional integration}
 
@@ -81,13 +88,13 @@ $$u(z) = (k_P+k_I \frac{T}{2} \frac{z+1}{z-1}+k_D \frac{2}{T} \frac{z-1}{z+1})e(
 
 \textbf{Compensation for sampling effects}
 
-\newpage
 \textbf{Design procedure}
 
 A discrete controller can be designed by emulation for the system $G(s)$ according to the next procedure:
 
 \begin{enumerate}
-	\item{Design continuous compensation for the system $G_d(s)G(s)$, where $G_d(s)$ approximates a delay of $T/2$}
+	\item{Design continuous compensation for the system $G_d(s)G(s)$, where $G_d(s)$ approximates a delay of $T/2$. $G_d$ should be a first-order system with a time constant of $T/2$.
+	            Thus, $$G_d(s) = \frac{1}{T/2s+1}$$}
 	\item{Derive the discrete controller by applying Tustin's rule or the matched pole-zero method}
 	\item{Analyze the design by simulation or experimentally}
 \end{enumerate}
@@ -95,25 +102,25 @@ A discrete controller can be designed by emulation for the system $G(s)$ accordi
 
 
 \subsubsection{Numerical Integration Methods}
-There is three methods to convert a continous controller to a discrete controller:
+There are three methods to convert a continous controller to a discrete controller:
 \begin{center}
 	\includegraphics[width=0.5\textwidth]{Images/Numerical-Integration.png}
 \end{center}
 Get an approximation of the discrete transfer function by replacing $s$ with:
 $$\begin{array}{cc}
-  \textbf{Method:}& \textbf{Approximation:} \\
-  \text{Forward rule:}& s\gets\frac{z-1}{T} \\
-  \text{Backward rule:}& s\gets\frac{z-1}{Tz} \\
-  \text{Trapezoidal rule:}& s\gets\frac{2}{T} \frac{z-1}{z+1}
-\end{array}$$
+		\textbf{Method:}         & \textbf{Approximation:}           \\
+		\text{Forward rule:}     & s\gets\frac{z-1}{T}               \\
+		\text{Backward rule:}    & s\gets\frac{z-1}{Tz}              \\
+		\text{Trapezoidal rule:} & s\gets\frac{2}{T} \frac{z-1}{z+1}
+	\end{array}$$
 
 Get an approximation of the discrete transfer function by replacing $z$ with:
 $$\begin{array}{cc}
-  \textbf{Method:}& \textbf{Approximation:} \\
-  \text{Forward rectangular rule:}& z\gets 1+Ts \\
-  \text{Backward rectangular rule:}& z\gets \frac{1}{1-Ts} \\
-  \text{Bilinear rule:}& z\gets \frac{1+Ts/2}{1-Ts/2}
-\end{array}$$
+		\textbf{Method:}                  & \textbf{Approximation:}      \\
+		\text{Forward rectangular rule:}  & z\gets 1+Ts                  \\
+		\text{Backward rectangular rule:} & z\gets \frac{1}{1-Ts}        \\
+		\text{Bilinear rule:}             & z\gets \frac{1+Ts/2}{1-Ts/2}
+	\end{array}$$
 
 The left half-plane is mapped to different regions in the $z$-plane for the different methods.
 \begin{center}
@@ -139,10 +146,10 @@ Consequently, the controller K(z) can be designed via root locus or any of the o
 
 \textbf{Design procedure}
 \begin{enumerate}
-  \item Transform the continuous-time plant into discrete time as follows:
-    $$G_d(z) = (1-z^{-1}) Z  \left\{\frac{G(s)}{s}\right\}$$
-  \item Design the feedback controller $K(z)$ using the same approaches as for a continuous-time.
-  \item Verify the design on the sampled data system.
+	\item Transform the continuous-time plant into discrete time as follows:
+	      $$G_d(z) = (1-z^{-1}) Z  \left\{\frac{G(s)}{s}\right\}$$
+	\item Design the feedback controller $K(z)$ using the same approaches as for a continuous-time.
+	\item Verify the design on the sampled data system.
 \end{enumerate}
 
 \subsection{Examples}

@@ -1,13 +1,23 @@
 \section{Observer Design}
-
+Is used when you can't measure all states.
 
 \subsection{Observability}
 Estimation of state.
 
+Tells when it is possible to estimate the states of a system from the output.
+An observer can only be made if the system is observable.
+
 
 \textbf{Observability matrix}
 
+$$O = \begin{bmatrix} C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1} \end{bmatrix}$$
+
+Has to have full rank to be observable.
+
+
 \subsection{Full Order Observer}
+hat symbolizes the estimated value.
+
 Estimation of all states. (tilstandsestimator)
 
 $$\dot{\hat{x}} = A\hat{x} + Bu + L(C\hat{x}-y)$$
@@ -30,13 +40,29 @@ Moreover, such an $L$ always exists, if (A,C) is observable.
 
 \textbf{Observable Canonical Form}
 
+Any observable single output system can be written in the form:
+
+
+
 \subsection{Observer Design}
+
+Designing an observer needs an observer gain matrix $L$. This can be found by
+
+
+
+
 \subsection{Observer Based Control}
 
 Combination of observer and state feedback.
 This gives 2n poles because of the extra eigenvalues.
 The state feedback poles should be placed 2 to 6 times further
-to the left than the observer poles.
+to the left than the observer poles. This is done to achieve a faster response.
+
+\textbf{Seperation principle}:
+
+You can design the observer and the controller independently and then combine them.
+An observer with observer gain $L$ and feedback gain $F$ results in 2n closed loop poles,
+coinciding with the eignevalues of $A+BF$ and $A+LC$.
 
 
 

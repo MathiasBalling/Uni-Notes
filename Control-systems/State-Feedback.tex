@@ -1,9 +1,13 @@
 \section{State Feedback Control}
 
-
+Tilstandsregulering (moderne regulering).
 
 
 \subsection{Controllability (styrbarhed)}
+
+Means if you can control your system to any desired state.
+
+We cannot design a a controller for a system that is not controllable in this course.
 
 A continuous time system
 $$ \dot{x} = Ax(t) + Bu(t), x(0)=0 $$
@@ -24,8 +28,11 @@ $$ x_n = \Phi^{n-1} \Gamma u_0 + \dots + \Phi \Gamma u_{n-2} + \Gamma u_{n-1} $$
 The controllability matrix (styrbarheds matricen):
 $$ x_n = \begin{bmatrix}  \Gamma & \Phi \Gamma & \cdots & \phi ^{n-1} \Gamma \end{bmatrix} $$
 
-A system where $x \in \mathbb{R}^n, u \in \mathbb{R}^m$ is controlable if and only if:
+A system where $x \in \mathbb{R}^n, u \in \mathbb{R}^m$ is controlable if and only if the controllability
+matrix has full rank.
 
+In continuous time you look at the matrix:
+$$ Rank \begin{bmatrix} B & AB & \cdots & A^{n-1}B \end{bmatrix} = n $$
 
 
 Having only 1 input signal, the system is controllable if:
@@ -35,15 +42,32 @@ $$ \det \begin{Bmatrix} B & AB & \cdots & A^{n-1}B \end{Bmatrix} \neq 0 $$
 
 
 \subsection{Controllable Cannonical Form}
+Any controllable system can be transformed into a controllable cannonical form.
+The reason as to doing so is to simplify the design of the state feedback controller.
+
+Considering $n=3$ and introduce the following notation for the rows of $T^{-1}$:
+
+$$T^{-1} = \begin{bmatrix}
+		s_1 \\
+		s_2 \\
+		s_3
+	\end{bmatrix} $$
+
+
+$$A_c = T^{-1}AT$$
+$$B_c = T^{-1}B$$
 \subsection{State Feedback and Pole Assignment}
+Tilstands regulator.
 
 
+Eigen values of $(A+BF)$ is the poles of the closed loop system.
+We can change F so $A+BF$ has any desired eigen values.
+
+If the system is controllable and placed on controllable cannonical form, it is then possible
+to place the poles of the closed loop system at any desired location using $F$.
 
 
-
-
-
-
-
+$$F_c = \begin{bmatrix} a_{cl,1} - a_1 & ... & A_{cl,n} - a_n \end{bmatrix} $$
+$$ F = F_c T^{-1}$$
 
 \subsection{Examples}
