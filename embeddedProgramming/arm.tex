@@ -1,0 +1,42 @@
+\section{ARM architecture}
+
+Acorn RISC Machine. Reduced Instruction Set Computer, later Advanced RISC Machine.
+Key feature is that ARM processors have good performance per Watt.
+
+
+
+\subsection{RISC}
+
+RISC is a small set of simple and general instructions.
+Advantages compared to CISC:
+\begin{itemize}
+	\item Instructions take one clock cycle
+	\item Performance is better due to simplified instruction sets
+	\item Less chip space is used due to reduced instruction set
+	\item Can easily be designed as compared to CISC
+	\item Reduced per chip cost, as it uses smaller chips
+\end{itemize}
+
+\begin{itemize}
+	\item Performance of the processor will vary according to the code being executed
+	\item RISC processors require very fast memory systems to feed various instructions
+\end{itemize}
+
+Risc is used in Qualcomm snapdragon which is in most smartphones.
+In addition to this apple silicon is also based on ARM.
+
+
+\subsection{ARM Cortex-M4 peripherals}
+
+SysTick timer is a 24-bit timer that counts down to zero.
+
+
+\textbf{Registers:} A processor register is one of a small set of data holding places
+that are part of the computer processor. A register may hold an instruction,
+a storage address, or any kind of data (such as a bit sequence or individual chracters).
+Some  instructions specify registers as part of the instruction.
+
+\textbf{Data types:} 32-bit words, 16-bit half words, 8-bit bytes.
+
+\textbf{Interrupt vector table:} Contains the addresses of the interrupt service routines (ISR).
+Using the addresses you can jump to the ISR when an interrupt is triggered.

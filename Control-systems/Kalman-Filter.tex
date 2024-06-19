@@ -1,5 +1,19 @@
 \section{Kalman Filter}
 
+\subsection{Reference signals}
+
+Feed forward.
+
+
+$$M \cdot N^{-1} = \tilde M$$
+
+\subsection{Pole assignment}
+
+$$A_{za} = A + BF + LC$$
+$$C_{za} = -F$$
+$$N = -(C_{cl}A_{cl}^{-1}\tilde B_cl)^{-1}$$
+$$M = \tilde M N$$
+
 \subsection{Random Values}
 
 Probability density function is used for determining
