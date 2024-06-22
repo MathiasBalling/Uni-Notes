@@ -9,6 +9,37 @@ Volatile
 
 extern
 
+\subsection{Floating Point Unit}
+Floating point is a way to represent real numbers on computers.
+IEEE floating point formats:
+
+\begin{center}
+	\includegraphics[width=\textwidth]{images/FPU.png}
+\end{center}
+
+The fraction part also known as the mantissa, describes
+the significant digits of the number.
+Where the exponent tells us where the decimal point is.
+
+
+
+The FPU provides floating point computation functionality
+that is compliant with the IEE 754 standard.
+It enables conversion between fixed-point and floating-point data
+formats, and floating-point constant instructions.
+
+\subsection{Pointers}
+Null pointer is a pointer used to initialize a pointer without
+a memory address. It can be used as a function argument.
+
+A void pointer is used to receive the address of a variable
+of any data type.
+
+\subsection{Strings}
+In C a string is a line of characters pointed to by a pointer and
+continuing until a $'\ 0'$ character is encountered.
+The string might exist in memory of an array or as a constant.
+
 
 \subsection{Queues}
 
@@ -24,24 +55,30 @@ maybe read data without removing it from the queue (peek).
 	\includegraphics[width=\textwidth]{images/queue.png}
 \end{center}
 
+If a producer tries to write to a queue that is full, the producer
+can throw away the data, do something else and try later,
+overwrite old data or wait(block).
+
+
 
 \subsection{Semaphores}
 
 Real life: Visual signaling with arms and flags. A different example
 can be parking access control.
 
-In software, a semaphore is a data strcture for synchronization.
+There are two types of semaphores: binary and counting.
+
+In software, a semaphore is a data structure for synchronization.
 A semaphore is an integer varaible, but the only allowed operations
-are increment and decrement. When a task decrements the semaphore, if the
-results is neagtive, the task blocks itself and cannot continue until
+are increment and decrement. When a task decrements the
+semaphore, if the results is neagtive,
+the task blocks itself and cannot continue until
 another task increments the semaphore.
 When a task increments the semaphore, if there are other tasks waiting,
 one of the waiting tasks gets unblocked.
 
 Incrementing a semaphore is done using Signal() and decrementing
 is called wait().
-
-There are two types of semaphores: binary and counting.
 
 The reason for using semaphores is that it helps prevent bugs.
 In addition to this the purposes of semaphores are to protect shared
@@ -162,3 +199,61 @@ The hardware event is called a trigger. When this happens, an ISR is called.
 This pauses the execution of the regular code, until the ISR returns or a
 higher priority interrupt is triggered.
 
+
+\subsection{Printf}
+
+Printf in C is a function that prints formatted output.
+Using printf one can format the string to contain embedded format tags
+that are substituted with values.
+
+An example of this is:
+$printf("The value of x is \%d", x);$
+
+\subsection{Deadlock}
+
+A deadlock is when a process cannot proceed because
+it needs to obtain a resource held by another process but
+it itself is holding a resource that the other process needs.
+
+
+\subsection{Assembler}
+Low-level programming language.
+Assembly code is very close to machine code instructions,
+because of its direct mapping from assembler instructions
+to procesor instructions.
+
+Assembly language is a human readable programming language that
+contains mnemonics of machine code (mov,ldr, ldi) etc.
+
+Assember is a computer program that translates assembly source code
+into machine language object code.
+
+The reason as to why one would use assembly is because of its speed and size.
+It can be used for strict timing requirements, where the execution time
+is critical.
+
+
+Assembly can be used inline in C code, like this:
+$$ asm("MOV R0, \#0x01"); $$
+
+A reccomended way to use assembly is to write the code in a seperate
+file and then include it in the C code.
+
+
+
+\subsection{Reentrancy}
+
+A function is reentrant or pure if, while it is being executed,
+can be called again by itself or by another function.
+i.e. more than one instance of a function can run at the same time.
+
+A function is reentrant if all variables are used atomic
+or are allocated to the specific instance of the function (not static).
+
+Atomic operations are operations that cannot be interrupted.
+To ensure this, don't disable interrupts but
+instead semaphores.
+
+
+A function is \textbf{recursive} if it calls itself.
+Thus, a recursive funciton must be reentrant.

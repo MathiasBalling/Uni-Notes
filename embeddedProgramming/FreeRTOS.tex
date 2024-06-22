@@ -1,3 +1,19 @@
+\textbf{Operating System}
+
+An operating system is a computer program that supports
+the computer's basic functions. It provides services to other
+programs (applications). The OS manages computer hardware resources
+including the CPU, memory, storage devices, etc.
+
+The main function of an OS is to provide an interface between
+the computer hardware and the user. The OS manages the hardware
+at the lowest level, allowing the user to interact with the computer
+at a higher level.
+
+Most OS are not real-time, meaning that they cannot guarantee a response
+time to events. They can be preemptive or non-preemptive.
+Windows is an example of a non-real-time OS.
+
 \section{Real Time Operating System}
 
 Responds to events within a strictly defined time.
@@ -18,9 +34,17 @@ because of their hardware limitation. FreeROTS provides only:
 	\item Timing and synchronization primitives
 \end{itemize}
 
+FreeRTOS is more a real-time kernel than a full RTOS.
+It is more like a real-time kernel because it is not a full OS.
+This means that FreeRTOS does not provide all the services of a full OS.
+Where a full OS provides file systems, networking, etc.
+FreeRTOS provides only the basic services needed for a real-time system.
+
 \textbf{Multi-tasking}
 
-Kernel - core of OS.
+Kernel - core of OS. A kernel is responsible for managing the system resources.
+This includes the CPU, memory, and peripheral devices.
+The kernel manages processes, thus allowing for multi-tasking.
 
 Multi-tasking in OS is if the OS can run multiple tasks at the same time.
 This allows for complex applications to be subdivided into small tasks.
@@ -33,6 +57,12 @@ This allows for complex applications to be subdivided into small tasks.
 
 The scheduler is a part of the kernel that decides which task will be executed when.
 The scheduler can suspend and resume tasks, but tasks can suspend themselves too.
+When the scheduler switches between tasks, it is called a context switch.
+Tasks use different resources of the microcontroller, such as registers,
+stack, and program counter.
+When the kernel switches tasks, it saves its context,
+and resumes from it once a task is resumed.
+
 
 \textbf{FreeRTOS choice of scheduling policy}
 
@@ -40,7 +70,6 @@ Two choices: Preemptive and Cooperative. Pre-emptive always runs the highest pri
 Having multiple tasks with the same priority, they will run using round robin scheduling.
 Co-operative scheduling is where context switches only occur if a task blocks or explicitly calls task YIELD().
 
-\newpage
 
 \textbf{FreeRTOS Task States}
 
@@ -54,6 +83,16 @@ Suspended is where the task is not available for scheduling. Tasks only enter or
 \begin{center}
 	\includegraphics[width=0.4\textwidth]{images/freeStates.png}
 \end{center}
+
+\textbf{Additional features of FreeRTOS}
+
+\begin{itemize}
+	\item Message Queues: Used for inter-task communication. A task can send a message to a queue and another task can receive it.
+	\item Binary and counting semaphores.
+	\item Mutexes.
+\end{itemize}
+
+
 
 \textbf{Sempahores}
 
@@ -78,6 +117,24 @@ A mutex is a special type of binary semaphore that is used to control access to 
 Mutex vs. Semaphore: Mutexes can be released only by the task which took them, while binary semaphores can be released
 by any task. Mutexes are for protecting resources - binary semaphores are for serialization and signaling.
 
+
+\textbf{Queues in FreeRTOS}
+
+A queue can hold a finite number of fixed size data items.
+The maximum number of items a queue can hold is called its length.
+Writing data to a queue causes a byte for byte copy of the data to be
+stored in the queue itself. Reading data from a queue causes the
+copy of the data to be removed from the queue.
+
+
+\textbf{Preemption}
+
+The general definition of preemption is a prior seizure
+or apporiation - taking possession before others.
+
+A synonym for preemption is protective, defiensive, precautionary.
+In computing preemption is the act of temporarily interrupting a task
+with the intention of resuming it later.
 
 
 
