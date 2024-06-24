@@ -10,6 +10,23 @@ is not predictable. This is used when the variable is changed by an ISR.
 
 \textbf{Extern ints:} are used to tell the compiler that the variable is defined elsewhere.
 
+\subsection{Preemptive vs non-preemptive}
+
+In preemptive shceduling, the operating system can interrupt a
+currently running process and switch the PCU to another process.
+The advatages of this lies within the system responsiveness and
+interactive performance.
+But it should be mentioned it is more complex to implement.
+
+
+
+In non-preemptive scheduling, the currently running process
+cannot be interrupted. The process must finish before the next
+task can run. This can lead to poor responsiveness,
+especially for real-time applications. It also has potential
+for process tarvation if shorter or higher-priority tasks
+keep arriving.
+
 \subsection{Floating Point Unit}
 Floating point is a way to represent real numbers on computers.
 IEEE floating point formats:
@@ -153,6 +170,10 @@ in the code. The output of the linker is relocatable and has no memory
 addresses assigned to the code.
 A relocatable program is a program that can be loaded into memory
 at any address.
+This could for instance be a library that contains functions such
+as printf.
+
+
 
 The \textbf{Locator} then transforms relocatable program into executable
 binary image. Addresses are specified for each code line.
