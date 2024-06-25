@@ -1,5 +1,48 @@
 \section{UART}
 
+Serial port is a serial communication phystical interface
+through which information transfers in or out one bit at a time.
+Data transfer through serial ports connected the computer
+to devices such as terminals and variuos peripherals.
+
+\textbf{Baudrate}
+
+It is necessary to choose a proper oscillator to get the
+correct baud rate with little or no error. Therefore, some common buad
+rates are known. E.g. 9600.
+
+LSB is sent first known as little-endian. Also possible but
+rarely used is big-endian or MSB first.
+
+\textbf{Parity}
+
+Error detecting method. An extra data bit is sent with each data
+character, arranged so that the number of 1 bits in each character,
+including the parity bit, is always odd or even.
 
 When setting up UART the clock frequency of the FPGA should be 16 times faster
 than the baud rate.
+
+
+\textbf{SPI}
+
+Serial Peripheral Interface is a synchronous serial communication interface
+for short-distance communication.
+Full duplex, single master.
+
+
+
+\textbf{Inter IC}
+
+Serial synchronous bus. Widely used to connect low-speed ICs processing
+units in short-distance, intra-board communication.
+Common speeds are 100kbps standard mode and 400kbps fast mode.
+Only two communication lines for all devices on the bus.
+
+You can have multiple masters and multiple slaves.
+
+Start condition is when the master node leaves the SCL high and
+pulls SDA low.
+
+If two masters want to transmit at the same time, the
+first master to pull the SDA low wins the arbitration.

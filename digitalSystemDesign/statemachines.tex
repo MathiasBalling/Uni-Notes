@@ -36,9 +36,8 @@ The hardware representation of a state machine can be visualized as:
 Checks for the sequence 1011.
 
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
-
 	\begin{subfigure}[b]{0.4\textwidth}
 		\includegraphics[width=\textwidth]{images/sequence_detector.png}
 		\caption{Sequence checker FSM}
@@ -48,7 +47,9 @@ Checks for the sequence 1011.
 		\includegraphics[width=\textwidth]{images/sequence_checker.png}
 		\caption{Sequence checker}
 	\end{subfigure}
-
-
 \end{figure}
+
+
+Two types. Nonoverlapping sequence and overlapping sequence.
+With the overlapping sequence, the last 1 in the sequence is also the first 1 in the next sequence.
 
