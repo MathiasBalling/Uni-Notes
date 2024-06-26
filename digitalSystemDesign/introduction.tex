@@ -400,6 +400,11 @@ A hierarchical adder that is used to improve performance
 because it is faster than the ripple carry adder, but it takes
 more resources.
 
+Propagation and Generate.
+Propagate means that if there is a carry input, then it is
+an XOR operation between the two inputs that decides if
+there will be a carry output.
+
 P = A XOR B. The same as sum for a half adder.
 
 G = A AND B. The same as a carry for a half adder.
@@ -426,6 +431,15 @@ Example for A-B:
 
 It can be implemented by a shift register as wide as the product
 and an accumulator for the partial and final product.
+
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{images/multiplicationBlock.png}
+\end{center}
+
+\begin{center}
+	\includegraphics[width=0.6\textwidth]{images/multiplication.png}
+\end{center}
+
 
 
 

@@ -1,4 +1,7 @@
-\section{UART}
+\section{Serial Communication}
+
+
+\subsection{UART}
 
 Serial port is a serial communication phystical interface
 through which information transfers in or out one bit at a time.
@@ -14,17 +17,13 @@ rates are known. E.g. 9600.
 LSB is sent first known as little-endian. Also possible but
 rarely used is big-endian or MSB first.
 
-\textbf{Parity}
-
-Error detecting method. An extra data bit is sent with each data
-character, arranged so that the number of 1 bits in each character,
-including the parity bit, is always odd or even.
 
 When setting up UART the clock frequency of the FPGA should be 16 times faster
 than the baud rate.
 
+UART uses parity check.
 
-\textbf{SPI}
+\subsection{SPI}
 
 Serial Peripheral Interface is a synchronous serial communication interface
 for short-distance communication.
@@ -32,7 +31,7 @@ Full duplex, single master.
 
 
 
-\textbf{Inter IC}
+\subsection{Inter IC}
 
 Serial synchronous bus. Widely used to connect low-speed ICs processing
 units in short-distance, intra-board communication.
@@ -46,4 +45,43 @@ pulls SDA low.
 
 If two masters want to transmit at the same time, the
 first master to pull the SDA low wins the arbitration.
+
+
+
+\subsection{Error detection}
+
+During transmission digital signals may be corrupted due
+to noise. Error detection adds additional data to a given digital
+message to help detect if any error has occured during the transmission.
+
+
+\textbf{Parity}
+
+Error detecting method. An extra data bit is sent with each data
+character, arranged so that the number of 1 bits in each character,
+including the parity bit, is always odd or even. This can be implemented
+using an XOR gate.
+
+\textbf{Checksum}
+
+The data is divided into k segments each of m bits.
+On the sender's end, the segments are added to get the sum.
+The sum is complemented to get the checksum, which is sent.
+At the receiver's end all received segments are added to get the sum.
+The sum is then complemented and if it is zero, the data is correct.
+
+\textbf{Cyclic Redundancy Check (CRC)}
+
+Based on binary division.
+The cyclic redundancy check bits, are added to the end
+of the data unit.
+The CRC bits are the remainder of the division in which the divisor
+is prechosen.
+At the receiver the data is divided over the same divisor.
+
+If a zero is caught at the receiver, the data is correct.
+
+Polynomial generators based on the divisor value are used to generate
+the CRC bits. In HDL, shift registers with XORs are used to build
+the CRC circuit.
 

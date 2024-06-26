@@ -1,0 +1,173 @@
+\section{Exam questions}
+
+\textbf{Define concurrent and sequntial statements}
+
+Concurrent statements are statements that are executed in parallel.
+Sequential statements are statements that are executed in sequence.
+
+
+\textbf{Which are the differences between conditional signal assignment and selected signal assignment?}
+
+Selected signal assignments only have one assignment operator.
+Thus, assignments are only based on the condition of the signal.
+
+Conditional signal assignments are used for describing
+statements that have only one target but can have more than
+one associated expression assigned to it.
+
+
+
+\textbf{What is the difference between a D-Latch and a D-Flip / Flop?}
+
+A D latch works using an enable signal.
+Where a D-Flip / Flop works using a clock signal.
+
+
+\textbf{Difference between signals and variables}
+
+Variables can only be used within a process. Where a signal
+can be used both outside and within.
+
+A signal is used for communicating betwen different processes
+and for creating physical connections within a design.
+
+A variable is used for storing data within a process.
+
+
+\textbf{Explain how a counter/shift register works?}
+
+A counter works by incrementing the value of a register.
+This can be done by using a clock signal.
+
+A shift register is a register which can shift its content
+either left or right.
+
+
+\textbf{How do keypad encoders work?}
+
+Keypad encoders work by sending a signal to a row and then
+look for a signal on the columns. If a signal is found
+then a key has been pressed.
+
+
+\textbf{Explain how half/full adders, subtraction, multipliers, and dividers work?}
+
+Half adder is an addition block which takes two inputs and outputs
+the sum and a carry bit.
+
+A full adder is an addition block which takes a carry bit as input and
+two other inputs and outputs the sum and a carry bit.
+
+Subtraction can be done by using two's complement.
+
+Multiplication can be done by using a series of additions.
+
+Division can be done by multiplication and right shifting.
+
+
+\textbf{What’s the difference between a Mealy and a Moore Machine?}
+
+The mealy state machine has outputs that depend on the current state and the inputs.
+Where a moore state machine only depend on the current state.
+
+\textbf{How does the Electronic Door Lock work?}
+
+It works by having a sequence detector built as a state machine.
+
+\textbf{Explain the FPGA design flow (functional and timing, simulation, synthesis, place, and route, etc.).}
+
+
+
+
+\textbf{What’s the difference between CPLDs and FPGAs?}
+
+A CPLD is a complex programmable logic device.
+This device has fewer logic blocks and more interconnect.
+Logic blocks can only connect to the neighboring logic blocks.
+Non-volatile memory is used to store the configuration.
+CPLDs are good for simple applications and cheaper compared to FPGAs.
+
+An FPGA is a field-programmable gate array.
+This device is more versatile and has more logic blocks.
+The memory is volatile and needs to be reprogrammed on every power cycle.
+
+
+
+
+\textbf{Explain RAM/ROM and BRAM?}
+
+RAM is random access memory.
+
+ROM is read only memory.
+
+BRAM is block RAM. This memory is used
+for storing larger blocks of data, that could be from
+a sensor.
+
+
+\textbf{How do UART, SPI, and I2C work, and what are the main differences between them?}
+
+UART is a universal asynchronous receiver-transmitter.
+
+SPI is a serial peripheral interface is a synchronous serial communication
+interface for short-distance communication.
+
+I2C is an inter-integrated circuit is a multi-master, multi-slave communication.
+
+
+
+\textbf{Hvordan kan man gøre sine VHDL-entities genbrugelige? Kom med et eksempel}
+
+Man kan gøre sine VHDL entities genbrugelige ved at bruge generics.
+Det kunne f.eks. være en counter med en generic størrelse.
+
+
+
+\textbf{Hvad er forskellen på en latch og en flip-flop?}
+
+En latch gemmer ved brug af et enable signal. En flip flop er clock afhængig.
+
+\textbf{Hvordan tester man mere komplekse kredsløb I simulering?}
+
+Ved brug af testbenches.
+En testbench er et stykke kode, som du skriver i VHDL for at teste dit design.
+Testbenchen simulerer inputsignaler og overvåger outputsignalerne for at verificere, at designet
+fungerer korrekt.
+
+
+\textbf{Beskriv strukturelt hvordan man implementerer en clock divider I VHDL}
+
+You have a divisor that is used to divide the clock signal.
+You then count to half of this value and then toggle the output signal.
+By doing this twice it effectively divides the clock signal by the divisor.
+
+
+\textbf{Hvad er forskellen på behavioral, post-synthesis, og post-implementation simulation?}
+
+Behavioral simulering er brugt til at verificere funktionaliteten af desinget
+uden at tage hensyn til hardwareimplementeringen.
+Man ignorerer i dette stadie timing- og hardware specifikke detaljer som forsinkelser og fysiske
+begrænsninger.
+
+Post synthesis simulering er brugt til at verificere funktionaliteten af designet
+efter syntesen. Bruges til at kontrollere, at synteseværktøjet har fortolket
+og implementeret designet korrekt.
+
+Post implementation tester designet efter placering og routing for at sikre, at designet
+fungerer korekt med faktiske timing-forsinkelser og hardware-specifikke detaljer.
+
+
+\textbf{Beskriv hvordan vi får vores færdigdesignede kredsløb til at køre på en FPGA}
+
+Synthesis, place and route, program FPGA.
+
+
+\textbf{Giv et eksempel på et FPGA system hvori man kan bruge en RAM}
+
+Kunne være til at gemme pixeldata midlertidigt fra et kamera.
+
+
+
+
+
+
