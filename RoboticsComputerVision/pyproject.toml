@@ -1,0 +1,17 @@
+[project]
+name = "roboticscomputervision"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyter-collaboration>=4.1.1",
+    "matplotlib>=3.10.6",
+    "mujoco>=3.3.5",
+    "notebook>=7.4.5",
+    "numpy>=2.3.2",
+    "numpy-quaternion>=2024.0.10",
+    "open3d>=0.19.0",
+    "opencv-python>=4.11.0.86",
+    "scipy>=1.16.1",
+]
