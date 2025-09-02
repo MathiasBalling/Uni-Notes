@@ -5,11 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-  "editdistance-s>=1.0.0",
+  "jupyter-collaboration>=4.1.1",
   "jupytext>=1.17.3",
   "matplotlib>=3.10.6",
+  "notebook>=7.4.5",
   "numpy>=2.3.2",
-  "poetry>=2.1.4",
+  "opencv-python>=4.11.0.86",
   "scikit-image>=0.25.2",
-  "wheel>=0.45.1",
 ]
