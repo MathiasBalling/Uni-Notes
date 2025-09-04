@@ -1,0 +1,3 @@
+[submodule "RoboticsComputerVision/Robotics/rovi2025"]
+	path = RoboticsComputerVision/Robotics/rovi2025
+	url = https://gitlab.sdu.dk/wilb/rovi2025.git
